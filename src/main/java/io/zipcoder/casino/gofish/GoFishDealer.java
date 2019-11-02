@@ -1,5 +1,7 @@
 package io.zipcoder.casino.gofish;
 
+import io.zipcoder.casino.Card;
+
 public class GoFishDealer {
     private Card[] hand;
     private int fourOfAKind;
@@ -8,6 +10,7 @@ public class GoFishDealer {
     }
 
     public Card deal() {
+        return null;
     }
 
     public Boolean askCard(Card requestedCard, GoFishPlayer player) {
@@ -20,6 +23,7 @@ public class GoFishDealer {
     }
 
     public Boolean checkHand() {
+        return null;
     }
 
     public Card draw() {

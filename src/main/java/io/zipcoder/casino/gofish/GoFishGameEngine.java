@@ -1,5 +1,7 @@
 package io.zipcoder.casino.gofish;
 
+import io.zipcoder.casino.User;
+
 public class GoFishGameEngine {
     private User user;
     GoFishDealer goFishDealer;
