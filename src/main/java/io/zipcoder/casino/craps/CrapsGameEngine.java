@@ -1,4 +1,4 @@
-package io.zipcoder.casino.Craps;
+package io.zipcoder.casino.craps;
 
 public class CrapsGameEngine {
     private User user;
