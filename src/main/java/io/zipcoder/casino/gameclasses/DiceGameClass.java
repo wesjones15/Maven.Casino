@@ -1,4 +1,4 @@
-package io.zipcoder.casino.GameClasses;
+package io.zipcoder.casino.gameclasses;
 
 public class DiceGameClass {
     private int minValue;
