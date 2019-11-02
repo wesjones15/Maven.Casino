@@ -1,30 +1,41 @@
 package io.zipcoder.casino.gofish;
 
+import io.zipcoder.casino.Card;
+import io.zipcoder.casino.DeckOfCards;
+
 public class GoFishGame {
 
-    private DeckofCards deck;
+    private DeckOfCards deck;
     private Card card;
 
-    public GoFishGame() {
+    public GoFishGame(DeckOfCards deck;) {
+        this.deck = deck;
     }
 
-    public Double getBet() {}
 
     public void checkHand() {
     }
 
-    public void passCards(askCard())
+    public void passCards(askCard()){
+
+    }
 
     public void checkFourOfAKind() {
+
     }
 
     public void shuffle() {
+
     }
 
     public Card getCard() {
+
     }
 
-    public void askCard(User input);
+    public void askCard(User input){
+
+    };
+
 
     //pulling methods from game interface
 
