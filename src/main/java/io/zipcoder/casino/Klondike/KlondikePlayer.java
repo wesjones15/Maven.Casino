@@ -5,4 +5,6 @@ public class KlondikePlayer {
     }
 
     public Integer[] roll(Integer numOfDie) {return null;}
+    public void leaveTable(){}
+    public void bet(Double betAmount){}
 }
