@@ -1,4 +1,4 @@
-package io.zipcoder.casino.Klondike;
+package io.zipcoder.casino.klondike;
 
 public class KlondikeDealer {
     public KlondikeDealer() {

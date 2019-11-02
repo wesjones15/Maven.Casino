@@ -1,12 +1,14 @@
-package io.zipcoder.casino.GoFish;
+package io.zipcoder.casino.gofish;
 
-public class GoFishPlayer {
+public class GoFishDealer {
     private Card[] hand;
     private int fourOfAKind;
 
-    public GoFishPlayer() {
+    public GoFishDealer() {
     }
 
+    public Card deal() {
+    }
 
     public Boolean askCard(Card requestedCard, GoFishPlayer player) {
         return null;
@@ -14,19 +16,17 @@ public class GoFishPlayer {
 
     // if card(s) are in  hand of this player
     public void passCard(Card cardInHandToBePassed) {
+
     }
 
     public Boolean checkHand() {
-        return null;
     }
 
     public Card draw() {
         return null;
     }
 
-    public Boolean checkFourOfAKind(Card[] hand) {
-        return null;
+    public void checkFourOfAKind(Card[] hand) {
+
     }
-
-
 }

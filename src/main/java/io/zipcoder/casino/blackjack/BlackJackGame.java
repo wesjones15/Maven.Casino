@@ -1,4 +1,4 @@
-package io.zipcoder.casino.BlackJack;
+package io.zipcoder.casino.blackjack;
 
 public class BlackJackGame {
     private DeckOfCards deckOfCards;
