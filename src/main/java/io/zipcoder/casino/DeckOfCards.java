@@ -37,5 +37,12 @@ public class DeckOfCards {
         return card;
     }
 
-//    public void printCards()
+    public Card getCard() {
+        return null;
+    }
+
+    public Card revealCard() {
+        return null;
+    }
+
 }
