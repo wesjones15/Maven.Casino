@@ -1,6 +1,7 @@
 package io.zipcoder.casino.gofish;
 
 import io.zipcoder.casino.Card;
+import io.zipcoder.casino.User;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -8,9 +9,13 @@ import java.util.Stack;
 public class GoFishPlayer {
     private ArrayList<Card> hand;
     private int fourOfAKind;
+    private Double wallet;
 
-    public GoFishPlayer(ArrayList<Card> hand) {
+
+    public GoFishPlayer(ArrayList<Card> hand, User user) {
+
         this.hand = hand;
+        this.wallet = user.getWallet();
     }
 
 

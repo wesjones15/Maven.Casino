@@ -16,4 +16,10 @@ public class User {
     public void chooseGame() {
 
     }
+    public Double getWallet(){
+        return this.wallet;
+    }
+    public void setWallet(double newWallet){
+        this.wallet = newWallet;
+    }
 }
