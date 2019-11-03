@@ -5,18 +5,20 @@ import io.zipcoder.casino.DeckOfCards;
 import io.zipcoder.casino.User;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class GoFishGame {
 
-    private DeckOfCards deck;
+    private Stack<Card> deck;
     private Card card;
 
-    public GoFishGame(DeckOfCards deck) {
+    public GoFishGame(Stack<Card> deck) {
         this.deck = deck;
     }
 
 
-    public void checkHand() {
+    public void checkHand( ) {
+
 
     }
 
@@ -40,7 +42,7 @@ public class GoFishGame {
 
     public void askCard(User input){
 
-    };
+    }
 
 
     //pulling methods from game interface
