@@ -1,10 +1,21 @@
 package io.zipcoder.casino.gofish;
 
-public class GoFishPlayer {
-    private Card[] hand;
-    private int fourOfAKind;
+import io.zipcoder.casino.Card;
+import io.zipcoder.casino.User;
 
-    public GoFishPlayer() {
+import java.util.ArrayList;
+import java.util.Stack;
+
+public class GoFishPlayer {
+    private ArrayList<Card> hand;
+    private int fourOfAKind;
+    private Double wallet;
+
+
+    public GoFishPlayer(ArrayList<Card> hand, User user) {
+
+        this.hand = hand;
+        this.wallet = user.getWallet();
     }
 
 
@@ -13,19 +24,29 @@ public class GoFishPlayer {
     }
 
     // if card(s) are in  hand of this player
-    public void passCard(Card cardInHandToBePassed) {
+    public ArrayList<Card> passCard(Card cardInHandToBePassed) {
+
+        ArrayList<Card> cardsToPass = new ArrayList<Card>();
+
+        for(Card each : hand){
+            if(each == cardInHandToBePassed){
+                cardsToPass.add(each);
+            }
+        }
+        return cardsToPass;
     }
 
     public Boolean checkHand() {
         return null;
     }
 
-    public Card draw() {
-        return null;
+    public void draw(Stack<Card> deck) {
+        this.hand.add(deck.pop());
     }
 
-    public Boolean checkFourOfAKind(Card[] hand) {
-        return null;
+    public Boolean checkFourOfAKind() {
+
+      return null;
     }
 
 
