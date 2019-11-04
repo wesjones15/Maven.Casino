@@ -1,7 +1,7 @@
 package io.zipcoder.casino.gofish;
 
 public class GoFishGameEngine {
-    private User user;
+    //private User user;
     GoFishDealer goFishDealer;
     GoFishPlayer goFishPlayer;
     GoFishGame goFishGame;

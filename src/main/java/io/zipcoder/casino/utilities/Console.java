@@ -9,28 +9,28 @@ import java.util.Scanner;
  * You are advised against modifying this class.
  */
 public final class Console {
-    private final Scanner input;
-    private final PrintStream output;
+    private static Scanner input;
+    private static PrintStream output;
 
     public Console(InputStream in, PrintStream out) {
         this.input = new Scanner(in);
         this.output = out;
     }
 
-    public void print(String val, Object... args) {
+    public static void print(String val, Object... args) {
         output.format(val, args);
     }
 
-    public void println(String val, Object... vals) {
+    public static void println(String val, Object... vals) {
         print(val + "\n", vals);
     }
 
-    public String getStringInput(String prompt, Object... args) {
+    public  static String getStringInput(String prompt, Object... args) {
         println(prompt, args);
         return input.nextLine();
     }
 
-    public Double getDoubleInput(String prompt, Object... args) {
+    public  static Double getDoubleInput(String prompt, Object... args) {
         String stringInput = getStringInput(prompt, args);
         try {
             Double doubleInput = Double.parseDouble(stringInput);
@@ -42,7 +42,7 @@ public final class Console {
         }
     }
 
-    public Long getLongInput(String prompt, Object... args) {
+    public static Long getLongInput(String prompt, Object... args) {
         String stringInput = getStringInput(prompt, args);
         try {
             Long longInput = Long.parseLong(stringInput);
@@ -54,7 +54,7 @@ public final class Console {
         }
     }
 
-    public Integer getIntegerInput(String prompt, Object... args) {
+    public static Integer getIntegerInput(String prompt, Object... args) {
         return getLongInput(prompt, args).intValue();
     }
 }

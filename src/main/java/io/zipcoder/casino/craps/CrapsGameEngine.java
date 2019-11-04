@@ -1,4 +1,5 @@
 package io.zipcoder.casino.craps;
+import io.zipcoder.casino.*;
 
 public class CrapsGameEngine {
     private User user;
