@@ -12,6 +12,9 @@ public class User {
         this.age = age;
         this.wallet = wallet;
     }
+    public User(){
+        //fuck this
+    }
 
     public void chooseGame() {
 

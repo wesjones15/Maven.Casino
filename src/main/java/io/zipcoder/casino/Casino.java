@@ -4,25 +4,33 @@ package io.zipcoder.casino;
 import io.zipcoder.casino.utilities.Console;
 
 public class Casino {
-    ///All Declarations
-    private User user;
-    private UserDisplay userDisplay;
+    // All Declarations
+    private User user = new User();
+//    private UserDisplay userDisplay;
 
-             //Contructors
+    // Constructors
     public Casino(){
-        start();
+        userStart();
+
     }
     public Casino(String name, Double wallet){
         this.user.setName(name);
         this.user.setWallet(wallet);
-        start();
+        casinoStart(user);
     }
 
 
 
-    public void start(){
+    public void userStart(){
         Console.println("Welcome to the great 4 Casino!");
-        userDisplay.run();
+//        UserDisplay.run();
+        User user = UserDisplay.createCasinoUser();
 
+        casinoStart(user);
+
+    }
+    public void casinoStart(User user){
+        int gameAction = UserDisplay.displayOptions("Go Fish", "Black Jack", "Klondike", "Craps", "Exit Casino");
+        UserDisplay.chooseGame(gameAction, user);
     }
 }

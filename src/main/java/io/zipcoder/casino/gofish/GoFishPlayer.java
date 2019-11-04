@@ -1,6 +1,8 @@
 package io.zipcoder.casino.gofish;
 
 import io.zipcoder.casino.Card;
+import io.zipcoder.casino.GamblingGame;
+import io.zipcoder.casino.GamblingPlayer;
 import io.zipcoder.casino.User;
 
 import java.util.ArrayList;
