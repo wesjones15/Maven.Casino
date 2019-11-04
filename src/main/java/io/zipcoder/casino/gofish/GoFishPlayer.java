@@ -48,6 +48,9 @@ public class GoFishPlayer {
     public void draw(Stack<Card> deck) {
         this.hand.add(deck.pop());
     }
+    public void pickUpHand(Card beingDealt){
+        this.hand.add(beingDealt);
+    }
 
     //GETTERS
     public int getFourOfAKind(){

@@ -13,6 +13,10 @@ public class GoFishGame {
         this.deck = deck;
     }
 
+    public Card DealHand(){
+        return deck.pop();
+    }
+
 
     public void passCardstoPlayer(){
 
@@ -26,9 +30,8 @@ public class GoFishGame {
 
     }
 
-    public Stack<Card> getCard() {
+    public Stack<Card> getDeck() {
         return deck;
-
     }
 
 

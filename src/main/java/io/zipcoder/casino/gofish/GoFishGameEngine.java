@@ -8,7 +8,7 @@ public class GoFishGameEngine {
     private User user;
     private GoFishDealer goFishDealer;
     private GoFishPlayer goFishPlayer;
-    //private GoFishGame goFishGame = new GoFishGame();
+    private GoFishGame goFishGame;
     private Console console = new Console(System.in , System.out);
 
     public GoFishGameEngine(User user){
@@ -35,12 +35,19 @@ public class GoFishGameEngine {
 
         }
     }
+    //START OF GAME//
+    ////////////////
     public void runGame(){
 
+
     }
-    public Double leaveTable(){
-        return user.getWallet();
+    public void dealHands(){
+        for(int i = 0; i < 7; i++){
+            goFishPlayer.pickUpHand(goFishGame.DealHand());
+            //go fish dealer here
+        }
     }
+
 
     public void checkWinner(GoFishPlayer user, GoFishDealer ai) {
         if(user.getFourOfAKind() == 4)
@@ -49,5 +56,7 @@ public class GoFishGameEngine {
             console.println("You Lose! Play again");
 
     }
-
+    public Double leaveTable(){
+        return user.getWallet();
+    }
 }
