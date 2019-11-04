@@ -1,5 +1,7 @@
 package io.zipcoder.casino.klondike;
 
+import io.zipcoder.casino.Dice;
+
 public class KlondikeGame {
 
     private int numOfDie = 5;

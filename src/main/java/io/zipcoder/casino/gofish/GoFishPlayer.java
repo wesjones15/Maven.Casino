@@ -8,7 +8,7 @@ import java.util.Stack;
 
 public class GoFishPlayer {
     private ArrayList<Card> hand;
-    private int fourOfAKind;
+    private int fourOfAKind = 0;
     private Double wallet;
 
 
@@ -36,18 +36,34 @@ public class GoFishPlayer {
         return cardsToPass;
     }
 
-    public Boolean checkHand() {
-        return null;
+    public Boolean checkHand(Card requested) {
+        for(Card each: hand){
+            if(requested == each){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void draw(Stack<Card> deck) {
         this.hand.add(deck.pop());
     }
 
-    public Boolean checkFourOfAKind() {
-
-      return null;
+    //GETTERS
+    public int getFourOfAKind(){
+        return this.fourOfAKind;
     }
+
+    public String showHand(){
+        String displayHand = "Cards in hand\n";
+        for(Card each : hand){
+            displayHand += each + "\n";
+        }
+        return displayHand;
+    }
+
+
+
 
 
 }

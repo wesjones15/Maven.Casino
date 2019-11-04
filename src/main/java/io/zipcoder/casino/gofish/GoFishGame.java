@@ -1,9 +1,6 @@
 package io.zipcoder.casino.gofish;
 
 import io.zipcoder.casino.Card;
-import io.zipcoder.casino.DeckOfCards;
-import io.zipcoder.casino.User;
-
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -17,12 +14,7 @@ public class GoFishGame {
     }
 
 
-    public void checkHand( ) {
-
-
-    }
-
-    public void passCards(GoFishDealer dealer, GoFishPlayer player, Card cards){
+    public void passCardstoPlayer(){
 
     }
 
@@ -34,15 +26,11 @@ public class GoFishGame {
 
     }
 
-    public Card getCard() {
-
-        return null;
-
-    }
-
-    public void askCard(User input){
+    public Stack<Card> getCard() {
+        return deck;
 
     }
+
 
 
     //pulling methods from game interface
