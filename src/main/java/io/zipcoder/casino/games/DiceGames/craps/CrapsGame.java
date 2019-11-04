@@ -1,5 +1,7 @@
 package io.zipcoder.casino.games.DiceGames.craps;
 
+import io.zipcoder.casino.Dice;
+
 public class CrapsGame {
 
 

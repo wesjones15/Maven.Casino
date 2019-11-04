@@ -3,6 +3,8 @@ package io.zipcoder.casino.games.CardGames.gofish;
 import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.userandplayer.User;
 
+import io.zipcoder.casino.Card;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -15,13 +17,12 @@ public class GoFishGame {
         this.deck = deck;
     }
 
-
-    public void checkHand( ) {
-
-
+    public Card DealHand(){
+        return deck.pop();
     }
 
-    public void passCards(GoFishDealer dealer, GoFishPlayer player, Card cards){
+
+    public void passCardstoPlayer(){
 
     }
 
@@ -33,15 +34,10 @@ public class GoFishGame {
 
     }
 
-    public Card getCard() {
-
-        return null;
-
+    public Stack<Card> getDeck() {
+        return deck;
     }
 
-    public void askCard(User input){
-
-    }
 
 
     //pulling methods from game interface

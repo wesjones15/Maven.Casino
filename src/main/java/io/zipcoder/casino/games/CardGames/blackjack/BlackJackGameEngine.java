@@ -1,8 +1,10 @@
 package io.zipcoder.casino.games.CardGames.blackjack;
 
+import io.zipcoder.casino.User;
+
 public class BlackJackGameEngine {
     private User user;
-    private Dealer dealer;
+    //private Dealer dealer;
 
     //String  = WELCOME TO BLACKJACK
     public void displayBlackJackMenu() {

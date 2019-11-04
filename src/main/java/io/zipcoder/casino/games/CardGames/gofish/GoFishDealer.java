@@ -4,7 +4,7 @@ import io.zipcoder.casino.sweetasscasinotools.Card;
 
 public class GoFishDealer {
     private Card[] hand;
-    private int fourOfAKind;
+    private int fourOfAKind = 0;
 
     public GoFishDealer() {
     }
@@ -33,4 +33,8 @@ public class GoFishDealer {
     public void checkFourOfAKind(Card[] hand) {
 
     }
+    public int getFourOfAKind(){
+        return this.fourOfAKind;
+    }
+
 }
