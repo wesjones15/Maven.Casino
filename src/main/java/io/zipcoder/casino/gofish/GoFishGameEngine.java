@@ -3,6 +3,8 @@ package io.zipcoder.casino.gofish;
 import io.zipcoder.casino.User;
 import io.zipcoder.casino.utilities.Console;
 
+import java.lang.reflect.Array;
+
 
 public class GoFishGameEngine {
     private User user;
@@ -45,8 +47,10 @@ public class GoFishGameEngine {
         for(int i = 0; i < 7; i++){
             goFishPlayer.pickUpHand(goFishGame.DealHand());
             //go fish dealer here
+
         }
     }
+
 
 
     public void checkWinner(GoFishPlayer user, GoFishDealer ai) {
