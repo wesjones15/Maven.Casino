@@ -1,6 +1,7 @@
 package io.zipcoder.casino.games.CardGames.blackjack;
 
-import io.zipcoder.casino.Card;
+
+import io.zipcoder.casino.sweetasscasinotools.Card;
 
 public class BlackJackDealer {
     private Card[] hand;

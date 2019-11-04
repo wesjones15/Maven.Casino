@@ -1,6 +1,7 @@
 package io.zipcoder.casino.games.CardGames.blackjack;
 
-import io.zipcoder.casino.User;
+
+import io.zipcoder.casino.userandplayer.User;
 
 public class BlackJackGameEngine {
     private User user;

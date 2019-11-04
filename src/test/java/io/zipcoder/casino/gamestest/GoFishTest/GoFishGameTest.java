@@ -1,8 +1,7 @@
 package io.zipcoder.casino.gamestest.GoFishTest;
 
-import io.zipcoder.casino.Card;
-import io.zipcoder.casino.DeckOfCards;
-import io.zipcoder.casino.gofish.GoFishGame;
+import io.zipcoder.casino.sweetasscasinotools.Card;
+import io.zipcoder.casino.sweetasscasinotools.DeckOfCards;
 import org.junit.Test;
 
 import java.util.Stack;

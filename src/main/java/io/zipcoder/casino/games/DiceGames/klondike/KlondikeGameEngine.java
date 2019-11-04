@@ -1,6 +1,7 @@
 package io.zipcoder.casino.games.DiceGames.klondike;
 
-import io.zipcoder.casino.User;
+
+import io.zipcoder.casino.userandplayer.User;
 
 public class KlondikeGameEngine {
     private User user;
