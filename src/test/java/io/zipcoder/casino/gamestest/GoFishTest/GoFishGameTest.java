@@ -1,11 +1,10 @@
-package io.zipcoder.casino.GoFish;
+package io.zipcoder.casino.gamestest.GoFishTest;
 
 import io.zipcoder.casino.Card;
 import io.zipcoder.casino.DeckOfCards;
 import io.zipcoder.casino.gofish.GoFishGame;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 public class GoFishGameTest {
