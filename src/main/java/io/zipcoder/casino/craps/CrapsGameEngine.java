@@ -1,4 +1,5 @@
 package io.zipcoder.casino.craps;
+import io.zipcoder.casino.*;
 
 import io.zipcoder.casino.User;
 
