@@ -2,7 +2,6 @@ package io.zipcoder.casino.games.CardGames.gofish;
 
 import io.zipcoder.casino.userandplayer.User;
 
-import io.zipcoder.casino.User;
 import io.zipcoder.casino.utilities.Console;
 
 import java.lang.reflect.Array;
