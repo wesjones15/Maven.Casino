@@ -12,12 +12,12 @@ public class GoFishPlayer {
 
     private ArrayList<Card> hand;
     private int fourOfAKind = 0;
-    private Double wallet;
     private Card fourCard;
 
-
     public GoFishPlayer(User user) {
-        this.wallet = user.getWallet();
+        this.hand = new ArrayList<Card>();
+    }
+    public GoFishPlayer(){
         this.hand = new ArrayList<Card>();
     }
 
@@ -46,6 +46,7 @@ public class GoFishPlayer {
     }
     public void draw(Stack<Card> deck) {
         this.hand.add(deck.pop());
+        removeFourOfAKind();
     }
 
     //////ADD CARDS TO HAND////
@@ -71,9 +72,6 @@ public class GoFishPlayer {
     public ArrayList<Card> getHand() {
         return hand;
     }
-    public Double getWallet() {
-        return wallet;
-    }
 
     ///GETTING CARDS AND REMOVING FOUR OF A KIND//
     //////////////////////////////////////////////
@@ -93,27 +91,27 @@ public class GoFishPlayer {
     }
     public boolean checkFour(){
         int max = 1;
-        int current = 1;
+        int current;
         Card popular = hand.get(0);
         Card temp;
-
-        for(int i = 0; i < hand.size(); i++) {
-            temp = hand.get(i);
+        for(Card each : hand){
+            temp = each;
             current = 0;
-            for(int j = 1; j < hand.size(); j++){
-                if(temp.getValue().equals(hand.get(j).getValue()))
-                    current++;
 
+            for(Card other : hand){
+                if(temp.getValue().equals(other.getValue())){
+                    current++;
+                }
             }
             if(current > max){
                 popular = temp;
                 max = current;
             }
-        }if(max == 4){
+        }
+        if(max == 4){
             this.fourCard = popular;
             return true;
         }
-
         return false;
     }
 

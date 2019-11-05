@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class GoFishGameEngine {
     private User user;
-    private GoFishDealer goFishDealer;
+    private GoFishPlayer goFishDealer;
     private GoFishPlayer goFishPlayer;
     private DeckOfCards deck = new DeckOfCards();
     private GoFishGame goFishGame;
@@ -21,7 +21,7 @@ public class GoFishGameEngine {
     public GoFishGameEngine(User user){
         this.user = user;
         this.goFishPlayer = new GoFishPlayer(user);
-        this.goFishDealer = new GoFishDealer();
+        this.goFishDealer = new GoFishPlayer();
         this.goFishGame = new GoFishGame(deck.createDeckOfCards());
         displayGoFishMenu();
     }
@@ -69,7 +69,7 @@ public class GoFishGameEngine {
 
         }
     }
-    private boolean checkWinner(GoFishPlayer user, GoFishDealer ai) {
+    private boolean checkWinner(GoFishPlayer user, GoFishPlayer ai) {
         if(user.getFourOfAKind() == 4){
             Console.println("Congratulations your the winner!\n" +
                     "Reward : $50.0");
