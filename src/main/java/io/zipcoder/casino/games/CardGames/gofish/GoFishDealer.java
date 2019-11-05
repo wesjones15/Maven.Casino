@@ -2,11 +2,14 @@ package io.zipcoder.casino.games.CardGames.gofish;
 
 import io.zipcoder.casino.sweetasscasinotools.Card;
 
+import java.util.ArrayList;
+
 public class GoFishDealer {
-    private Card[] hand;
+    private ArrayList<Card> hand;
     private int fourOfAKind = 0;
 
     public GoFishDealer() {
+        this.hand = new ArrayList<Card>();
     }
 
     public Card deal() {
@@ -22,19 +25,24 @@ public class GoFishDealer {
 
     }
 
-    public Boolean checkHand() {
-        return null;
-    }
-
     public Card draw() {
         return null;
     }
 
-    public void checkFourOfAKind(Card[] hand) {
 
+    ////ADD CARDS TO HAND////
+    public void pickUpHand(Card beingDealt){
+        this.hand.add(beingDealt);
     }
     public int getFourOfAKind(){
         return this.fourOfAKind;
+    }
+    public String showHand(){
+        String displayHand = "Cards in hand\n";
+        for(Card each : hand){
+            displayHand += each.toString() + "\n";
+        }
+        return displayHand;
     }
 
 }
