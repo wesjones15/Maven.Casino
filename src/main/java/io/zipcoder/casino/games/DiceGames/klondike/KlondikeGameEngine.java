@@ -1,5 +1,7 @@
 package io.zipcoder.casino.games.DiceGames.klondike;
 
+import io.zipcoder.casino.sweetasscasinotools.Dice;
+import io.zipcoder.casino.sweetasscasinotools.Die;
 import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.userandplayer.User;
@@ -20,13 +22,18 @@ public class KlondikeGameEngine {
     }
 
     public void displayKlondikeMenu() {
-        optionChosen(Console.getIntegerInput("Welcome to Klondike!\n" +
+        Console.println("Welcome to Klondike!\n" +
                 "1 : Start Game\n" +
                 "2 : View Klondike Rules\n" +
-                "3 : Leave Game"));
+                "3 : Leave Game");
     }
 
-    public void optionChosen(Integer choice) {
+    public Integer choiceFromKlondikeMenu() {
+        Integer choice = Console.getIntegerInput("What do you want to do?");
+        return choice;
+    }
+
+    public void executeActionChosen(Integer choice) {
         switch (choice) {
             case 1:
                 //runKlondike();
@@ -38,14 +45,26 @@ public class KlondikeGameEngine {
                 //leaveGame();
                 break;
             default:
-                Console.println("Invalid response!");
+                //Console.println("Invalid response!");
+                displayKlondikeMenu();
                 break;
         }
     }
 
+    public void run() {
+        displayKlondikeMenu();
+        Integer action = choiceFromKlondikeMenu();
+        executeActionChosen(action);
+    }
+
     public void runKlondike() {
-        //displayKlondikeMenu()
-        //klondikeGame.roll();
+        Dice dealerDice = new Dice(5, 6);
+        Dice playerDice = new Dice(5, 6);//klondikeDealer rolls;
+
+        //klondikePlayer rolls;
+        //compare rolls
+        //getWinner()
+
     }
 
     public Boolean getWinner() {
@@ -54,13 +73,15 @@ public class KlondikeGameEngine {
 
     //Supporting Methods
 
+    public Die[] rollDie() {
+
+        return null;
+    }
 
     public String displayKlondikeRules() {
         return null;
     }
 
-    public void leaveGame() {
-        new Casino(user.getName(), user.getWallet());
-    }
+
 }
 
