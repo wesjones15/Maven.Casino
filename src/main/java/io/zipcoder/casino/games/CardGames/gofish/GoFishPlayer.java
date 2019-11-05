@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class GoFishPlayer {
+
     private ArrayList<Card> hand;
     private int fourOfAKind = 0;
     private Double wallet;
 
 
-    public GoFishPlayer(ArrayList<Card> hand, User user) {
-
-        this.hand = hand;
+    public GoFishPlayer(User user) {
         this.wallet = user.getWallet();
+        this.hand = new ArrayList<Card>();
     }
+
 
 
     public Boolean askCard(Card requestedCard, GoFishPlayer player) {
@@ -49,6 +50,8 @@ public class GoFishPlayer {
     public void draw(Stack<Card> deck) {
         this.hand.add(deck.pop());
     }
+
+    //////ADD CARDS TO HAND////
     public void pickUpHand(Card beingDealt){
         this.hand.add(beingDealt);
     }
@@ -58,10 +61,14 @@ public class GoFishPlayer {
         return this.fourOfAKind;
     }
 
+    ////
     public String showHand(){
+
         String displayHand = "Cards in hand\n";
+        int counter = 1;
         for(Card each : hand){
-            displayHand += each + "\n";
+             displayHand +=  counter + " : "+ each + "\n";
+             counter++;
         }
         return displayHand;
     }
