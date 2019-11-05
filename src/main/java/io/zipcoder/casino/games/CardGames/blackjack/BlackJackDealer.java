@@ -3,11 +3,14 @@ package io.zipcoder.casino.games.CardGames.blackjack;
 
 import io.zipcoder.casino.sweetasscasinotools.Card;
 
-public class BlackJackDealer {
+public class BlackJackDealer{
     private Card[] hand;
 
     public Card getCard() {
         return null;
+    }
+
+    public int get21() { return 0;
     }
     /*//while Hand < 16
     hit()

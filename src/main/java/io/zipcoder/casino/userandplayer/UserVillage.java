@@ -21,11 +21,13 @@ public class UserVillage {
 
     }
 
-    public User getUserByUsername(String username) {
+
+
+    public User getUserById(Integer id) {
         return null;
     }
 
-    public User getUserById(Integer id) {
+    public User getUserByUsername(String username) {
         return null;
     }
 }

@@ -1,5 +1,6 @@
 package io.zipcoder.casino.utilities;
 
+import io.zipcoder.casino.games.CardGames.blackjack.BlackJackGameEngine;
 import io.zipcoder.casino.games.CardGames.gofish.GoFishGameEngine;
 import io.zipcoder.casino.userandplayer.User;
 import io.zipcoder.casino.userandplayer.UserVillage;
@@ -94,6 +95,8 @@ public class UserDisplay {
                 gfge.runGame();
                 break;
             case 2:
+                BlackJackGameEngine bjge = new BlackJackGameEngine(user);
+                bjge.runGame();
                 // black jack
                 break;
             case 3:
