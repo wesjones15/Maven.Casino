@@ -10,4 +10,13 @@ public class Card {
         this.face = face;
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "suite='" + suite + '\'' +
+                ", face='" + face + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }
