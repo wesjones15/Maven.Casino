@@ -39,7 +39,7 @@ public class CrapsGameEngine {
     }
 
     public void displayCrapsMenu() {
-        Console.println("Welcome to Craps! ");
+        Console.println("Welcome to Craps!");
         Integer choice = UserDisplay.displayOptions("Start Game", "Leave Table", "Show Rules");
         menuChoice(choice);
     }
