@@ -20,8 +20,6 @@ public class CrapsGame {
         Integer outcome;
         if (checkRollMatch(rollValue, winRolls)) {
             outcome = 1;            // win
-
-            // deduct amount from player wallet
         }
         else if (checkRollMatch(rollValue, loseRolls)) {
             outcome = 0;            // lose
