@@ -63,5 +63,9 @@ public final class Console {
     public static void exit(){
         System.exit(0);
     }
+
+    public static void clear() {
+        print("\n\n\n\n\n");
+    }
 }
 

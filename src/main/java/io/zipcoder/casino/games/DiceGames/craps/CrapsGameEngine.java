@@ -14,14 +14,12 @@ public class CrapsGameEngine {
     private final Integer[] initialWinRolls = {7, 11};
     private final Integer[] initialLoseRolls = {2, 3, 12};
 
-    private User user;
     private CrapsDealer crapsDealer;
     private CrapsPlayer crapsPlayer;
     private CrapsGame crapsGame;
     private Dice dice;
 
     public CrapsGameEngine(User user) {
-//        this.user = user;
         this.crapsDealer = new CrapsDealer();
         this.crapsPlayer = new CrapsPlayer(user.getName(), user.getWallet());
         this.crapsGame = new CrapsGame();
@@ -30,7 +28,6 @@ public class CrapsGameEngine {
     }
 
     public CrapsGameEngine(CrapsPlayer player) {
-//        this.user = user;
         this.crapsDealer = new CrapsDealer();
         this.crapsPlayer = player;
         this.crapsGame = new CrapsGame();
@@ -44,7 +41,7 @@ public class CrapsGameEngine {
         menuChoice(choice);
     }
 
-    public Integer menuChoice(Integer choice) {
+    public void menuChoice(Integer choice) {
         switch(choice) {
             case 1:
                 // start game
@@ -56,20 +53,19 @@ public class CrapsGameEngine {
                 break;
             case 3:
                 // show rules
+                CrapsGame.showGameRules();
+                displayCrapsMenu();
                 break;
             default:
                 Console.println("Invalid response");
         }
-        return null;
     }
 
     public void runGame() {
         boolean continueCraps = true;
         Double betAmount = 0.00;
         Integer rollValue = 0;
-//        Console.println("set your bet");
-        // set bet
-//        Integer rollValue = dice.rollAndSum();
+
 
         Integer[] winRolls = initialWinRolls;
         Integer[] loseRolls = initialLoseRolls;
@@ -79,30 +75,24 @@ public class CrapsGameEngine {
         while (continueCraps) {
             showRollsForOutcome("Winning", winRolls);
             showRollsForOutcome("Losing", loseRolls);
+            Console.println("Current Wager: $%.2f", betAmount);
             if (chooseGameOption("Roll dice") == 1) {
                 rollValue = promptUserToRollDice();
             }
 
-//            Console.println("you rolled %s", rollValue);
             Integer outcome = CrapsGame.determineRollOutcome(rollValue, winRolls, loseRolls);
             if (outcome == 0) {
                 // lose
-                // leave table
-                // prompt user to play again
                 Console.println("\n\nYou lost");
                 Console.println("Your remaining balance is $%.2f", crapsPlayer.getWallet());
                 continueCraps = false;
-//                leaveTable(crapsPlayer);
             } else if (outcome == 1) {
                 // win
                 Double reward = betAmount * 2;
                 crapsPlayer.incrementWallet(reward);
                 Console.println("\n\nYou won $%.2f", reward);
                 Console.println("Your new balance is $%.2f", crapsPlayer.getWallet());
-                // leave table
-                // prompt user to play again
                 continueCraps = false;
-//                leaveTable(crapsPlayer);
             } else {
                 if (winRolls.length > 1) {
                     Integer[] roll = {rollValue};
@@ -110,8 +100,7 @@ public class CrapsGameEngine {
                 }
                 Integer[] lose = {7};
                 loseRolls = lose;
-                //
-                Console.println("\n\nGame continuing...\n\n\n");
+                Console.println("\nGame continuing...\n");
             }
         }
         leaveTable(crapsPlayer);
@@ -130,7 +119,7 @@ public class CrapsGameEngine {
         Integer choice = UserDisplay.displayOptions(option, "leave table");
         switch(choice) {
             case 1:
-                // option
+                // pass
                 break;
             case 2:
                 // leave table
@@ -156,9 +145,8 @@ public class CrapsGameEngine {
     }
 
     public Integer promptUserToRollDice() {
-//        Console.getStringInput("Press enter to roll dice..");
         Integer rollValue = dice.rollAndSum();
-        Console.println("You rolled %s", rollValue);
+        Console.println("\n\nYou rolled %s", rollValue);
         return rollValue;
     }
 
@@ -173,9 +161,6 @@ public class CrapsGameEngine {
                 Casino casino = new Casino(player.getName(), player.getWallet());
                 break;
         }
-        // settle bets
-        // call Casino constructor, passing in current user wallet and name
-
     }
 
 }
