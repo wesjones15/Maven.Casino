@@ -16,7 +16,10 @@ public class GoFishGame {
         this.deck = deck;
     }
 
-    public Card DealHand(){
+    public Card DealHands(){
+        if(deck.size() == 0){
+            System.out.println("Deck Empty!");
+        }
         return deck.pop();
     }
 
