@@ -137,7 +137,7 @@ public class CrapsGameEngine {
         do {
             betAmount = Console.getDoubleInput("Enter your bet: ");
             crapsPlayer.setBetAmount(betAmount);
-        } while (!crapsPlayer.verifyValidBetAmount());
+        } while (!crapsPlayer.verifyValidBetAmount(betAmount));
         crapsPlayer.placeBet(betAmount);
         Console.println("You are wagering $%.2f", betAmount);
         Console.println("Your remaining balance is $%.2f\n", crapsPlayer.getWallet());
