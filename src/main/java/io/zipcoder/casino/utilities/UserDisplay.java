@@ -91,7 +91,7 @@ public class UserDisplay {
             case 1:
                 // gofish
                 GoFishGameEngine gfge = new GoFishGameEngine(user);
-                gfge.runGame();
+                gfge.gameOn();
                 break;
             case 2:
                 // black jack
