@@ -1,6 +1,7 @@
 package io.zipcoder.casino.utilities;
 
 import io.zipcoder.casino.games.CardGames.gofish.GoFishGameEngine;
+import io.zipcoder.casino.games.DiceGames.craps.CrapsGameEngine;
 import io.zipcoder.casino.userandplayer.User;
 import io.zipcoder.casino.userandplayer.UserVillage;
 
@@ -91,7 +92,7 @@ public class UserDisplay {
             case 1:
                 // gofish
                 GoFishGameEngine gfge = new GoFishGameEngine(user);
-                gfge.runGame();
+//                gfge.runGame();
                 break;
             case 2:
                 // black jack
@@ -101,6 +102,8 @@ public class UserDisplay {
                 break;
             case 4:
                 // craps
+                CrapsGameEngine cge = new CrapsGameEngine(user);
+//                cge.displayCrapsMenu();
             case 5:
                 Console.println("Thank you!, Come again");
                 Console.exit();
