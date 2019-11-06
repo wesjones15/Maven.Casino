@@ -100,38 +100,48 @@ public class BlackJackGame {
         //string escape
     }
 
-    private void menuChoice(String choice) {
+    private String menuChoice(String choice) {
+        String output;
         switch (choice.toUpperCase()) {
             case "DEAL":
+                output = "deal cards to begin game";
                 run();
                 break;
             case "VIEW":
+                output = "display rules";
                 BlackJackGame.showGameRules();
                 displayBlackJackMenu();
             case "LEAVE":
+                output = "leave table";
 //                leaveTable(blackJackPlayer);
                 leaveTable(player);
                 break;
             default:
+                output = "invalid response";
                 Console.println("Invalid input, try again!");
         }
+        return output;
     }
     public void run() {
+        Double betAmount = 0.00;
+        if (chooseGameOption("Set bet") == 1) {
+            betAmount = promptUserForBetAmount();
+        }
         String menuDecision = null;
         Console.println("\nPlease wait while dealer is dealing cards...\n");
         blackJackDealer.deal(player);
         blackJackDealer.deal(player);
         try {
-            Thread.sleep(4000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         begin_decisions:
         while (!"leave".equals(menuDecision)) {
-            Console.println("You view your new card...\n\n");
+            Console.println("You view your new card(s)...\n\n");
             try {
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -159,7 +169,7 @@ public class BlackJackGame {
                 Console.println("Player WINS bet.");
                 Console.println("Player's balance was [%s]", player.getWallet());
 //                        player.winBet();
-                player.incrementWallet(player.getBetAmount() * 2); //TODO make winBet method in player?
+                player.incrementWallet(betAmount*2); //TODO make winBet method in player?
                 Console.println("Player's new balance is [%s]", player.getWallet());
                 leaveTable(player);
             }// else {
@@ -194,5 +204,33 @@ public class BlackJackGame {
 
     private static void showGameRules() {
 
+    }
+    public Integer chooseGameOption(String option) {
+        Integer choice = UserDisplay.displayOptions(option, "Leave table");
+        switch(choice) {
+            case 1:
+                // pass
+                break;
+            case 2:
+                // leave table
+                leaveTable(player);
+                break;
+            default:
+                Console.println("Invalid Option");
+        }
+        return choice;
+    }
+
+    public Double promptUserForBetAmount() {
+        Console.println("Receive 2X your wager if you win!");
+        Double betAmount = 0.0;
+        do {
+            betAmount = Console.getDoubleInput("Enter your bet: ");
+            player.setBetAmount(betAmount);
+        } while (!player.verifyValidBetAmount(betAmount));
+        player.placeBet(betAmount);
+        Console.println("You are wagering $%.2f", betAmount);
+        Console.println("Your remaining balance is $%.2f\n", player.getWallet());
+        return betAmount;
     }
 }
