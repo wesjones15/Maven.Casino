@@ -69,7 +69,7 @@ public class BlackJackGame {
     public BlackJackGame(BlackJackPlayer player) {
         this.blackJackDealer = new BlackJackDealer();
 //        this.blackJackPlayer = player;
-        this.player = player;
+        this.player = new BlackJackPlayer(player.getName(), player.getWallet());
         displayBlackJackMenu();
     }
     //BlackJack Menu & Choices//5
