@@ -81,22 +81,15 @@ public class GoFishGameEngine {
             return true;
         }
         return false;
-
-
-
     }
-    private void leaveTable(){
-        new Casino(user.getName(), user.getWallet());
-    }
-    ///////users turn
+
+    ///////USERS TURN
     private void userTurn(GoFishPlayer user){
         passOrDraw(Console.getIntegerInput(user.showHand()));
     }
     private void passOrDraw(Integer cardIndex) {
 
         Card askingCard = goFishPlayer.getCard(cardIndex);
-
-
 
         if (goFishGame.checkHand(goFishDealer.getHand(), askingCard)) {
             goFishPlayer.receiveCards(goFishDealer.passCard(askingCard));
@@ -125,6 +118,9 @@ public class GoFishGameEngine {
         return goFishDealer.getCard(randomCard);
 
     }
-
+    ///LEAVE GOFISH////
+    private void leaveTable(){
+        new Casino(user.getName(), user.getWallet());
+    }
 
 }

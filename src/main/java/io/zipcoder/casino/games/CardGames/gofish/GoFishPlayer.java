@@ -14,15 +14,15 @@ public class GoFishPlayer {
     private int fourOfAKind = 0;
     private Card fourCard;
 
-    public GoFishPlayer(User user) {
+     GoFishPlayer(User user) {
         this.hand = new ArrayList<Card>();
     }
-    public GoFishPlayer(){
+     GoFishPlayer(){
         this.hand = new ArrayList<Card>();
     }
 
     // if card(s) are in  hand of this player
-    public ArrayList<Card> passCard(Card requested) {
+     ArrayList<Card> passCard(Card requested) {
 
         ArrayList<Card> cardsToPass = new ArrayList<Card>();
 
@@ -34,7 +34,7 @@ public class GoFishPlayer {
 
         return cardsToPass;
     }
-    public void removingPassedCards(Card requested){
+     void removingPassedCards(Card requested){
         Iterator<Card> temp = hand.iterator();
 
         while(temp.hasNext()){
@@ -44,21 +44,21 @@ public class GoFishPlayer {
             }
         }
     }
-    public void draw(Stack<Card> deck) {
+     void draw(Stack<Card> deck) {
         this.hand.add(deck.pop());
         removeFourOfAKind();
     }
 
     //////ADD CARDS TO HAND////
-    public void pickUpHand(Card beingDealt){
+     void pickUpHand(Card beingDealt){
         this.hand.add(beingDealt);
     }
 
     //GETTERS
-    public int getFourOfAKind(){
+     int getFourOfAKind(){
         return this.fourOfAKind;
     }
-    public String showHand(){
+     String showHand(){
 
         String displayHand = "Cards in hand\n";
         int counter = 1;
@@ -69,27 +69,27 @@ public class GoFishPlayer {
         displayHand += "\nChoose a card to request:";
         return displayHand;
     }
-    public ArrayList<Card> getHand() {
+     ArrayList<Card> getHand() {
         return hand;
     }
 
     ///GETTING CARDS AND REMOVING FOUR OF A KIND//
     //////////////////////////////////////////////
-    public void receiveCards(ArrayList<Card> cards){
+     void receiveCards(ArrayList<Card> cards){
         hand.addAll(cards);
         removeFourOfAKind();
     }
-    public Card getCard(Integer card){
+     Card getCard(Integer card){
         return hand.get(card-1);
 
     }
-    public void removeFourOfAKind(){
+     void removeFourOfAKind(){
         if(checkFour()){
             removingPassedCards(fourCard);
             fourOfAKind++;
         }
     }
-    public boolean checkFour(){
+     boolean checkFour(){
         int max = 1;
         int current;
         Card popular = hand.get(0);

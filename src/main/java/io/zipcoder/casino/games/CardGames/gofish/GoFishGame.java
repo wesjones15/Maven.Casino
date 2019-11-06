@@ -16,13 +16,13 @@ public class GoFishGame {
         this.deck = deck;
     }
 
-    public Card DealHands(){
+    Card DealHands(){
         if(deck.size() == 0){
             System.out.println("Deck Empty!");
         }
         return deck.pop();
     }
-    public Boolean checkHand(ArrayList<Card> hand, Card requested) {
+    Boolean checkHand(ArrayList<Card> hand, Card requested) {
         for(Card each: hand){
             if(requested.getValue().equals(each.getValue())){
                 return true;
@@ -30,13 +30,13 @@ public class GoFishGame {
         }
         return false;
     }
-    public Stack<Card> getDeck() {
+    Stack<Card> getDeck() {
         return deck;
     }
 
     ///DISPLAY GAME RULES///
     ////////////////////////
-    public String gameRules(){
+    String gameRules(){
 
         return "--> Go Fish Rules <--\n" +
                 "1 - Asking your opponent for a card.\n" +
