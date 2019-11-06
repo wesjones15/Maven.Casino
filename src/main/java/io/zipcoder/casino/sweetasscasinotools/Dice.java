@@ -36,4 +36,12 @@ public class Dice {
     public Integer getNumberOfDice() {
         return dice.length;
     }
+
+    public Die getDie(Integer index) {
+        return this.dice[index];
+    }
+
+    public Die[] getDieArray() {
+        return this.dice;
+    }
 }

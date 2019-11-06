@@ -57,14 +57,28 @@ public class KlondikeGameEngine {
         executeActionChosen(action);
     }
 
-    public void runKlondike() {
-        Dice dealerDice = new Dice(5, 6);
-        Dice playerDice = new Dice(5, 6);//klondikeDealer rolls;
+    public Dice runKlondike() {
 
         //klondikePlayer rolls;
         //compare rolls
         //getWinner()
+        return null;
+    }
 
+    public Dice dealerRollsDie() {
+        Dice dealerDice = new Dice(5, 6);
+        for (int i = 0; i < dealerDice.getDieArray().length; i++) {
+            dealerDice.getDie(i).roll();
+        }
+        return dealerDice;
+    }
+
+    public Dice playerRollsDie() {
+        Dice playerDice = new Dice(5, 6);
+        for (int i = 0; i < playerDice.getDieArray().length; i++) {
+            playerDice.getDie(i).roll();
+        }
+        return playerDice;
     }
 
     public Boolean getWinner() {
