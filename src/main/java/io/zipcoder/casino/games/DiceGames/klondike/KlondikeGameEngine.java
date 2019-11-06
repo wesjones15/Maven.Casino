@@ -6,6 +6,9 @@ import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.userandplayer.User;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class KlondikeGameEngine {
 
@@ -33,22 +36,28 @@ public class KlondikeGameEngine {
         return choice;
     }
 
-    public void executeActionChosen(Integer choice) {
+    public String executeActionChosen(Integer choice) {
+        String optionChosen = "";
         switch (choice) {
             case 1:
                 //runKlondike();
+                optionChosen = "Start Klondike Game";
                 break;
             case 2:
                 //displayKlondikeRules();
+                optionChosen = "Display Klondike Rules";
                 break;
             case 3:
                 //leaveGame();
+                optionChosen = "Leave Game";
                 break;
             default:
                 //Console.println("Invalid response!");
                 displayKlondikeMenu();
+                optionChosen = "Re-route player to main Klondike menu";
                 break;
         }
+        return optionChosen;
     }
 
     public void run() {
@@ -59,13 +68,19 @@ public class KlondikeGameEngine {
 
     public Dice runKlondike() {
 
-        //klondikePlayer rolls;
+        // retrieve face value from dealer roll
+        Integer[] dealerFaceValues = getFaceValues(dealerDieRoll().getDieArray());
+        // get numOfOccurrences for each face value
+        Integer[] dealerCounts = faceValueCount(dealerFaceValues);
+        // retrieve face value from player roll
+        Integer[] playerFaceValues = getFaceValues(playerDieRoll().getDieArray());
+        Integer[] playerCounts = faceValueCount(playerFaceValues);
         //compare rolls
         //getWinner()
         return null;
     }
 
-    public Dice dealerRollsDie() {
+    public Dice dealerDieRoll() {
         Dice dealerDice = new Dice(5, 6);
         for (int i = 0; i < dealerDice.getDieArray().length; i++) {
             dealerDice.getDie(i).roll();
@@ -73,12 +88,23 @@ public class KlondikeGameEngine {
         return dealerDice;
     }
 
-    public Dice playerRollsDie() {
+
+    public Dice playerDieRoll() {
         Dice playerDice = new Dice(5, 6);
         for (int i = 0; i < playerDice.getDieArray().length; i++) {
             playerDice.getDie(i).roll();
         }
         return playerDice;
+    }
+
+    public Boolean isFiveOfAKind(Integer[] faceValueCount) {
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(faceValueCount));
+        return list.contains(5);
+    }
+
+    public Boolean isFourOfAKind(Integer[] faceValueCount) {
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(faceValueCount));
+        return list.contains(4);
     }
 
     public Boolean getWinner() {
@@ -87,15 +113,39 @@ public class KlondikeGameEngine {
 
     //Supporting Methods
 
-    public Die[] rollDie() {
-
-        return null;
-    }
-
     public String displayKlondikeRules() {
         return null;
     }
 
+    // Calculate the number of times a certain face value occurs
+    public Integer getNumberOfOccurrences(Integer[] faceValuesArray, Integer value) {
+        int numOfOccurrences = 0;
+        for (Integer faceValue : faceValuesArray) {
+            if (faceValue == value)
+                numOfOccurrences = numOfOccurrences + 1;
+        }
+        return numOfOccurrences;
+    }
+
+    // Retrieve face values from array of five die
+    public Integer[] getFaceValues(Die[] dieArray) {
+        Integer[] faceValuesArray = new Integer[5];
+        for (int i = 0; i < faceValuesArray.length; i++) {
+            faceValuesArray[i] = dieArray[i].getCurrentFacesValue();
+        }
+        return faceValuesArray;
+    }
+
+    public Integer[] faceValueCount(Integer[] faceValues) {
+        Integer[] counts = new Integer[5];
+        //int face = 1;
+        for (int i = 0; i < counts.length; i++) {
+            //face+=1;
+            counts[i] = getNumberOfOccurrences(faceValues, faceValues[i]);
+            //face = face + 1;
+        }
+        return counts;
+    }
 
 }
 
