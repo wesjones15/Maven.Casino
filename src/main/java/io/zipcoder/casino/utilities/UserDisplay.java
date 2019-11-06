@@ -72,9 +72,9 @@ public class UserDisplay {
 
     public static Double validateWallet(){
         Double wallet = Console.getDoubleInput("wallet: ");
-            if(wallet < 0){
+            if(wallet <= 0){
                 Console.println("Wallet must be greater than $0.00"); //
-                validateWallet();
+                wallet = validateWallet();
             }
             return wallet;
     }
@@ -122,7 +122,7 @@ public class UserDisplay {
                 // gofish
                 stringForTesting = "gofish";
                 GoFishGameEngine gfge = new GoFishGameEngine(user);
-                gfge.gameOn();
+                gfge.displayGoFishMenu();
                 break;
             case 2:
                 // black jack

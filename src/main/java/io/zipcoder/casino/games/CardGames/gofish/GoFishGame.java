@@ -17,7 +17,7 @@ public class GoFishGame {
     }
 
     Card DealHands(){
-        if(deck.size() == 0){
+        if(deck.size() == 1){
             System.out.println("Deck Empty!");
         }
         return deck.pop();
@@ -42,6 +42,10 @@ public class GoFishGame {
                 "1 - Asking your opponent for a card.\n" +
                 "   Ask opponent for a card number from the ones in your hand.\n" +
                 "   if opponent has cards\n\n";
+    }
+
+    public Integer getDeckSize(){
+        return this.deck.size();
     }
 
 }
