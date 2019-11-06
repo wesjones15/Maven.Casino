@@ -2,14 +2,22 @@ package io.zipcoder.casino.games.DiceGames.klondike;
 
 
 import io.zipcoder.casino.sweetasscasinotools.Dice;
+import io.zipcoder.casino.sweetasscasinotools.Die;
 
 public class KlondikeGame {
 
-    private int numOfDie = 5;
+    private int numOfDie;
+    private int numOfFaces;
     private Dice dice;
-    private Dice[] diceValues;
 
     public KlondikeGame() {
+        this.numOfDie = 5;
+        this.numOfFaces = 6;
+        this.dice = new Dice(numOfDie, numOfFaces);
+    }
+
+    public Die[] roll() {
+        return null;
     }
 
     public Double getBet() {

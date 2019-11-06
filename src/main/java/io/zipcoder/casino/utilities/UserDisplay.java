@@ -3,6 +3,7 @@ package io.zipcoder.casino.utilities;
 import io.zipcoder.casino.games.CardGames.blackjack.BlackJackGameEngine;
 import io.zipcoder.casino.games.CardGames.gofish.GoFishGameEngine;
 import io.zipcoder.casino.games.DiceGames.craps.CrapsGameEngine;
+import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGameEngine;
 import io.zipcoder.casino.userandplayer.User;
 import io.zipcoder.casino.userandplayer.UserVillage;
 
@@ -131,6 +132,8 @@ public class UserDisplay {
                 break;
             case 3:
                 // klondike
+                KlondikeGameEngine newKlondikeGame = new KlondikeGameEngine(user);
+                newKlondikeGame.run();
                 stringForTesting = "klondike";
                 break;
             case 4:

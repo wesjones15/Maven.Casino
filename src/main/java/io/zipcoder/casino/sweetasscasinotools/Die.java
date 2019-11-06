@@ -14,11 +14,12 @@ public class Die {
     }
 
 
-    public void roll() {
+    public Integer roll() {
         //currentFacesValue becomes a random value between 1 and numberOfFaces
         ThreadLocalRandom randomNumberGenerator = ThreadLocalRandom.current();
         Integer randomFaceValue = randomNumberGenerator.nextInt(1,numberOfFaces);
         this.currentFacesValue = randomFaceValue;
+        return currentFacesValue;
     }
     public Integer getCurrentFacesValue() {
 
