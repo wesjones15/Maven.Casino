@@ -31,7 +31,7 @@ public class BlackJackDealer extends BlackJackPlayer {
     Deck deck = new Deck();
 
     public BlackJackDealer() {
-        super(null);
+        super("dealer", 4.);
         deck.shuffle();
     }
 

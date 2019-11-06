@@ -111,12 +111,12 @@ public class BlackJackGameEngine {
 
     public BlackJackGameEngine(User user) {
         this.blackJackDealer = new BlackJackDealer();
-        this.blackJackPlayer = new BlackJackPlayer(user);
+        this.blackJackPlayer = new BlackJackPlayer(user.getName(), user.getWallet());
         runGame();
     }
 
     public void runGame() {
-        BlackJackGame game = new BlackJackGame(blackJackPlayer, blackJackDealer);
+        BlackJackGame game = new BlackJackGame(blackJackPlayer);
         game.run();
     }
 }
