@@ -137,7 +137,8 @@ public class UserDisplay {
                 // craps
                 stringForTesting = "craps";
                 CrapsGameEngine cge = new CrapsGameEngine(user);
-//                cge.displayCrapsMenu();
+                cge.displayCrapsMenu();
+                break;
             case 5:
                 stringForTesting = "Leaving";
                 Console.println("Thank you!, Come again");
