@@ -118,26 +118,37 @@ public class BlackJackGame {
     }
     public void run() {
         String menuDecision = null;
-        Console.println("Welcome to a new game of BlackJack!\n");
         Console.println("\nPlease wait while dealer is dealing cards...\n");
         blackJackDealer.deal(player);
         blackJackDealer.deal(player);
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         begin_decisions:
         while (!"leave".equals(menuDecision)) {
-            Console.println("Player views their cards...\n\n");
+            Console.println("You view your new card...\n\n");
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Console.clear();
+            Console.clear();
             Hand hand = player.getHand();
             Console.println(hand.toString());
-            Console.println("\nPlayer's card value equal " + hand.getHandSum());
-            Console.println("Player has " + hand.getState());
-            Console.println("\nFrom here you can select any of the following options:");
+            Console.println("\nYour card values equal " + hand.getHandSum() + ".");
+            Console.println("Your hand is " + hand.getState() + ".");
+//            Console.println("\nFrom here you can select any of the following options:");
 
 
             String playerState = player.getHand().getState();
             if ("BUST".equals(playerState)) {
                 Console.println("Player BUST!");
-                Console.println("Player loses bet.");
-                Console.println("Player's balance was [%s]", player.getWallet());
+                Console.println("You lose your bet.");
+                Console.println("Your balance was [%s]", player.getWallet());
 //                        player.loseBet();
                 Console.println("Player's new balance is [%s]", player.getWallet());
                 leaveTable(player);
@@ -154,7 +165,7 @@ public class BlackJackGame {
             }// else {
                // continue begin_decisions;
             //}
-            menuDecision = Console.getStringInput("[HIT] OR [STAND]");
+            menuDecision = Console.getStringInput("\n\nWhat would you like to do?\n[HIT] OR [STAND]");
             Console.println("Player has selected [ %s ]", menuDecision);
             switch (menuDecision.toUpperCase()) {
                 case "HIT":

@@ -49,10 +49,6 @@ public class BlackJackPlayer{
         this.hand = new Hand();
     }
 
-    public Integer rollDice() {
-        return null;
-    }
-
     public Boolean placeBet(Double betAmount) {
         Boolean success = false;
         if (verifyValidBetAmount()) {
