@@ -10,23 +10,23 @@ public class CrapsGameEngine {
     private final Integer[] initialWinRolls = {7, 11};
     private final Integer[] initialLoseRolls = {2, 3, 12};
     private final Integer[] laterLoseRolls = {7};
-    private CrapsDealer crapsDealer;
+//    private CrapsDealer crapsDealer;
     private CrapsPlayer crapsPlayer;
-    private CrapsGame crapsGame;
+//    private CrapsGame crapsGame;
     private Dice dice;
 
     public CrapsGameEngine(User user) {
-        this.crapsDealer = new CrapsDealer();
+//        this.crapsDealer = new CrapsDealer();
         this.crapsPlayer = new CrapsPlayer(user.getName(), user.getWallet());
-        this.crapsGame = new CrapsGame();
+//        this.crapsGame = new CrapsGame();
         this.dice = new Dice(2, 6);
 //        displayCrapsMenu();
     }
 
     public CrapsGameEngine(CrapsPlayer player) {
-        this.crapsDealer = new CrapsDealer();
+//        this.crapsDealer = new CrapsDealer();
         this.crapsPlayer = player;
-        this.crapsGame = new CrapsGame();
+//        this.crapsGame = new CrapsGame();
         this.dice = new Dice(2, 6);
 //        displayCrapsMenu();
     }
@@ -40,18 +40,15 @@ public class CrapsGameEngine {
     public String menuChoice(Integer choice) {
         String output;
         switch(choice) {
-            case 1:
-                // start game
+            case 1:     // start game
                 output = "run game";
                 runGame();
                 break;
-            case 2:
-                // leave table
+            case 2:     // leave table
                 output = "leave table";
                 leaveTable(crapsPlayer);
                 break;
-            case 3:
-                // show rules
+            case 3:     // show rules
                 output = "display rules";
                 CrapsGame.showGameRules();
                 displayCrapsMenu();
@@ -68,9 +65,9 @@ public class CrapsGameEngine {
         Double betAmount = 0.00;
         Integer rollValue = 0;
 
-
         Integer[] winRolls = initialWinRolls;
         Integer[] loseRolls = initialLoseRolls;
+
         if (chooseGameOption("Set bet") == 1) {
             betAmount = promptUserForBetAmount();
         }
@@ -85,20 +82,13 @@ public class CrapsGameEngine {
 
             Integer outcome = CrapsGame.determineRollOutcome(rollValue, winRolls, loseRolls);
 
-//            Double reward = 0.00;
             switch(outcome) {
                 case 0:
                     playerLose(outcome);
-//                    Console.println("\n\nYou lost");
-//                    Console.println("Your remaining balance is $%.2f", crapsPlayer.getWallet());
                     continueCraps = false;
                     break;
                 case 1:
                     playerWin(outcome);
-//                    reward = betAmount * 2;
-//                    crapsPlayer.incrementWallet(reward);
-//                    Console.println("\n\nYou won $%.2f", reward);
-//                    Console.println("Your new balance is $%.2f", crapsPlayer.getWallet());
                     continueCraps = false;
                     break;
                 default:
@@ -109,27 +99,27 @@ public class CrapsGameEngine {
         leaveTable(crapsPlayer);
     }
 
-    public String generalGameEnd(Integer outcome) {
+    public String generalGameEnd(Integer outcome, Double wallet) {
         String[] opts = {"lost", "won"};
         String[] opts2 = {"remaining", "new"};
         StringBuilder output = new StringBuilder();
         output.append(String.format("You %s Craps!\n", opts[outcome]));
-        output.append(String.format("Your %s balance is $%.2f", opts2[outcome], crapsPlayer.getWallet()));
+        output.append(String.format("Your %s balance is $%.2f\n", opts2[outcome], wallet));
         Console.println(output.toString());
         return output.toString();
     }
 
     public void playerWin(Integer outcome) {
-        payOutRewardToPlayer();
-        generalGameEnd(outcome);
+        payOutRewardToPlayer(crapsPlayer.getBetAmount());
+        generalGameEnd(outcome, crapsPlayer.getWallet());
     }
 
     public void playerLose(Integer outcome) {
-        generalGameEnd(outcome);
+        generalGameEnd(outcome, crapsPlayer.getWallet());
     }
 
     public Integer[] gameContinue(Integer rollValue, Integer[] winRolls) {
-        if (winRolls == initialWinRolls) {
+        if (winRolls.length > 1) {
             Integer[] roll = {rollValue};
             winRolls = roll;
         }
@@ -137,8 +127,8 @@ public class CrapsGameEngine {
         return winRolls;
     }
 
-    public Double payOutRewardToPlayer() {
-        Double reward = crapsPlayer.getBetAmount() * 2;
+    public Double payOutRewardToPlayer(Double betAmount) {
+        Double reward = betAmount * 2;
         Console.println("You received $%.2f", reward);
         crapsPlayer.incrementWallet(reward);
         return reward;
