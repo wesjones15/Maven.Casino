@@ -1,6 +1,6 @@
 package io.zipcoder.casino.games.CardGames.blackjack;
 
-
+import io.zipcoder.casino.sweetasscasinotools.Deck;
 import io.zipcoder.casino.games.CardGames.Hand;
 import io.zipcoder.casino.utilities.Console;
 
@@ -23,7 +23,6 @@ public class BlackJackGame {
         dealer.deal(player);
         dealer.deal(player);
 
-
         begin_decisions:
         while (!"leave".equals(menuDecision)) {
             Console.println("From here you can select any of the following options:");
@@ -42,8 +41,9 @@ public class BlackJackGame {
                     break;
 
                 case "STAND":
+
                     String playerState = player.getHand().getState();
-                    if("BUST".equals(playerState)) {
+                    if("BUSS".equals(playerState)) {
                         Console.println("Player BUST!");
                         Console.println("Player loses bet.");
                         Console.println("Player's balance was [%s]", player.getBalance());

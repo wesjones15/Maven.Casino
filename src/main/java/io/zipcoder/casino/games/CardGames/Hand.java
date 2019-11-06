@@ -9,6 +9,7 @@ import java.util.List;
 public class Hand {
     private List<Card> hand;
 
+
     public Hand(List<Card> listOfCards) {
         this.hand = listOfCards;
     }
