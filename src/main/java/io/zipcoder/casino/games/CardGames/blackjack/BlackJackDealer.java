@@ -2,26 +2,28 @@ package io.zipcoder.casino.games.CardGames.blackjack;
 
 
 import io.zipcoder.casino.sweetasscasinotools.Card;
-import io.zipcoder.casino.sweetasscasinotools.DeckOfCards;
+import io.zipcoder.casino.sweetasscasinotools.Deck;
 import io.zipcoder.casino.utilities.Console;
-public class BlackJackDealer{
-    private Card[] hand;
-    private Integer blackJack = 21;
-    private Integer card;
 
-    public BlackJackDealer hit() {
-        if(card < 16) {
-        }return null;
+import java.util.Collections;
+
+public class BlackJackDealer extends BlackJackPlayer {
+    Deck deck = new Deck();
+
+    public BlackJackDealer() {
+        super(null);
+        deck.shuffle();
     }
 
-
-    public final Integer deal(DeckOfCards player, int numberOfCards) {
-        Console.println("The dealer hands a card to [ %s ]");
-        for (int i = 0; i < numberOfCards; i++) {
+    public void deal(BlackJackPlayer player, int numberOfCards) {
+        for (int currentIteration = 0; currentIteration < numberOfCards; currentIteration++) {
+            deal(player, numberOfCards);
         }
-        return null;
     }
 
-    private void getHandTotal() {
+    public void deal(BlackJackPlayer player) {
+        Console.println("The dealer hands a card to player");
+        Card card = deck.removeTopCard();
+        player.acceptCard(card);
     }
 }
