@@ -17,12 +17,12 @@ public class GoFishPlayer {
      GoFishPlayer(User user) {
         this.hand = new ArrayList<Card>();
     }
-     GoFishPlayer(){
+     public GoFishPlayer(){
         this.hand = new ArrayList<Card>();
     }
 
     // if card(s) are in  hand of this player
-     ArrayList<Card> passCard(Card requested) {
+     public ArrayList<Card> passCard(Card requested) {
 
         ArrayList<Card> cardsToPass = new ArrayList<Card>();
 
@@ -34,62 +34,61 @@ public class GoFishPlayer {
 
         return cardsToPass;
     }
-     void removingPassedCards(Card requested){
+
+     public Integer removingPassedCards(Card requested){
         Iterator<Card> temp = hand.iterator();
+
+        Integer count = 0;
 
         while(temp.hasNext()){
             Card removeCard = temp.next();
             if(removeCard.getValue().equals(requested.getValue())){
                 temp.remove();
+                count++;
+
             }
         }
+        return count;
     }
-     void draw(Stack<Card> deck) {
+
+     public void draw(Stack<Card> deck) {
         this.hand.add(deck.pop());
         removeFourOfAKind();
     }
 
     //////ADD CARDS TO HAND////
-     void pickUpHand(Card beingDealt){
+     public void pickUpHand(Card beingDealt){
         this.hand.add(beingDealt);
     }
 
     //GETTERS
-     int getFourOfAKind(){
+     public int getFourOfAKind(){
         return this.fourOfAKind;
     }
-     String showHand(){
 
-        String displayHand = "Cards in hand\n";
-        int counter = 1;
-        for(Card each : hand){
-             displayHand +=  counter + " : "+ each + "\n";
-             counter++;
-        }
-        displayHand += "\nChoose a card to request:";
-        return displayHand;
-    }
-     ArrayList<Card> getHand() {
+     public ArrayList<Card> getHand() {
         return hand;
     }
 
     ///GETTING CARDS AND REMOVING FOUR OF A KIND//
     //////////////////////////////////////////////
-     void receiveCards(ArrayList<Card> cards){
+     public void receiveCards(ArrayList<Card> cards){
         hand.addAll(cards);
         removeFourOfAKind();
     }
-     Card getCard(Integer card){
-        return hand.get(card-1);
 
+     public Card getCard(Integer card){
+        return hand.get(card-1);
     }
-     void removeFourOfAKind(){
+
+     public void removeFourOfAKind(){
         if(checkFour()){
             removingPassedCards(fourCard);
             fourOfAKind++;
         }
     }
-     boolean checkFour(){
+
+     public boolean checkFour(){
         int max = 1;
         int current;
         Card popular = hand.get(0);
@@ -114,6 +113,27 @@ public class GoFishPlayer {
         }
         return false;
     }
+
+     public Integer sizeOfHand(){
+         return hand.size();
+     }
+
+     public String showHand(){
+
+        String displayHand = "Cards in hand\n";
+        int counter = 1;
+        for(Card each : hand){
+            displayHand +=  counter + " : "+ each + "\n";
+            counter++;
+        }
+        displayHand += "\nChoose a card to request:";
+        return displayHand;
+    }
+    public void setHand(Stack<Card> deck){
+         hand.addAll(deck);
+
+    }
+
 
 
 }

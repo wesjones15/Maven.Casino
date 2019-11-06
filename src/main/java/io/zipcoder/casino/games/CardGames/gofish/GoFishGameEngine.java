@@ -33,6 +33,7 @@ public class GoFishGameEngine {
                 "2 : Deal Hand\n" +
                 "3 : Leave Table"));
     }
+
     private void menuChoice(Integer choice){
         switch(choice){
             case 1 :
@@ -87,6 +88,7 @@ public class GoFishGameEngine {
     private void userTurn(GoFishPlayer user){
         passOrDraw(Console.getIntegerInput(user.showHand()));
     }
+
     private void passOrDraw(Integer cardIndex) {
 
         Card askingCard = goFishPlayer.getCard(cardIndex);
@@ -112,6 +114,7 @@ public class GoFishGameEngine {
             goFishDealer.draw(goFishGame.getDeck());
         }
     }
+
     private Card askedCard(){
         int handSize = goFishDealer.getHand().size();
         int randomCard = (int)(Math.random() * ((handSize - 1) + 1)) + 1;
