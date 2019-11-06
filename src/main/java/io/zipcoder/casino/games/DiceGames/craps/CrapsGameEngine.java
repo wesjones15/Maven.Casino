@@ -9,7 +9,7 @@ import io.zipcoder.casino.utilities.UserDisplay;
 public class CrapsGameEngine {
     private final Integer[] initialWinRolls = {7, 11};
     private final Integer[] initialLoseRolls = {2, 3, 12};
-
+    private final Integer[] laterLoseRolls = {7};
     private CrapsDealer crapsDealer;
     private CrapsPlayer crapsPlayer;
     private CrapsGame crapsGame;
@@ -20,7 +20,7 @@ public class CrapsGameEngine {
         this.crapsPlayer = new CrapsPlayer(user.getName(), user.getWallet());
         this.crapsGame = new CrapsGame();
         this.dice = new Dice(2, 6);
-        displayCrapsMenu();
+//        displayCrapsMenu();
     }
 
     public CrapsGameEngine(CrapsPlayer player) {
@@ -28,7 +28,7 @@ public class CrapsGameEngine {
         this.crapsPlayer = player;
         this.crapsGame = new CrapsGame();
         this.dice = new Dice(2, 6);
-        displayCrapsMenu();
+//        displayCrapsMenu();
     }
 
     public void displayCrapsMenu() {
@@ -78,66 +78,71 @@ public class CrapsGameEngine {
             showRollsForOutcome("Winning", winRolls);
             showRollsForOutcome("Losing", loseRolls);
             Console.println("Current Wager: $%.2f", betAmount);
+
             if (chooseGameOption("Roll dice") == 1) {
                 rollValue = promptUserToRollDice();
             }
 
             Integer outcome = CrapsGame.determineRollOutcome(rollValue, winRolls, loseRolls);
 
-            Double reward = 0.00;
+//            Double reward = 0.00;
             switch(outcome) {
                 case 0:
-                    Console.println("\n\nYou lost");
-                    Console.println("Your remaining balance is $%.2f", crapsPlayer.getWallet());
+                    playerLose(outcome);
+//                    Console.println("\n\nYou lost");
+//                    Console.println("Your remaining balance is $%.2f", crapsPlayer.getWallet());
                     continueCraps = false;
                     break;
                 case 1:
-                    reward = betAmount * 2;
-                    crapsPlayer.incrementWallet(reward);
-                    Console.println("\n\nYou won $%.2f", reward);
-                    Console.println("Your new balance is $%.2f", crapsPlayer.getWallet());
+                    playerWin(outcome);
+//                    reward = betAmount * 2;
+//                    crapsPlayer.incrementWallet(reward);
+//                    Console.println("\n\nYou won $%.2f", reward);
+//                    Console.println("Your new balance is $%.2f", crapsPlayer.getWallet());
                     continueCraps = false;
                     break;
                 default:
-                    if (winRolls.length > 1) {
-                        Integer[] roll = {rollValue};
-                        winRolls = roll;
-                    }
-                    Integer[] lose = {7};
-                    loseRolls = lose;
-                    Console.println("\nGame continuing...\n");
+                    winRolls = gameContinue(outcome, winRolls);
+                    loseRolls = laterLoseRolls;
             }
-
-//            if (outcome == 0) {
-//                // lose
-//                Console.println("\n\nYou lost");
-//                Console.println("Your remaining balance is $%.2f", crapsPlayer.getWallet());
-//                continueCraps = false;
-//            } else if (outcome == 1) {
-//                // win
-//                reward = betAmount * 2;
-//                crapsPlayer.incrementWallet(reward);
-//                Console.println("\n\nYou won $%.2f", reward);
-//                Console.println("Your new balance is $%.2f", crapsPlayer.getWallet());
-//                continueCraps = false;
-//            } else {
-//                if (winRolls.length > 1) {
-//                    Integer[] roll = {rollValue};
-//                    winRolls = roll;
-//                }
-//                Integer[] lose = {7};
-//                loseRolls = lose;
-//                Console.println("\nGame continuing...\n");
-//            }
         }
         leaveTable(crapsPlayer);
     }
 
-//    public void interpretGameOutcome(Integer outcome, Double betAmount) {
-//        Double reward = payRewardToPlayer(outcome);
-//        Console.println("You have gained $%.2f", reward);
-//    }
+    public String generalGameEnd(Integer outcome) {
+        String[] opts = {"lost", "won"};
+        String[] opts2 = {"remaining", "new"};
+        StringBuilder output = new StringBuilder();
+        output.append(String.format("You %s Craps!\n", opts[outcome]));
+        output.append(String.format("Your %s balance is $%.2f", opts2[outcome], crapsPlayer.getWallet()));
+        Console.println(output.toString());
+        return output.toString();
+    }
 
+    public void playerWin(Integer outcome) {
+        payOutRewardToPlayer();
+        generalGameEnd(outcome);
+    }
+
+    public void playerLose(Integer outcome) {
+        generalGameEnd(outcome);
+    }
+
+    public Integer[] gameContinue(Integer rollValue, Integer[] winRolls) {
+        if (winRolls == initialWinRolls) {
+            Integer[] roll = {rollValue};
+            winRolls = roll;
+        }
+        Console.println("\nGame continuing...\n");
+        return winRolls;
+    }
+
+    public Double payOutRewardToPlayer() {
+        Double reward = crapsPlayer.getBetAmount() * 2;
+        Console.println("You received $%.2f", reward);
+        crapsPlayer.incrementWallet(reward);
+        return reward;
+    }
 
     public String showRollsForOutcome(String outcome, Integer... rollValues) {
         StringBuilder message = new StringBuilder();
@@ -192,6 +197,7 @@ public class CrapsGameEngine {
             case 1:
                 output = "play again";
                 CrapsGameEngine cge = new CrapsGameEngine(player);
+                cge.displayCrapsMenu();
                 break;
             default:
                 output = "leave table";

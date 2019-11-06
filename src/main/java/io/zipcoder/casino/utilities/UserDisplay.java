@@ -103,7 +103,8 @@ public class UserDisplay {
             case 4:
                 // craps
                 CrapsGameEngine cge = new CrapsGameEngine(user);
-//                cge.displayCrapsMenu();
+                cge.displayCrapsMenu();
+                break;
             case 5:
                 Console.println("Thank you!, Come again");
                 Console.exit();
