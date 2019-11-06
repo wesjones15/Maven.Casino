@@ -16,33 +16,32 @@ public class GoFishGame {
         this.deck = deck;
     }
 
-    public Card DealHands(){
+    Card DealHands(){
         if(deck.size() == 0){
             System.out.println("Deck Empty!");
         }
         return deck.pop();
     }
-
-
-    public void passCardstoPlayer(){
-
+    Boolean checkHand(ArrayList<Card> hand, Card requested) {
+        for(Card each: hand){
+            if(requested.getValue().equals(each.getValue())){
+                return true;
+            }
+        }
+        return false;
     }
-
-    public void checkFourOfAKind(ArrayList<Card> inHand) {
-
-    }
-
-    public void shuffle() {
-
-    }
-
-    public Stack<Card> getDeck() {
+    Stack<Card> getDeck() {
         return deck;
     }
 
+    ///DISPLAY GAME RULES///
+    ////////////////////////
+    String gameRules(){
 
-
-    //pulling methods from game interface
-
+        return "--> Go Fish Rules <--\n" +
+                "1 - Asking your opponent for a card.\n" +
+                "   Ask opponent for a card number from the ones in your hand.\n" +
+                "   if opponent has cards\n\n";
+    }
 
 }

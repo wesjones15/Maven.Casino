@@ -10,18 +10,17 @@ public class CrapsPlayer {
         this.wallet = wallet;
     }
 
-    public Integer rollDice() {
-        return null;
-    }
+//    public Integer rollDice() {
+//        return null;
+//    }
 
     public Boolean placeBet(Double betAmount) {
         Boolean success = false;
-        if (verifyValidBetAmount()) {
-            this.wallet -= betAmount;
+        if (verifyValidBetAmount(betAmount)) {
+            decrementWallet(betAmount);
             success = true;
         }
         return success;
-        // remove betAmount from wallet
     }
 
     public Double getBetAmount() {
@@ -32,12 +31,16 @@ public class CrapsPlayer {
         this.betAmount = betAmount;
     }
 
-    public Boolean verifyValidBetAmount() {
-        return (this.betAmount <= this.wallet);
+    public Boolean verifyValidBetAmount(Double betAmount) {
+        return (betAmount <= this.wallet) && (betAmount > 0);
     }
 
     public void incrementWallet(Double amount) {
         this.wallet += amount;
+    }
+
+    public void decrementWallet(Double amount) {
+        this.wallet -= amount;
     }
 
     public String getName() {
@@ -50,5 +53,4 @@ public class CrapsPlayer {
     public Double getWallet() {
         return this.wallet;
     }
-
 }

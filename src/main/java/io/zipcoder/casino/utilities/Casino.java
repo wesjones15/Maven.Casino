@@ -31,7 +31,18 @@ public class Casino {
 
     }
     public void casinoStart(User user){
+        Console.println("Welcome, %s! You have $%.2f", user.getName(), user.getWallet());
         int gameAction = UserDisplay.displayOptions("Go Fish", "Black Jack", "Klondike", "Craps", "Exit Casino");
         UserDisplay.chooseGame(gameAction, user);
+    }
+    public static void printDashes() {
+        repeatPrint(80, "-");
+        println("");
+    }
+
+    private static void repeatPrint(int i, String s) {
+    }
+
+    private static void println(String s) {
     }
 }

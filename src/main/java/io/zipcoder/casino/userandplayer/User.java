@@ -13,7 +13,7 @@ public class User {
         this.wallet = wallet;
     }
     public User(){
-        //fuck this
+
     }
 
     public void chooseGame() {
