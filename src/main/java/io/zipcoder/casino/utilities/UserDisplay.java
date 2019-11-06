@@ -74,7 +74,7 @@ public class UserDisplay {
         Double wallet = Console.getDoubleInput("wallet: ");
             if(wallet <= 0){
                 Console.println("Wallet must be greater than $0.00"); //
-                validateWallet();
+                wallet = validateWallet();
             }
             return wallet;
     }
