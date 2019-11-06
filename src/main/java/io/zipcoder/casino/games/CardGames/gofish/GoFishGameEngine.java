@@ -1,39 +1,50 @@
 package io.zipcoder.casino.games.CardGames.gofish;
 
+import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.sweetasscasinotools.DeckOfCards;
 import io.zipcoder.casino.userandplayer.User;
+
 import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 
 public class GoFishGameEngine {
     private User user;
-    private GoFishDealer goFishDealer;
+    private GoFishPlayer goFishDealer;
     private GoFishPlayer goFishPlayer;
+    private DeckOfCards deck = new DeckOfCards();
     private GoFishGame goFishGame;
-    private DeckOfCards deck;
 
     public GoFishGameEngine(User user){
         this.user = user;
         this.goFishPlayer = new GoFishPlayer(user);
-        this.goFishDealer = new GoFishDealer();
-        this.deck = new DeckOfCards();
-        displayGoFishMenu();
+        this.goFishDealer = new GoFishPlayer();
+        this.goFishGame = new GoFishGame(deck.createDeckOfCards());
+      //displayGoFishMenu();
     }
+
     //Go Fish Menu // Actions//
     //////////////////////////
     public void displayGoFishMenu(){
         menuChoice(Console.getIntegerInput("Welcome to GoFish!\n" +
-                "1 : Deal Hand\n" +
-                "2 : Leave Table"));
+                "1 : Go Fish rules\n" +
+                "2 : Deal Hand\n" +
+                "3 : Leave Table"));
     }
-    public void menuChoice(Integer choice){
+
+    private void menuChoice(Integer choice){
         switch(choice){
             case 1 :
-                runGame();
+                Console.println(goFishGame.gameRules());
+                displayGoFishMenu();
                 break;
             case 2 :
+                gameOn();
+                break;
+            case 3 :
                 leaveTable();
                 break;
             default :
@@ -42,23 +53,20 @@ public class GoFishGameEngine {
     }
     //START OF GAME//
     ////////////////
-    public void runGame(){
-        goFishGame = new GoFishGame(deck.createDeckOfCards());
-        gameOn();
-    }
     public void gameOn(){
         dealHands();
         while(!checkWinner(goFishPlayer, goFishDealer)) {
-            userCardPrompt(goFishPlayer);
-
-
-
+            userTurn(goFishPlayer);
         }
+        GoFishGameEngine gofish = new GoFishGameEngine(this.user);
+        gofish.displayGoFishMenu();
+
+
     }
     ////RUN GAME METHODS///
     ///////////////////////
 
-    public void dealHands(){
+    private void dealHands(){
         for(int i = 0; i < 7; i++){
             //dealing cards to player and dealer
             goFishPlayer.pickUpHand(goFishGame.DealHands());
@@ -66,28 +74,85 @@ public class GoFishGameEngine {
 
         }
     }
+    private boolean checkWinner(GoFishPlayer user, GoFishPlayer ai) {
 
-
-
-    public boolean checkWinner(GoFishPlayer user, GoFishDealer ai) {
-        if(user.getFourOfAKind() == 4){
-            Console.println("Congratulations your the winner!");
-            return true;
-        }
-        else if(ai.getFourOfAKind() == 4){
-            Console.println("You Lose! Play again");
-            return true;
+        if(goFishGame.getDeckSize() == 0 || user.getFourOfAKind() == 4 || ai.getFourOfAKind() == 4){
+            if(user.getFourOfAKind() == ai.getFourOfAKind()){
+                Console.println("Tie!! There was no winner, Play Again");
+                return true;
+            }
+            else if(user.getFourOfAKind() > ai.getFourOfAKind()){
+                Console.println("Congratulations your the winner!\n" +
+                        "Reward : $50.0");
+                this.user.setWallet(this.user.getWallet() + 50.0);
+                return true;
+            }else{
+                Console.println("You Lose! Play again");
+                return true;
+            }
         }
         return false;
+    }
 
-
+    ///////USERS TURN
+    private void userTurn(GoFishPlayer user){
+        try{
+            passOrDraw(Console.getIntegerInput(user.showHand()));
+        }catch(IndexOutOfBoundsException e){
+            Console.println("Please Choose again:\n");
+            userTurn(user);
+        }
 
     }
-    public void leaveTable(){
+
+    private void passOrDraw(Integer cardIndex) {
+        Card askingCard = goFishPlayer.getCard(cardIndex);
+
+        if(goFishGame.getDeckSize() == 0){
+            if(checkWinner(goFishPlayer, goFishDealer)) {
+                GoFishGameEngine gfge = new GoFishGameEngine(this.user);
+                gfge.displayGoFishMenu();
+            }
+        }else{
+            if (goFishGame.checkHand(goFishDealer.getHand(), askingCard)) {
+                goFishPlayer.receiveCards(goFishDealer.passCard(askingCard));
+                userTurn(goFishPlayer);
+            } else {
+                goFishPlayer.draw(goFishGame.getDeck());
+                ///Starts dealers turn
+                dealerTurn();
+            }
+        }
+    }
+
+
+    //////DEALERS TURN
+    private void dealerTurn(){
+        Card card = askedCard();
+
+        if(goFishGame.getDeckSize() == 1) {
+            if (checkWinner(goFishPlayer, goFishDealer)) {
+                GoFishGameEngine gfge = new GoFishGameEngine(this.user);
+                gfge.displayGoFishMenu();
+            }
+        }else{
+            if(goFishGame.checkHand(goFishPlayer.getHand(), card)){
+                goFishDealer.receiveCards(goFishPlayer.passCard(card));
+                dealerTurn();
+            }else
+                goFishDealer.draw(goFishGame.getDeck());
+        }
+    }
+
+    private Card askedCard(){
+        int handSize = goFishDealer.getHand().size();
+        int randomCard = (int)(Math.random() * ((handSize - 1) + 1)) + 1;
+        return goFishDealer.getCard(randomCard);
+
+    }
+    ///LEAVE GOFISH////
+    private void leaveTable(){
         new Casino(user.getName(), user.getWallet());
-    }
-    public void userCardPrompt(GoFishPlayer user){
-        Console.getIntegerInput(user.showHand());
     }
 
 }
