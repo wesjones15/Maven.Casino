@@ -1,13 +1,8 @@
 package io.zipcoder.casino.games.CardGames.blackjack;
 
-import io.zipcoder.casino.sweetasscasinotools.Card;
-import io.zipcoder.casino.sweetasscasinotools.DeckOfCards;
-import io.zipcoder.casino.userandplayer.User;
-import io.zipcoder.casino.utilities.Casino;
-import io.zipcoder.casino.utilities.Console;
-
-
-public class BlackJackGameEngine {
+//
+//
+//public class BlackJackGameEngine {
 //    private User user;
 //    private BlackJackGame blackJackGame;
 //    private BlackJackPlayer blackJackPlayer;
@@ -104,5 +99,25 @@ public class BlackJackGameEngine {
 //
 //    }
 
+//
+//}
 
+
+import io.zipcoder.casino.userandplayer.User;
+
+public class BlackJackGameEngine {
+    private BlackJackDealer blackJackDealer;
+    private BlackJackPlayer blackJackPlayer;
+
+    public BlackJackGameEngine(User user) {
+        this.blackJackDealer = new BlackJackDealer();
+        this.blackJackPlayer = new BlackJackPlayer(user);
+        runGame();
+    }
+
+    public void runGame() {
+        BlackJackGame game = new BlackJackGame(blackJackPlayer, blackJackDealer);
+        game.run();
+    }
 }
+

@@ -26,6 +26,7 @@ public final class Console {
         print(val + "\n", vals);
     }
 
+
     public  static String getStringInput(String prompt, Object... args) {
         Scanner scanner = new Scanner(System.in);
         println(prompt, args);
@@ -62,6 +63,10 @@ public final class Console {
     }
     public static void exit(){
         System.exit(0);
+    }
+
+    public static void clear() {
+        print("\n\n\n\n\n");
     }
 }
 
