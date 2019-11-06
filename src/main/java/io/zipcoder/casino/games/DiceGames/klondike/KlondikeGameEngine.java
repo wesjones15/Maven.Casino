@@ -14,11 +14,25 @@ public class KlondikeGameEngine {
     private KlondikeDealer klondikeDealer;
     private KlondikeGame klondikeGame;
 
-    public KlondikeGameEngine(User user) {
+    /*public KlondikeGameEngine(User user) {
         this.user = user;
         this.klondikePlayer = new KlondikePlayer(user);
         this.klondikeDealer = new KlondikeDealer();
         this.klondikeGame = new KlondikeGame();
+    }*/
+
+    public KlondikeGameEngine(User user) {
+//        this.crapsDealer = new CrapsDealer();
+        this.klondikePlayer = new KlondikePlayer(user.getName(), user.getWallet());
+        this.klondikeDealer = new KlondikeDealer();
+
+    }
+
+    public KlondikeGameEngine(KlondikePlayer player) {
+//        this.klondikeDealer = new KlondikeDealer();
+        this.klondikePlayer = player;
+        this.klondikeDealer = new KlondikeDealer();
+//        this.klondikeGame = new KlondikeGame();
     }
 
     public Integer displayKlondikeMenu() {
@@ -31,7 +45,7 @@ public class KlondikeGameEngine {
         String optionChosen = "";
         switch (choice) {
             case 1:
-                //playKlondike();
+                playKlondike();
                 optionChosen = "Start Klondike Game";
                 break;
             case 2:
@@ -61,12 +75,11 @@ public class KlondikeGameEngine {
         Integer[] playerCounts;
         Integer[] dealerCounts;
         String winner;
+        Double betAmount = 0.0;
 
-
-        // Dealer Rolls
-        Integer[] dealerFaceValues = getFaceValues(dealerDieRoll().getDieArray());
-        printFaceValues(dealerFaceValues);
-        dealerCounts = faceValueCount(dealerFaceValues);
+        if (chooseGameOption("Set bet") == 1) {
+            betAmount = promptForBetAmount();
+        }
 
         Integer choice = UserDisplay.displayOptions("Roll", "Leave Table");
         if (choice == 1) {
@@ -74,19 +87,43 @@ public class KlondikeGameEngine {
             Integer[] playerFaceValues = getFaceValues(playerDieRoll().getDieArray());
             printFaceValues(playerFaceValues);
             playerCounts = faceValueCount(playerFaceValues);
+
+            // Dealer Rolls
+            Integer[] dealerFaceValues = getFaceValues(dealerDieRoll().getDieArray());
+            printFaceValues(dealerFaceValues);
+            dealerCounts = faceValueCount(dealerFaceValues);
+
             winner = getWinner(dealerCounts, playerCounts);
         }
         //compare rolls and getWinner
-         return null;
+        return null;
     }
 
+    public Double promptForBetAmount() {
+        Console.println("Receive 2X your wager if you win!");
+        Double betAmount = 0.0;
+        do {
+            betAmount = Console.getDoubleInput("Enter your bet: ");
+            klondikePlayer.setBetAmount(betAmount);
+        } while (!klondikePlayer.verifyValidBetAmount(betAmount));
+        klondikePlayer.placeBet(betAmount);
+        Console.println("You are wagering $%.2f", betAmount);
+        Console.println("Your remaining balance is $%.2f\n", klondikePlayer.getWallet());
+        return betAmount;
+    }
 
+   /* public Integer promptUserToRollDice() {
+        Integer rollValue = dice.rollAndSum();
+        Console.println("\n\nYou rolled %s", rollValue);
+        return rollValue;
+    }*/
 
- public void printFaceValues(Integer[] dieFaceValues) {
-        for(Integer faceValue: dieFaceValues) {
+    public void printFaceValues(Integer[] dieFaceValues) {
+        for (Integer faceValue : dieFaceValues) {
             Console.print("%d", faceValue);
         }
- }
+    }
+
     public Dice dealerDieRoll() {
         Dice dealerDice = new Dice(5, 6);
         for (int i = 0; i < dealerDice.getDieArray().length; i++) {
@@ -132,15 +169,15 @@ public class KlondikeGameEngine {
 
     public Integer checkRollSequence(Integer[] faceValueCounts) {
         int winPoints;
-        if(isFiveOfAKind(faceValueCounts))
+        if (isFiveOfAKind(faceValueCounts))
             winPoints = 5;
-        else if(isFourOfAKind(faceValueCounts))
+        else if (isFourOfAKind(faceValueCounts))
             winPoints = 4;
-        else if(isFullHouse(faceValueCounts))
+        else if (isFullHouse(faceValueCounts))
             winPoints = 3;
-        else if(isThreeOfAKind(faceValueCounts))
+        else if (isThreeOfAKind(faceValueCounts))
             winPoints = 2;
-        else if(isTwoPair(faceValueCounts))
+        else if (isTwoPair(faceValueCounts))
             winPoints = 1;
         else
             winPoints = 0;
@@ -150,7 +187,7 @@ public class KlondikeGameEngine {
 
     public String getWinner(Integer[] dealerRollCounts, Integer[] playerRollCounts) {
         String winner;
-        if(checkRollSequence(dealerRollCounts) >= checkRollSequence(playerRollCounts))
+        if (checkRollSequence(dealerRollCounts) >= checkRollSequence(playerRollCounts))
             winner = "Dealer Wins";
         else
             winner = "Player Wins";
@@ -161,10 +198,6 @@ public class KlondikeGameEngine {
 
     public String displayKlondikeRules() {
         return "In Klondike Dice players need to roll better combination than banker to win. The banker rolls first and then all other players take turns to roll and try to beat banker’s combination.\n" +
-                "\n" +
-                "Ace (or One) is ranked highest and then remaining dice numbers are ranked from highest to lowest. Following is the sequence of ranks from highest to lowest\n" +
-                "\n" +
-                "1 6 5 4 3 2\n" +
                 "\n" +
                 "Combinations are ordered in sequence from highest to lowest as following\n" +
                 "\n" +
@@ -203,6 +236,23 @@ public class KlondikeGameEngine {
         }
         return counts;
     }
+
+    public Integer chooseGameOption(String option) {
+        Integer choice = UserDisplay.displayOptions(option, "Leave table");
+        switch (choice) {
+            case 1:
+                // pass
+                break;
+            case 2:
+                // leave table
+                //leaveTable(crapsPlayer);
+                break;
+            default:
+                Console.println("Invalid Option");
+        }
+        return choice;
+    }
+
 
 }
 
