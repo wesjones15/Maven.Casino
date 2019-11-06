@@ -1,14 +1,10 @@
 package io.zipcoder.casino.games.DiceGames.craps;
 
-import io.zipcoder.casino.*;
-
-
 import io.zipcoder.casino.sweetasscasinotools.Dice;
 import io.zipcoder.casino.userandplayer.User;
 import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.UserDisplay;
-import sun.util.resources.cldr.so.CalendarData_so_DJ;
 
 public class CrapsGameEngine {
     private final Integer[] initialWinRolls = {7, 11};
@@ -41,24 +37,30 @@ public class CrapsGameEngine {
         menuChoice(choice);
     }
 
-    public void menuChoice(Integer choice) {
+    public String menuChoice(Integer choice) {
+        String output;
         switch(choice) {
             case 1:
                 // start game
+                output = "run game";
                 runGame();
                 break;
             case 2:
                 // leave table
+                output = "leave table";
                 leaveTable(crapsPlayer);
                 break;
             case 3:
                 // show rules
+                output = "display rules";
                 CrapsGame.showGameRules();
                 displayCrapsMenu();
                 break;
             default:
+                output = "invalid response";
                 Console.println("Invalid response");
         }
+        return output;
     }
 
     public void runGame() {
@@ -81,42 +83,74 @@ public class CrapsGameEngine {
             }
 
             Integer outcome = CrapsGame.determineRollOutcome(rollValue, winRolls, loseRolls);
-            if (outcome == 0) {
-                // lose
-                Console.println("\n\nYou lost");
-                Console.println("Your remaining balance is $%.2f", crapsPlayer.getWallet());
-                continueCraps = false;
-            } else if (outcome == 1) {
-                // win
-                Double reward = betAmount * 2;
-                crapsPlayer.incrementWallet(reward);
-                Console.println("\n\nYou won $%.2f", reward);
-                Console.println("Your new balance is $%.2f", crapsPlayer.getWallet());
-                continueCraps = false;
-            } else {
-                if (winRolls.length > 1) {
-                    Integer[] roll = {rollValue};
-                    winRolls = roll;
-                }
-                Integer[] lose = {7};
-                loseRolls = lose;
-                Console.println("\nGame continuing...\n");
+
+            Double reward = 0.00;
+            switch(outcome) {
+                case 0:
+                    Console.println("\n\nYou lost");
+                    Console.println("Your remaining balance is $%.2f", crapsPlayer.getWallet());
+                    continueCraps = false;
+                    break;
+                case 1:
+                    reward = betAmount * 2;
+                    crapsPlayer.incrementWallet(reward);
+                    Console.println("\n\nYou won $%.2f", reward);
+                    Console.println("Your new balance is $%.2f", crapsPlayer.getWallet());
+                    continueCraps = false;
+                    break;
+                default:
+                    if (winRolls.length > 1) {
+                        Integer[] roll = {rollValue};
+                        winRolls = roll;
+                    }
+                    Integer[] lose = {7};
+                    loseRolls = lose;
+                    Console.println("\nGame continuing...\n");
             }
+
+//            if (outcome == 0) {
+//                // lose
+//                Console.println("\n\nYou lost");
+//                Console.println("Your remaining balance is $%.2f", crapsPlayer.getWallet());
+//                continueCraps = false;
+//            } else if (outcome == 1) {
+//                // win
+//                reward = betAmount * 2;
+//                crapsPlayer.incrementWallet(reward);
+//                Console.println("\n\nYou won $%.2f", reward);
+//                Console.println("Your new balance is $%.2f", crapsPlayer.getWallet());
+//                continueCraps = false;
+//            } else {
+//                if (winRolls.length > 1) {
+//                    Integer[] roll = {rollValue};
+//                    winRolls = roll;
+//                }
+//                Integer[] lose = {7};
+//                loseRolls = lose;
+//                Console.println("\nGame continuing...\n");
+//            }
         }
         leaveTable(crapsPlayer);
     }
 
-    public void showRollsForOutcome(String outcome, Integer... rollValues) {
+//    public void interpretGameOutcome(Integer outcome, Double betAmount) {
+//        Double reward = payRewardToPlayer(outcome);
+//        Console.println("You have gained $%.2f", reward);
+//    }
+
+
+    public String showRollsForOutcome(String outcome, Integer... rollValues) {
         StringBuilder message = new StringBuilder();
         message.append(String.format("%s Rolls:", outcome));
         for (int i = 0; i < rollValues.length; i++) {
             message.append("\t"+rollValues[i]);
         }
         Console.println(message.toString());
+        return message.toString();
     }
 
     public Integer chooseGameOption(String option) {
-        Integer choice = UserDisplay.displayOptions(option, "leave table");
+        Integer choice = UserDisplay.displayOptions(option, "Leave table");
         switch(choice) {
             case 1:
                 // pass
@@ -132,7 +166,7 @@ public class CrapsGameEngine {
     }
 
     public Double promptUserForBetAmount() {
-        Console.println("Bet condition: win bet if rollValue = winRoll");
+        Console.println("Receive 2X your wager if you win!");
         Double betAmount = 0.0;
         do {
             betAmount = Console.getDoubleInput("Enter your bet: ");
@@ -150,17 +184,21 @@ public class CrapsGameEngine {
         return rollValue;
     }
 
-    public void leaveTable(CrapsPlayer player) {
-        Console.println("Are you sure you want to leave?");
+    public String leaveTable(CrapsPlayer player) {
+        Console.println("Do you want to leave the table?");
         Integer option = UserDisplay.displayOptions("No, play again", "Yes, leave table");
+        String output;
         switch(option) {
             case 1:
+                output = "play again";
                 CrapsGameEngine cge = new CrapsGameEngine(player);
                 break;
             default:
+                output = "leave table";
                 Casino casino = new Casino(player.getName(), player.getWallet());
                 break;
         }
+        return output;
     }
 
 }
