@@ -122,7 +122,7 @@ public class UserDisplay {
                 // gofish
                 stringForTesting = "gofish";
                 GoFishGameEngine gfge = new GoFishGameEngine(user);
-                gfge.gameOn();
+                gfge.displayGoFishMenu();
                 break;
             case 2:
                 // black jack

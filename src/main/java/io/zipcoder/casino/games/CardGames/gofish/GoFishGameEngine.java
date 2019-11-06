@@ -23,11 +23,12 @@ public class GoFishGameEngine {
         this.goFishPlayer = new GoFishPlayer(user);
         this.goFishDealer = new GoFishPlayer();
         this.goFishGame = new GoFishGame(deck.createDeckOfCards());
-        displayGoFishMenu();
+      //displayGoFishMenu();
     }
+
     //Go Fish Menu // Actions//
     //////////////////////////
-    private void displayGoFishMenu(){
+    public void displayGoFishMenu(){
         menuChoice(Console.getIntegerInput("Welcome to GoFish!\n" +
                 "1 : Go Fish rules\n" +
                 "2 : Deal Hand\n" +
@@ -56,8 +57,11 @@ public class GoFishGameEngine {
         dealHands();
         while(!checkWinner(goFishPlayer, goFishDealer)) {
             userTurn(goFishPlayer);
-
         }
+        GoFishGameEngine gofish = new GoFishGameEngine(this.user);
+        gofish.displayGoFishMenu();
+
+
     }
     ////RUN GAME METHODS///
     ///////////////////////
@@ -71,47 +75,72 @@ public class GoFishGameEngine {
         }
     }
     private boolean checkWinner(GoFishPlayer user, GoFishPlayer ai) {
-        if(user.getFourOfAKind() == 4){
-            Console.println("Congratulations your the winner!\n" +
-                    "Reward : $50.0");
-            this.user.setWallet(this.user.getWallet() + 50.0);
-            return true;
-        }
-        else if(ai.getFourOfAKind() == 4){
-            Console.println("You Lose! Play again");
-            return true;
+
+        if(goFishGame.getDeckSize() == 0 || user.getFourOfAKind() == 4 || ai.getFourOfAKind() == 4){
+            if(user.getFourOfAKind() == ai.getFourOfAKind()){
+                Console.println("Tie!! There was no winner, Play Again");
+                return true;
+            }
+            else if(user.getFourOfAKind() > ai.getFourOfAKind()){
+                Console.println("Congratulations your the winner!\n" +
+                        "Reward : $50.0");
+                this.user.setWallet(this.user.getWallet() + 50.0);
+                return true;
+            }else{
+                Console.println("You Lose! Play again");
+                return true;
+            }
         }
         return false;
     }
 
     ///////USERS TURN
     private void userTurn(GoFishPlayer user){
-        passOrDraw(Console.getIntegerInput(user.showHand()));
+        try{
+            passOrDraw(Console.getIntegerInput(user.showHand()));
+        }catch(IndexOutOfBoundsException e){
+            Console.println("Please Choose again:\n");
+            userTurn(user);
+        }
+
     }
 
     private void passOrDraw(Integer cardIndex) {
-
         Card askingCard = goFishPlayer.getCard(cardIndex);
 
-        if (goFishGame.checkHand(goFishDealer.getHand(), askingCard)) {
-            goFishPlayer.receiveCards(goFishDealer.passCard(askingCard));
-            userTurn(goFishPlayer);
-        } else {
-            goFishPlayer.draw(goFishGame.getDeck());
-            ///Starts dealers turn
-            dealerTurn();
-
+        if(goFishGame.getDeckSize() == 0){
+            if(checkWinner(goFishPlayer, goFishDealer)) {
+                GoFishGameEngine gfge = new GoFishGameEngine(this.user);
+                gfge.displayGoFishMenu();
+            }
+        }else{
+            if (goFishGame.checkHand(goFishDealer.getHand(), askingCard)) {
+                goFishPlayer.receiveCards(goFishDealer.passCard(askingCard));
+                userTurn(goFishPlayer);
+            } else {
+                goFishPlayer.draw(goFishGame.getDeck());
+                ///Starts dealers turn
+                dealerTurn();
+            }
         }
     }
+
 
     //////DEALERS TURN
     private void dealerTurn(){
         Card card = askedCard();
-        if(goFishGame.checkHand(goFishPlayer.getHand(), card)){
-            goFishDealer.receiveCards(goFishPlayer.passCard(card));
-            dealerTurn();
+
+        if(goFishGame.getDeckSize() == 1) {
+            if (checkWinner(goFishPlayer, goFishDealer)) {
+                GoFishGameEngine gfge = new GoFishGameEngine(this.user);
+                gfge.displayGoFishMenu();
+            }
         }else{
-            goFishDealer.draw(goFishGame.getDeck());
+            if(goFishGame.checkHand(goFishPlayer.getHand(), card)){
+                goFishDealer.receiveCards(goFishPlayer.passCard(card));
+                dealerTurn();
+            }else
+                goFishDealer.draw(goFishGame.getDeck());
         }
     }
 
