@@ -10,7 +10,7 @@ public class Deck {
     private final Integer[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10};
 
     public Deck() {
-        this.stack = new Stack<>();
+        this.stack = new Stack<Card>();
         for (int i = 0; i < suites.length; i++) {
             for (int j = 0; j < faces.length; j++) {
                 stack.push(new Card(suites[i], faces[j], values[j]));
@@ -36,6 +36,10 @@ public class Deck {
 
     public void shuffle() {
         Collections.shuffle(stack);
+    }
+
+    public Integer getDeckSize(){
+        return stack.size();
     }
 
     @Override

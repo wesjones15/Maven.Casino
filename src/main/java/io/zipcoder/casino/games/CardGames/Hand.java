@@ -15,7 +15,7 @@ public class Hand {
     }
 
     public Hand() {
-        this(new ArrayList<>());
+        this.hand = new ArrayList<Card>();
     }
 
     public void add(Card card) {
