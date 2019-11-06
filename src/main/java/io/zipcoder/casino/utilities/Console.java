@@ -38,6 +38,7 @@ public final class Console {
         print(val + "\n", vals);
     }
 
+
     public  static String getStringInput(String prompt, Object... args) {
         Scanner scanner = new Scanner(System.in);
         println(prompt, args);
