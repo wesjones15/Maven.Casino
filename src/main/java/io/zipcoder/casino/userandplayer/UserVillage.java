@@ -15,7 +15,7 @@ public class UserVillage {
     public void createNewUser() {
         String name = Console.getStringInput("name: ");
         Integer age = Console.getIntegerInput("age: ");
-        Double wallet = Console.getDoubleInput("wallet: ");
+        Double wallet =  Console.getDoubleInput("wallet: ");
         Integer id = users.size() + 1;
         users.add(new User(name, id, age, wallet));
 
@@ -28,4 +28,5 @@ public class UserVillage {
     public User getUserById(Integer id) {
         return null;
     }
+
 }
