@@ -13,10 +13,12 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "suite='" + suite + '\'' +
-                ", face='" + face + '\'' +
-                ", value=" + value +
-                '}';
+        return "Card[" +
+                "suite = " + suite  +
+                ", face = " + face  + "]  " + value;
+    }
+
+    public Integer getValue() {
+        return value;
     }
 }
