@@ -20,8 +20,6 @@ public class Casino {
         casinoStart(user);
     }
 
-
-
     public void userStart(){
         Console.println("Welcome to the great 4 Casino!");
 //        UserDisplay.run();
@@ -30,11 +28,13 @@ public class Casino {
         casinoStart(user);
 
     }
+
     public void casinoStart(User user){
         Console.println("Welcome, %s! You have $%.2f", user.getName(), user.getWallet());
         int gameAction = UserDisplay.displayOptions("Go Fish", "Black Jack", "Klondike", "Craps", "Exit Casino");
         UserDisplay.chooseGame(gameAction, user);
     }
+
     public static void printDashes() {
         repeatPrint(80, "-");
         println("");
