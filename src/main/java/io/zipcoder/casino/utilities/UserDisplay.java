@@ -61,8 +61,6 @@ public class UserDisplay {
         User user = createCasinoUser();
         int action = displayOptions("create new user", "login", "exit");
         executeAction(action);
-
-
     }
 
     public static User createCasinoUser() {
@@ -141,7 +139,7 @@ public class UserDisplay {
                 // craps
                 stringForTesting = "craps";
                 CrapsGameEngine cge = new CrapsGameEngine(user);
-                cge.displayCrapsMenu();
+                cge.run();
                 break;
             case 5:
                 stringForTesting = "Leaving";

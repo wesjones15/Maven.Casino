@@ -20,8 +20,6 @@ public class Casino {
         casinoStart(user);
     }
 
-
-
     public void userStart(){
         Console.println("Welcome to the Minimum Viable Casino: Where we do the bare minimum!\n\n");
         try {
@@ -36,6 +34,7 @@ public class Casino {
         casinoStart(user);
 
     }
+
     public void casinoStart(User user){
         Console.clear();
         Console.clear();
@@ -45,6 +44,7 @@ public class Casino {
         UserDisplay.chooseGame(gameAction, user);
 
     }
+
     public static void printDashes() {
         repeatPrint(80, "-");
         println("");
