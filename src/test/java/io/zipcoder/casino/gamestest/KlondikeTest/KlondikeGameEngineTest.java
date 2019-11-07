@@ -25,38 +25,49 @@ public class KlondikeGameEngineTest {
     }
 
     @Test
-    public void choiceFromKlondikeMenu() {
+    public void executeActionChosenTest() {
+       /* String expected1 = "Start Klondike Game";
+        String expected2 = "Display Klondike Rules";
+        String expected3 = "Leave Game";
+        String expected4 = "Re-route player to main Klondike menu";
+
+        KlondikeGameEngine kge = new KlondikeGameEngine();
+
+        String actual1 = kge.executeActionChosen(1);
+        String actual2 = kge.executeActionChosen(2);
+        String actual3 = kge.executeActionChosen(3);
+        String actual4 = kge.executeActionChosen(4);
+
+
+
+        Assert.assertEquals(expected1, actual1);
+        Assert.assertEquals(expected2, actual2);
+        Assert.assertEquals(expected3, actual3);
+        Assert.assertEquals(expected4, actual4);
+*/
 
     }
 
     @Test
-    public void executeActionChosen() {
+    public void chooseGameOptionTest() {
 
     }
 
     @Test
-    public void dealerDieRoll() {
-    }
-
-
-    @Test
-    public void getWinner() {
+    public void getWinnerTest() {
         // Given
         Integer[] counts1 = {2, 1, 2, 1, 1};
         Integer[] counts2 = {1, 2, 2, 1, 1};
         Integer[] counts3 = {1, 2, 2, 2, 2};
-        //KlondikeGame newGame = new KlondikeGame(new User("", 1, 1, 0.0));
 
         // When
         Boolean actual1 = KlondikeGame.isOnePair(counts1);
         Boolean actual2 = KlondikeGame.isOnePair(counts2);
         Boolean actual3 = KlondikeGame.isOnePair(counts3);
 
-
         // Then
         Assert.assertTrue(actual1);
         Assert.assertTrue(actual2);
         Assert.assertFalse(actual3);
-
     }
 }
