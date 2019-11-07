@@ -5,27 +5,20 @@ import io.zipcoder.casino.sweetasscasinotools.Die;
 import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.userandplayer.User;
+import io.zipcoder.casino.utilities.Rules;
 import io.zipcoder.casino.utilities.UserDisplay;
 
 
 public class KlondikeGameEngine {
-
-    private User user;
     private KlondikePlayer klondikePlayer;
-    private KlondikeDealer klondikeDealer;
 
-public KlondikeGameEngine(){
 
-}
     public KlondikeGameEngine(User user) {
         this.klondikePlayer = new KlondikePlayer(user.getName(), user.getWallet());
-        this.klondikeDealer = new KlondikeDealer();
-
     }
 
     public KlondikeGameEngine(KlondikePlayer player) {
         this.klondikePlayer = player;
-        this.klondikeDealer = new KlondikeDealer();
     }
 
     public Integer displayKlondikeMenu() {
@@ -47,7 +40,7 @@ public KlondikeGameEngine(){
                 }
                 break;
             case 2:
-                KlondikeGame.displayKlondikeRules();
+                Console.print(KlondikeGame.displayKlondikeRules());
                 displayKlondikeMenu();
                 optionChosen = "Display Klondike Rules";
                 break;
@@ -57,7 +50,7 @@ public KlondikeGameEngine(){
                 break;
             default:
                 Console.println("Invalid response!");
-                displayKlondikeMenu();
+                //displayKlondikeMenu();
                 optionChosen = "Re-route player to main Klondike menu";
                 break;
         }
@@ -70,8 +63,6 @@ public KlondikeGameEngine(){
     }
 
     public void playKlondike() {
-        Integer[] playerCounts;
-        Integer[] dealerCounts;
 
         Double betAmount = promptForBetAmount();
 
@@ -81,16 +72,13 @@ public KlondikeGameEngine(){
         Integer[] dealerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
         Console.println("Dealer Roll:");
         Console.println(KlondikeGame.printFaceValues(dealerFaceValues) + '\n');
-        //dealerCounts = KlondikeGame.faceValueCount(dealerFaceValues);
 
         // Player Roll
         Integer[] playerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
         Console.println("Player Roll:");
         Console.println(KlondikeGame.printFaceValues(playerFaceValues) + '\n');
-       // playerCounts = KlondikeGame.faceValueCount(playerFaceValues);
 
         // Display winner
-        //String winPerson = getWinner(dealerCounts, playerCounts);
         String winPerson = getWinner(KlondikeGame.faceValueCount(dealerFaceValues),KlondikeGame.faceValueCount(playerFaceValues));
         Console.println(winPerson);
 
@@ -100,6 +88,7 @@ public KlondikeGameEngine(){
             klondikePlayer.incrementWallet(payout);
             Console.println("You won $%.2f", payout);
         }
+
         leaveTable(klondikePlayer);
     }
 
@@ -111,22 +100,6 @@ public KlondikeGameEngine(){
             winner = "Player Wins!\n";
         return winner;
     }
-
-/*    public Integer chooseGameOption(String option) {
-        Integer choice = UserDisplay.displayOptions(option, "Leave table");
-        switch (choice) {
-            case 1:
-                // pass
-                break;
-            case 2:
-                // leave table
-                leaveTable(klondikePlayer);
-                break;
-            default:
-                Console.println("Invalid Option");
-        }
-        return choice;
-    }*/
 
     public Double promptForBetAmount() {
         Console.println("Receive 2X your wager if you win!");
@@ -147,11 +120,8 @@ public KlondikeGameEngine(){
         switch (option) {
             case 1:
                 output = "play again";
-                //if(player.getWallet() != 0) {
                 KlondikeGameEngine kge = new KlondikeGameEngine(player);
                 kge.run();
-               /* } else {
-                }*/
                 break;
             default:
                 output = "leave table";
@@ -160,6 +130,5 @@ public KlondikeGameEngine(){
         }
         return output;
     }
-
 }
 
