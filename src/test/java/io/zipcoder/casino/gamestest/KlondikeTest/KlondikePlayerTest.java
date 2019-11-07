@@ -1,4 +1,4 @@
 package io.zipcoder.casino.gamestest.KlondikeTest;
 
-public class CrapsPlayerTest {
+public class KlondikePlayerTest {
 }

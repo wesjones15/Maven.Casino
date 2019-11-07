@@ -36,8 +36,14 @@ public class KlondikeGameEngine {
         String optionChosen = "";
         switch (choice) {
             case 1:
-                playKlondike();
-                optionChosen = "Start Klondike Game";
+                if (klondikePlayer.getWallet() > 0) {
+                    playKlondike();
+                    optionChosen = "Start Klondike Game";
+                }
+                else {
+                    Console.print("You do not have enough money for the minimum bet of $0.01!\n");
+                    leaveTable(klondikePlayer);
+                }
                 break;
             case 2:
                 KlondikeGame.displayKlondikeRules();
@@ -65,22 +71,22 @@ public class KlondikeGameEngine {
     public void playKlondike() {
         Integer[] playerCounts;
         Integer[] dealerCounts;
-        Double betAmount = 0.0;
+//        Double betAmount = 0.0;
 
-        if (chooseGameOption("Set bet") == 1) {
-            betAmount = promptForBetAmount();
-        }
+//        if (chooseGameOption("Set bet") == 1) {
+        Double betAmount = promptForBetAmount();
+//        }
 
         Console.getStringInput("Press enter to roll");
 
         // Dealer Roll
-        Integer[] dealerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dealerDieRoll().getDieArray());
+        Integer[] dealerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
         Console.println("Dealer Roll:");
         Console.println(KlondikeGame.printFaceValues(dealerFaceValues) + '\n');
         dealerCounts = KlondikeGame.faceValueCount(dealerFaceValues);
 
         // Player Roll
-        Integer[] playerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.playerDieRoll().getDieArray());
+        Integer[] playerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
         Console.println("Player Roll:");
         Console.println(KlondikeGame.printFaceValues(playerFaceValues) + '\n');
         playerCounts = KlondikeGame.faceValueCount(playerFaceValues);
@@ -127,7 +133,7 @@ public class KlondikeGameEngine {
         Double betAmount = 0.0;
         do {
             betAmount = Console.getDoubleInput("Enter your bet: ");
-            klondikePlayer.setBetAmount(betAmount);
+//            klondikePlayer.setBetAmount(betAmount);
         } while (!klondikePlayer.verifyValidBetAmount(betAmount));
         klondikePlayer.placeBet(betAmount);
         Console.println("You are wagering $%.2f", betAmount);
@@ -142,8 +148,11 @@ public class KlondikeGameEngine {
         switch(option) {
             case 1:
                 output = "play again";
-                KlondikeGameEngine kge = new KlondikeGameEngine(player);
-                kge.run();
+                //if(player.getWallet() != 0) {
+                    KlondikeGameEngine kge = new KlondikeGameEngine(player);
+                    kge.run();
+               /* } else {
+                }*/
                 break;
             default:
                 output = "leave table";
