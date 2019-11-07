@@ -88,7 +88,7 @@ public class GoFishGameEngine {
             }
             else if(user.getFourOfAKind() > ai.getFourOfAKind()){
                 Console.println("Congratulations your the winner!\n" +
-                        "Reward : $50.0");
+                        "Reward : $50.0\n\n");
                 this.user.setWallet(this.user.getWallet() + 50.0);
                 return true;
             }else{
@@ -134,19 +134,6 @@ public class GoFishGameEngine {
         }
     }
 
-//    public void passItOrDrawIt(GoFishPlayer passing, GoFishPlayer receiving){
-//        Card card = askedCard();
-//
-//        if(goFishGame.getDeckSize() == 0){
-//            if(checkWinner(this.goFishPlayer, this.goFishDealer)){
-//                GoFishGameEngine goFish = new GoFishGameEngine(this.user);
-//                goFish.displayGoFishMenu();
-//            }
-//        }
-//        else{
-//            if(goFishGame.checkHand())
-//        }
-//    }
     //////DEALERS TURN
     private void dealerTurn(){
         Card card = askedCard();
