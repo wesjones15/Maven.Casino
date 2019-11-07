@@ -59,11 +59,7 @@ public class BlackJackGame {
         Console.println("\nPlease wait while dealer is dealing cards...\n");
         blackJackDealer.deal(player);
         blackJackDealer.deal(player);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Console.delay(3000);
 
         begin_decisions:
         while (!"leave".equals(menuDecision)) {
@@ -79,31 +75,26 @@ public class BlackJackGame {
             Console.println(hand.toString());
             Console.println("\nYour card values equal " + hand.getHandSum() + ".");
             Console.println("Your hand is " + hand.getState() + ".");
-//            Console.println("\nFrom here you can select any of the following options:");
 
 
             String playerState = player.getHand().getState();
             if ("BUST".equals(playerState)) {
-                Console.println("Player BUST!");
+                Console.println("BUST!");
                 Console.println("You lose your bet.");
-                Console.println("Your balance was [%s]", player.getWallet());
-//                        player.loseBet();
-                Console.println("Player's new balance is [%s]", player.getWallet());
+                Console.println("Your new balance is [%s]", player.getWallet());
                 leaveTable(player);
 
 
             } else if ("BLACKJACK".equals(playerState)) {
-                Console.println("Player BLACKJACK!");
-                Console.println("Player WINS bet.");
-                Console.println("Player's balance was [%s]", player.getWallet());
-//                        player.winBet();
-                player.incrementWallet(betAmount*2); //TODO make winBet method in player?
+                Console.println("BLACKJACK!");
+                Console.println("You WIN bet.");
+                player.incrementWallet(betAmount * 2);
                 Console.println("Player's new balance is [%s]", player.getWallet());
                 leaveTable(player);
             }// else {
                // continue begin_decisions;
             //}
-            menuDecision = Console.getStringInput("\n\nWhat would you like to do?\n[HIT] OR [STAND]");
+            menuDecision = Console.getStringInput("\n\nWhat would you like to do?\n[HIT] | [STAND] | [DOUBLE] DOWN");
             Console.println("Player has selected [ %s ]", menuDecision);
             switch (menuDecision.toUpperCase()) {
                 case "HIT":
@@ -112,6 +103,11 @@ public class BlackJackGame {
 
                 case "STAND":
                     break;
+
+                case "DOUBLE":
+                    blackJackDealer.deal(player);
+
+
             }
         }
 
@@ -132,14 +128,12 @@ public class BlackJackGame {
 
     private static void showGameRules() {
         Console.println("\n\n\nBlackJack Rules!\n");
-        Console.println("Each player starts with two cards.");
-        Console.println("Each card holds a value between 1 - 10.");
-        Console.println("J, Q, K cards hold a value of 10.");
-        Console.println("Each card value is added together to set your overall total");
+        Console.println("Each player starts with 2 cards. Each card holds a value between 1 - 10.");
+        Console.println("J, Q, K cards hold a value of 10. Card values are added together to set an overall total.");
         Console.println("To [HIT] is to ask for another card to increase your overall total.");
         Console.println("To [STAND] is to hold your total and end your turn.");
-        Console.println("If you go over 21 you BUST, and the dealer wins");
-        Console.println("If you and the dealer have matching overall totals, dealer wins.");
+        Console.println("If your total is over 21, you BUST and the dealer wins");
+        Console.println("If you and the dealer tie, dealer wins.");
         Console.println("To win, you must have a higher overall score than the dealer.\n");
         try {
             Thread.sleep(8000);

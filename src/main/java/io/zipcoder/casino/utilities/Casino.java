@@ -2,7 +2,6 @@ package io.zipcoder.casino.utilities;
 
 
 import io.zipcoder.casino.userandplayer.User;
-import io.zipcoder.casino.utilities.Console;
 
 public class Casino {
     // All Declarations
@@ -21,6 +20,7 @@ public class Casino {
     }
 
     public void userStart(){
+        Console.println(Art.minViableSign + "\n\n" + Art.casinoSign);
         Console.println("Welcome to the Minimum Viable Casino: Where we do the bare minimum!\n\n");
         try {
             Thread.sleep(2000);

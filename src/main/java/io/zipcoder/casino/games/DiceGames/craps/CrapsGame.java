@@ -3,6 +3,7 @@ package io.zipcoder.casino.games.DiceGames.craps;
 
 import io.zipcoder.casino.sweetasscasinotools.Dice;
 import io.zipcoder.casino.utilities.Console;
+import io.zipcoder.casino.utilities.Rules;
 
 public class CrapsGame {
 
@@ -42,10 +43,7 @@ public class CrapsGame {
 
     public static void showGameRules() {
         Console.clear();
-        String rules = "---==--===--===--==| CRAPS RULES |==--===--===--==---\nOn the first round, you win if you roll a 7 or 12\nand you lose if you roll a 2, 3, or 12" +
-                "\nIf you roll something else, that number becomes\nyour win target and your losing roll becomes 7" +
-                "\nYou can wager your money on whether you win the round\n" +
-                "---==--===--===--========-=-========--===--===--==---\n";
+        String rules = Rules.craps;
         Console.println(rules);
     }
 }
