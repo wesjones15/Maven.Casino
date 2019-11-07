@@ -31,7 +31,7 @@ public class KlondikeGameEngineTest {
         String expected3 = "Leave Game";
         String expected4 = "Re-route player to main Klondike menu";
 
-        KlondikeGameEngine kge = new KlondikeGameEngine();
+        KlondikeGameEngine kge = new KlondikeGameEngine(new User("", 20, 1, 0.0);
 
         String actual1 = kge.executeActionChosen(1);
         String actual2 = kge.executeActionChosen(2);
