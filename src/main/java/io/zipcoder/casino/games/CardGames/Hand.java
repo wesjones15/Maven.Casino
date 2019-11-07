@@ -44,6 +44,6 @@ public class Hand {
 
     @Override
     public String toString() {
-        return "Hand{" + hand +'}';
+        return "Hand" + hand;
     }
 }
