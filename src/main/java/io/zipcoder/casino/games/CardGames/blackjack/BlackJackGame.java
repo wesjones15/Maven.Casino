@@ -27,7 +27,6 @@ public class BlackJackGame {
         menuChoice(Console.getStringInput(" ___________________________\r\n|\tWelcome to BlackJack!\t|\r\n|\t\t\t\t\t\t\t|\r\n|\t\t[DEAL] Hand\t\t\t|\r\n|\t\t[VIEW] Rules\t\t|\r\n|\t\t[LEAVE] Table\t\t|\r\n|___________________________|"));
         //string escape
     }
-
     private String menuChoice(String choice) {
         String output;
         switch (choice.toUpperCase()) {

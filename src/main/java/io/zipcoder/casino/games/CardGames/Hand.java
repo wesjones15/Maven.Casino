@@ -24,7 +24,7 @@ public class Hand {
 
     public Integer getHandSum() {
         Integer sum = 0;
-        for(Card card : hand) {
+        for (Card card : hand) {
             Integer cardValue = card.getValue();
             sum += cardValue;
         }
@@ -44,6 +44,6 @@ public class Hand {
 
     @Override
     public String toString() {
-        return "Hand{" + hand +'}';
+        return "Hand{" + hand + '}';
     }
 }
