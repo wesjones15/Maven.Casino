@@ -1,6 +1,8 @@
 package io.zipcoder.casino.gamestest.KlondikeTest;
 
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGame;
+import io.zipcoder.casino.sweetasscasinotools.Dice;
+import io.zipcoder.casino.sweetasscasinotools.Die;
 import io.zipcoder.casino.userandplayer.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,14 +15,22 @@ public class KlondikeGameTest {
 
     @Test
     public void playerDieRoll() {
+        Dice dice = KlondikeGame.dieRoll();
+        Integer d1 = dice.getDie(0).roll();
+
+        Assert.assertTrue(d1 >=1 && d1 <= 6);
+
     }
 
     @Test
     public void getFaceValuesTest() {
-    }
+            Integer d1 = 0;
 
-    @Test
-    public void faceValueCountsTest() {
+            Dice expected = KlondikeGame.dieRoll();
+            Die [] die = expected.getDieArray();
+                d1 = die[0].getCurrentFacesValue();
+
+            Assert.assertTrue(d1 >=1 && d1 <= 6);
     }
 
     @Test
@@ -50,6 +60,16 @@ public class KlondikeGameTest {
 
         // Then
         Assert.assertEquals(expected2, actual);
+    }
+
+    @Test
+    public void faceValueCountTest2(){
+        Integer [] faceValues = {1,1,1,1,1};
+        Integer [] expected = {5,5,5,5,5};
+        Integer [] actual;
+
+        actual = KlondikeGame.faceValueCount(faceValues);
+        Assert.assertEquals(expected,actual);
     }
 
     @Test
