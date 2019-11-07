@@ -87,10 +87,8 @@ public KlondikeGameEngine(){
         Integer[] playerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
         Console.println("Player Roll:");
         Console.println(KlondikeGame.printFaceValues(playerFaceValues) + '\n');
-       // playerCounts = KlondikeGame.faceValueCount(playerFaceValues);
 
         // Display winner
-        //String winPerson = getWinner(dealerCounts, playerCounts);
         String winPerson = getWinner(KlondikeGame.faceValueCount(dealerFaceValues),KlondikeGame.faceValueCount(playerFaceValues));
         Console.println(winPerson);
 
@@ -112,22 +110,6 @@ public KlondikeGameEngine(){
         return winner;
     }
 
-/*    public Integer chooseGameOption(String option) {
-        Integer choice = UserDisplay.displayOptions(option, "Leave table");
-        switch (choice) {
-            case 1:
-                // pass
-                break;
-            case 2:
-                // leave table
-                leaveTable(klondikePlayer);
-                break;
-            default:
-                Console.println("Invalid Option");
-        }
-        return choice;
-    }*/
-
     public Double promptForBetAmount() {
         Console.println("Receive 2X your wager if you win!");
         Double betAmount = 0.0;
@@ -147,15 +129,12 @@ public KlondikeGameEngine(){
         switch (option) {
             case 1:
                 output = "play again";
-                //if(player.getWallet() != 0) {
                 KlondikeGameEngine kge = new KlondikeGameEngine(player);
                 kge.run();
-               /* } else {
-                }*/
                 break;
             default:
                 output = "leave table";
-                Casino casino = new Casino(player.getName(), player.getWallet());
+                new Casino(player.getName(), player.getWallet());
                 break;
         }
         return output;
