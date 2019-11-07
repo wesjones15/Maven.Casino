@@ -23,7 +23,20 @@ public class CrapsGameEngineTest {
     public void testDisplayCrapsMenu() {
         CrapsGameEngine cge = new CrapsGameEngine(new User("Wes", 2, 22, 24.44));
         String actual = cge.displayCrapsMenu();
-        String expected = "Welcome to Craps!";
+        String expected =
+                "                                                  \n" +
+                " @@@@@@@  @@@@@@@    @@@@@@   @@@@@@@    @@@@@@   \n" +
+                "@@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@   \n" +
+                "!@@       @@!  @@@  @@!  @@@  @@!  @@@  !@@       \n" +
+                "!@!       !@!  @!@  !@!  @!@  !@!  @!@  !@!       \n" +
+                "!@!       @!@!!@!   @!@!@!@!  @!@@!@!   !!@@!!    \n" +
+                "!!!       !!@!@!    !!!@!!!!  !!@!!!     !!@!!!   \n" +
+                ":!!       !!: :!!   !!:  !!!  !!:            !:!  \n" +
+                ":!:       :!:  !:!  :!:  !:!  :!:           !:!   \n" +
+                " ::: :::  ::   :::  ::   :::   ::       :::: ::   \n" +
+                " :: :: :   :   : :   :   : :   :        :: : :    \n" +
+                "                                                  \n" +
+                "\nWelcome to Craps!";
         Assert.assertEquals(expected, actual);
     }
 
