@@ -23,10 +23,14 @@ public class BlackJackGame {
     }
 
     public void displayBlackJackMenu() {
-        menuChoice(Console.getStringInput("\tWelcome to\n" + Art.bjTitle + "\n\n" + "\t\tType Your [SELECTION]\n\n" + "\t\t\t[DEAL] Hand\n" + "\t\t\t[VIEW] Rules\n" + "\t\t\t[LEAVE] Table\n" + "_________________________________________________"));
+        String choice = Console.getStringInput("\tWelcome to\n" + Art.bjSign + "\n\n" +
+                "\t\tType Your [SELECTION]\n\n" +
+                "\t\t\t[DEAL] Hand\n" + "\t\t\t[VIEW] Rules\n" +
+                "\t\t\t[LEAVE] Table\n" + "_________________________________________________");
+        menuChoice(choice);
         //string escape
     }
-    private String menuChoice(String choice) {
+    public String menuChoice(String choice) {
         String output;
         switch (choice.toUpperCase()) {
             case "DEAL":
@@ -49,7 +53,7 @@ public class BlackJackGame {
         return output;
     }
     public void run() {
-        Boolean dealerDone = false;
+        Boolean dealerDone;
         Boolean playerStand = false;
         Double betAmount = 0.00;
         if (chooseGameOption("Set bet") == 1) {
