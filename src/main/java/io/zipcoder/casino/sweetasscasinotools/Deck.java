@@ -38,7 +38,7 @@ public class Deck {
         Collections.shuffle(stack);
     }
 
-    public Integer getDeckSize(){
+    public Integer getDeckSize() {
         return stack.size();
     }
 

@@ -2,7 +2,7 @@ package io.zipcoder.casino.games.DiceGames.klondike;
 
 import io.zipcoder.casino.sweetasscasinotools.Dice;
 import io.zipcoder.casino.sweetasscasinotools.Die;
-import io.zipcoder.casino.utilities.Console;
+import io.zipcoder.casino.utilities.Rules;
 
 public class KlondikeGame {
 
@@ -91,20 +91,7 @@ public class KlondikeGame {
     }
 
     public static String displayKlondikeRules() {
-        String rules = "In Klondike Dice players need to roll better combination than banker to win.\n" +
-                "The banker rolls first and the player rolls and tries to beat banker’s combination.\n" +
-                "\n" +
-                "Combinations are ordered in sequence from highest to lowest as follows\n" +
-                "\n" +
-                "Five of a kind – All 5 dice showing the same number\n" +
-                "Four of a kind – 4 dice showing the same number\n" +
-                "Full house – 3 dice with one number and 2 dice showing another number\n" +
-                "Three of a kind – 4 dice showing the same number\n" +
-                "Two pairs – 2 dice pairs showing same number\n" +
-                "One pair – 2 dice showing same number\n" +
-                "A die not used in any combination is ignored. If players roll same combination as of banker, then they lose.\n" +
-                "They must roll a better combination to win. In case no one rolls a combination including the banker, then banker wins.";
-        Console.print(rules);
+        String rules = Rules.klondike;
         return rules;
     }
 }

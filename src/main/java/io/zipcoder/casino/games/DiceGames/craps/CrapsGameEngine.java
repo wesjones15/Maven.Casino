@@ -2,6 +2,7 @@ package io.zipcoder.casino.games.DiceGames.craps;
 
 import io.zipcoder.casino.sweetasscasinotools.Dice;
 import io.zipcoder.casino.userandplayer.User;
+import io.zipcoder.casino.utilities.Art;
 import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.UserDisplay;
@@ -74,7 +75,7 @@ public class CrapsGameEngine {
 
 
     public String displayCrapsMenu() {
-        String message = "Welcome to Craps!";
+        String message = Art.crapsSign+"\n\nWelcome to Craps!";
         Console.println(message);
         return message;
     }

@@ -23,7 +23,7 @@ public class Casino {
         Console.println(Art.minViableSign + "\n\n" + Art.casinoSign);
         Console.println("Welcome to the Minimum Viable Casino: Where we do the bare minimum!\n\n");
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
