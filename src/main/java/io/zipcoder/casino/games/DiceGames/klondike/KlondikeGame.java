@@ -1,39 +1,10 @@
 package io.zipcoder.casino.games.DiceGames.klondike;
 
-
 import io.zipcoder.casino.sweetasscasinotools.Dice;
 import io.zipcoder.casino.sweetasscasinotools.Die;
-import io.zipcoder.casino.userandplayer.User;
 import io.zipcoder.casino.utilities.Console;
 
 public class KlondikeGame {
-
-    /*private int numOfDie;
-    private int numOfFaces;
-    private Dice dice;
-    private User user;
-    private KlondikePlayer klondikePlayer;
-    private KlondikeDealer klondikeDealer;
-    private KlondikeGame klondikeGame;
-*/
-
-  /*  public KlondikeGame() {
-        this.numOfDie = 5;
-        this.numOfFaces = 6;
-        this.dice = new Dice(numOfDie, numOfFaces);
-    }*/
-
-    /*public KlondikeGame(User user) {
-        this.klondikePlayer = new KlondikePlayer(user.getName(), user.getWallet());
-        this.klondikeDealer = new KlondikeDealer();
-    }
-
-    public KlondikeGame(KlondikePlayer player) {
-        this.klondikePlayer = player;
-        this.klondikeDealer = new KlondikeDealer();
-    }*/
-
-    //pulling methods from gambling game and game interface
 
     public static Integer checkRollSequence(Integer[] faceValueCounts) {
         int winPoints;
@@ -51,6 +22,7 @@ public class KlondikeGame {
             winPoints = 0;
         return winPoints;
     }
+
     public static String printFaceValues(Integer[] dieFaceValues) {
         String result = "";
         for (Integer faceValue : dieFaceValues) {
@@ -59,15 +31,7 @@ public class KlondikeGame {
         return result;
     }
 
-    public static Dice dealerDieRoll() {
-        Dice dealerDice = new Dice(5, 6);
-        for (int i = 0; i < dealerDice.getDieArray().length; i++) {
-            dealerDice.getDie(i).roll();
-        }
-        return dealerDice;
-    }
-
-    public static Dice playerDieRoll() {
+    public static Dice dieRoll() {
         Dice playerDice = new Dice(5, 6);
         for (int i = 0; i < playerDice.getDieArray().length; i++) {
             playerDice.getDie(i).roll();
@@ -126,8 +90,8 @@ public class KlondikeGame {
         return getNumberOfOccurrences(faceValueCounts, 1) == 3;
     }
 
-    public static void displayKlondikeRules() {
-        Console.print("In Klondike Dice players need to roll better combination than banker to win.\n" +
+    public static String displayKlondikeRules() {
+        String rules = "In Klondike Dice players need to roll better combination than banker to win.\n" +
                 "The banker rolls first and the player rolls and tries to beat banker’s combination.\n" +
                 "\n" +
                 "Combinations are ordered in sequence from highest to lowest as follows\n" +
@@ -139,6 +103,8 @@ public class KlondikeGame {
                 "Two pairs – 2 dice pairs showing same number\n" +
                 "One pair – 2 dice showing same number\n" +
                 "A die not used in any combination is ignored. If players roll same combination as of banker, then they lose.\n" +
-                "They must roll a better combination to win. In case no one rolls a combination including the banker, then banker wins.");
+                "They must roll a better combination to win. In case no one rolls a combination including the banker, then banker wins.";
+        Console.print(rules);
+        return rules;
     }
 }
