@@ -1,13 +1,12 @@
 package io.zipcoder.casino.games.CardGames.gofish;
 
 import io.zipcoder.casino.sweetasscasinotools.Card;
+import io.zipcoder.casino.sweetasscasinotools.SortCards;
 import io.zipcoder.casino.userandplayer.User;
 import io.zipcoder.casino.utilities.Console;
 
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Stack;
+import java.util.*;
 
 public class GoFishPlayer {
 
@@ -19,7 +18,7 @@ public class GoFishPlayer {
         this.hand = new ArrayList<Card>();
     }
      public GoFishPlayer(){
-        this.hand = new ArrayList<Card>();
+        this.hand = new ArrayList<>();
     }
 
     // if card(s) are in  hand of this player
@@ -60,6 +59,7 @@ public class GoFishPlayer {
     //////ADD CARDS TO HAND////
      public void pickUpHand(Card beingDealt){
         this.hand.add(beingDealt);
+         hand.sort(new SortCards());
     }
 
     //GETTERS
@@ -75,6 +75,7 @@ public class GoFishPlayer {
     //////////////////////////////////////////////
      public void receiveCards(ArrayList<Card> cards){
         hand.addAll(cards);
+        hand.sort(new SortCards());
         removeFourOfAKind();
     }
 
