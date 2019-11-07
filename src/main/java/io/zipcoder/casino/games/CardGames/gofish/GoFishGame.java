@@ -39,9 +39,13 @@ public class GoFishGame {
     public String gameRules(){
 
         return "--> Go Fish Rules <--\n" +
-                "1 - Asking your opponent for a card.\n" +
-                "   Ask opponent for a card number from the ones in your hand.\n" +
-                "   if opponent has cards\n\n";
+                "   - Ask opponent for a card from the ones in your hand.\n" +
+                "   - if opponent has cards, He must pass all the cards requested\n" +
+                "   - If not, Draw a Card\n" +
+                "   - Repeat\n" +
+                "   - Game ends when a player reaches four stacks of four of a kind or \n" +
+                "     there are no more cards in the deck\n" +
+                "   - HAVE FUN!!\n\n";
     }
 
     public Integer getDeckSize(){

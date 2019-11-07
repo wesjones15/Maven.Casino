@@ -13,7 +13,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "--> " + face +" "+ suite;
+        return face +" "+ suite + " (value: " + value + ")";
     }
 
     public Integer getValue() {

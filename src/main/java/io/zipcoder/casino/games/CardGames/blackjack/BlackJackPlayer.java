@@ -25,10 +25,6 @@ public class BlackJackPlayer{
         // remove betAmount from wallet
     }
 
-    public Double getBetAmount() {
-        return this.betAmount;
-    }
-
     public void setBetAmount(Double betAmount) {
         this.betAmount = betAmount;
     }
