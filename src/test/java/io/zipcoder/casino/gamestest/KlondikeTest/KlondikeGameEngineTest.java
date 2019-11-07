@@ -1,5 +1,7 @@
-package io.zipcoder.casino.games.DiceGames.klondike;
+package io.zipcoder.casino.gamestest.KlondikeTest;
 
+import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGame;
+import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGameEngine;
 import io.zipcoder.casino.sweetasscasinotools.Dice;
 import io.zipcoder.casino.sweetasscasinotools.Die;
 import io.zipcoder.casino.userandplayer.User;
@@ -24,6 +26,7 @@ public class KlondikeGameEngineTest {
 
     @Test
     public void choiceFromKlondikeMenu() {
+
     }
 
     @Test
@@ -33,10 +36,6 @@ public class KlondikeGameEngineTest {
 
     @Test
     public void dealerDieRoll() {
-    }
-
-    @Test
-    public void playerDieRoll() {
     }
 
 
