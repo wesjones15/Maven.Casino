@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.Stack;
 
 public class DeckOfCards {
-    private final String[] suites = {"Clubs", "Diamonds", "Hearts", "Spades"};
-    private final String[] faces = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+    private final String[] suites = {"of Clubs", "of Diamonds", "of Hearts", "of Spades"};
+    private final String[] faces = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
     private final Integer[] values = {2,3,4,5,6,7,8,9,10,11,12,13,14};
     private Stack<Card> deck;
     //private ArrayList<Card> currentDeck;

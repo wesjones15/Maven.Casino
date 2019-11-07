@@ -4,6 +4,7 @@ package io.zipcoder.casino.games.CardGames.gofish;
 
 import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.sweetasscasinotools.DeckOfCards;
+import io.zipcoder.casino.sweetasscasinotools.SortCards;
 import io.zipcoder.casino.userandplayer.User;
 
 import io.zipcoder.casino.utilities.Casino;
@@ -58,6 +59,7 @@ public class GoFishGameEngine {
     public void gameOn(){
         dealHands();
         while(!checkWinner(goFishPlayer, goFishDealer)) {
+            goFishPlayer.getHand().sort(new SortCards());
             userTurn(goFishPlayer);
 
         }
@@ -119,6 +121,8 @@ public class GoFishGameEngine {
         }else{
             if (goFishGame.checkHand(goFishDealer.getHand(), askingCard)) {
                 goFishPlayer.receiveCards(goFishDealer.passCard(askingCard));
+                Console.println("\nYou asked for " +  askingCard + "\nopponent passes all " + askingCard.getFace() + "\n\n");
+
                 userTurn(goFishPlayer);
 
             } else {
@@ -166,8 +170,9 @@ public class GoFishGameEngine {
     }
 
     private Card askedCard(){
+
         int handSize = goFishDealer.getHand().size();
-        int randomCard = (int)(Math.random() * ((handSize - 1) + 1)) + 1;
+        int randomCard = (int)(Math.random() * handSize) + 1;
         return goFishDealer.getCard(randomCard);
 
     }
