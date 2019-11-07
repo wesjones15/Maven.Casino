@@ -1,11 +1,8 @@
 package io.zipcoder.casino.games.DiceGames.klondike;
 
-import io.zipcoder.casino.sweetasscasinotools.Dice;
-import io.zipcoder.casino.sweetasscasinotools.Die;
 import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.userandplayer.User;
-import io.zipcoder.casino.utilities.Rules;
 import io.zipcoder.casino.utilities.UserDisplay;
 
 
@@ -50,7 +47,6 @@ public class KlondikeGameEngine {
                 break;
             default:
                 Console.println("Invalid response!");
-                //displayKlondikeMenu();
                 optionChosen = "Re-route player to main Klondike menu";
                 break;
         }
@@ -125,7 +121,7 @@ public class KlondikeGameEngine {
                 break;
             default:
                 output = "leave table";
-                Casino casino = new Casino(player.getName(), player.getWallet());
+                new Casino(player.getName(), player.getWallet());
                 break;
         }
         return output;
