@@ -64,30 +64,18 @@ public class UserDisplay {
     }
 
     public static User createCasinoUser() {
-        String name = Console.getStringInput("name: ");
-        Integer age = validateAge();
-        Double wallet = validateWallet();
+        String name ;
+        Integer age;
+        Double wallet;
+        name = Console.getStringInput("Name: ");
+        do {
+            age = Console.getIntegerInput("Age(minimum age 18): ");
+        }while(age < 18);
+        do {
+            wallet = Console.getDoubleInput("Monies in your wallet: ");
+        }while(wallet < 0);
         return  new User(name, 2, age, wallet);
     }
-
-    public static Double validateWallet(){
-        Double wallet = Console.getDoubleInput("wallet: ");
-            if(wallet <= 0){
-                Console.println("Wallet must be greater than $0.00"); //
-                wallet = validateWallet();
-            }
-            return wallet;
-    }
-
-    public static Integer validateAge(){
-        Integer age = Console.getIntegerInput("age: ");
-        if(age < 18){
-            Console.println("Must be at least 18 to enter..");
-            UserDisplay.createCasinoUser();
-        }
-        return age;
-    }
-
 
 
     public  static String executeAction(int action) {
