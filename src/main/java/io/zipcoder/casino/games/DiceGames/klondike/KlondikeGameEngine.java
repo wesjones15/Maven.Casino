@@ -19,7 +19,7 @@ public class KlondikeGameEngine {
     }
 
     public Integer displayKlondikeMenu() {
-        Console.println("Welcome to Klondike!");
+        Console.println("Welcome to\n" + Art.klondikeSign);
         Integer choice = UserDisplay.displayOptions("Start New Game", "View Klondike Rules", "Leave Game");
         return choice;
     }
