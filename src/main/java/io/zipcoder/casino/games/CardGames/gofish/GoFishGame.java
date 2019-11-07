@@ -10,19 +10,19 @@ import java.util.Stack;
 public class GoFishGame {
 
     private Stack<Card> deck;
-    private Card card;
 
     public GoFishGame(Stack<Card> deck) {
         this.deck = deck;
     }
 
-    Card DealHands(){
-        if(deck.size() == 1){
+    public Card DealHands(){
+        if(deck.size() == 0){
             System.out.println("Deck Empty!");
         }
         return deck.pop();
     }
-    Boolean checkHand(ArrayList<Card> hand, Card requested) {
+
+    public Boolean checkHand(ArrayList<Card> hand, Card requested) {
         for(Card each: hand){
             if(requested.getValue().equals(each.getValue())){
                 return true;
@@ -30,13 +30,13 @@ public class GoFishGame {
         }
         return false;
     }
-    Stack<Card> getDeck() {
+    public Stack<Card> getDeck() {
         return deck;
     }
 
     ///DISPLAY GAME RULES///
     ////////////////////////
-    String gameRules(){
+    public String gameRules(){
 
         return "--> Go Fish Rules <--\n" +
                 "1 - Asking your opponent for a card.\n" +
