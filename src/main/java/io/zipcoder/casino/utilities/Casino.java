@@ -44,15 +44,5 @@ public class Casino {
         UserDisplay.chooseGame(gameAction, user);
 
     }
-
-    public static void printDashes() {
-        repeatPrint(80, "-");
-        println("");
-    }
-
-    private static void repeatPrint(int i, String s) {
-    }
-
-    private static void println(String s) {
-    }
+    
 }
