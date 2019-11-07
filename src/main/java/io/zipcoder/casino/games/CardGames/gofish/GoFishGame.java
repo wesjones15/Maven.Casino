@@ -2,6 +2,7 @@ package io.zipcoder.casino.games.CardGames.gofish;
 
 import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.userandplayer.User;
+import io.zipcoder.casino.utilities.Rules;
 
 
 import java.util.ArrayList;
@@ -38,14 +39,7 @@ public class GoFishGame {
     ////////////////////////
     public String gameRules(){
 
-        return "--> Go Fish Rules <--\n" +
-                "   - Ask opponent for a card from the ones in your hand.\n" +
-                "   - if opponent has cards, He must pass all the cards requested\n" +
-                "   - If not, Draw a Card\n" +
-                "   - Repeat\n" +
-                "   - Game ends when a player reaches four stacks of four of a kind or \n" +
-                "     there are no more cards in the deck\n" +
-                "   - HAVE FUN!!\n\n";
+        return Rules.goFish;
     }
 
     public Integer getDeckSize(){
