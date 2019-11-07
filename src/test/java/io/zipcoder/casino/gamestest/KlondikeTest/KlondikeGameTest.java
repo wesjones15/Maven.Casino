@@ -1,5 +1,6 @@
-package io.zipcoder.casino.games.DiceGames.klondike;
+package io.zipcoder.casino.gamestest.KlondikeTest;
 
+import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGame;
 import io.zipcoder.casino.userandplayer.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
 public class KlondikeGameTest {
 
     @Test
-    public void checkRollSequence() {
+    public void playerDieRoll() {
     }
 
     @Test
@@ -23,7 +24,7 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void getNumberOfOccurrences() {
+    public void getNumberOfOccurrencesTest() {
         // Given
         Integer[] faceValues = {2, 4, 3, 3, 6};
         Integer value = 3;
@@ -38,7 +39,7 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void faceValueCount() {
+    public void faceValueCountTest() {
         // Given
         Integer[] faceValues = {2, 4, 1, 2, 5};
         Integer[] expected2 = {2, 1, 1, 2, 1};
@@ -52,7 +53,7 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void isFiveOfAKind() {
+    public void isFiveOfAKindTest() {
         // Given
         Integer[] counts = {5, 5, 5, 5, 5};
 
@@ -64,7 +65,7 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void isFourOfAKind() {
+    public void isFourOfAKindTest() {
         // Given
         Integer[] counts1 = {4, 4, 4, 4, 1};
         Integer[] counts2 = {1, 4, 4, 4, 4};
@@ -89,7 +90,7 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void isFullHouse() {
+    public void isFullHouseTest() {
         // Given
         Integer[] counts1 = {3, 3, 3, 2, 2};
         Integer[] counts2 = {2, 3, 3, 3, 2};
@@ -108,7 +109,7 @@ public class KlondikeGameTest {
 
 
     @Test
-    public void isThreeOfAKind() {
+    public void isThreeOfAKindTest() {
         // Given
         Integer[] counts1 = {3, 3, 3, 1, 1};
         Integer[] counts2 = {1, 3, 3, 3, 1};
@@ -126,7 +127,7 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void isTwoPair() {
+    public void isTwoPairTest() {
         // Given
         Integer[] counts1 = {2, 2, 1, 2, 2};
         Integer[] counts2 = {2, 2, 2, 2, 1};
@@ -144,7 +145,7 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void isOnePair() {
+    public void isOnePairTest() {
         // Given
         Integer[] counts1 = {2, 1, 2, 1, 1};
         Integer[] counts2 = {1, 2, 2, 1, 1};
@@ -161,7 +162,7 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void getRollSequence() {
+    public void checkRollSequenceTest() {
         // Given
         Integer[] counts1 = {2, 1, 2, 1, 1};
         Integer[] counts2 = {1, 2, 2, 1, 1};
