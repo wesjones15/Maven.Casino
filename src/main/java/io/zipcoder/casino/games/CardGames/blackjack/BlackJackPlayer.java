@@ -49,14 +49,10 @@ public class BlackJackPlayer{
         this.hand = new Hand();
     }
 
-    public Integer rollDice() {
-        return null;
-    }
-
     public Boolean placeBet(Double betAmount) {
         Boolean success = false;
-        if (verifyValidBetAmount()) {
-            this.wallet -= betAmount;
+        if (verifyValidBetAmount(betAmount)) {
+            decrementWallet(betAmount);
             success = true;
         }
         return success;
@@ -71,12 +67,15 @@ public class BlackJackPlayer{
         this.betAmount = betAmount;
     }
 
-    public Boolean verifyValidBetAmount() {
-        return (this.betAmount <= this.wallet);
+    public Boolean verifyValidBetAmount(Double betAmount) {
+        return (betAmount <= this.wallet);
     }
 
     public void incrementWallet(Double amount) {
         this.wallet += amount;
+    }
+    public void decrementWallet(Double amount) {
+        this.wallet -= amount;
     }
 
     public String getName() {

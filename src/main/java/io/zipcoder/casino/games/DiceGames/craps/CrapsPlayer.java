@@ -10,10 +10,6 @@ public class CrapsPlayer {
         this.wallet = wallet;
     }
 
-//    public Integer rollDice() {
-//        return null;
-//    }
-
     public Boolean placeBet(Double betAmount) {
         Boolean success = false;
         if (verifyValidBetAmount(betAmount)) {

@@ -1,4 +1,4 @@
-package io.zipcoder.casino.gamestest.CrapsTest;
+package io.zipcoder.casino.gamestest.craps;
 
 import io.zipcoder.casino.games.DiceGames.craps.CrapsPlayer;
 import org.junit.Assert;

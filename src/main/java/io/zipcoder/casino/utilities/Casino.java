@@ -21,7 +21,13 @@ public class Casino {
     }
 
     public void userStart(){
-        Console.println("Welcome to the great 4 Casino!");
+        Console.println("Welcome to the Minimum Viable Casino: Where we do the bare minimum!\n\n");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Console.println("Let's start with a few questions...");
 //        UserDisplay.run();
         User user = UserDisplay.createCasinoUser();
 
@@ -30,9 +36,13 @@ public class Casino {
     }
 
     public void casinoStart(User user){
+        Console.clear();
+        Console.clear();
         Console.println("Welcome, %s! You have $%.2f", user.getName(), user.getWallet());
         int gameAction = UserDisplay.displayOptions("Go Fish", "Black Jack", "Klondike", "Craps", "Exit Casino");
+        Console.clear();
         UserDisplay.chooseGame(gameAction, user);
+
     }
 
     public static void printDashes() {

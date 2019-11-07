@@ -42,7 +42,6 @@ public class BlackJackDealer extends BlackJackPlayer {
     }
 
     public void deal(BlackJackPlayer player) {
-        Console.println("The dealer hands a card to player");
         Card card = deck.removeTopCard();
         player.acceptCard(card);
     }
