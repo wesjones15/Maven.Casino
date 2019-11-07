@@ -1,5 +1,6 @@
 package io.zipcoder.casino.utilities;
 
+import io.zipcoder.casino.games.CardGames.blackjack.BlackJackGame;
 import io.zipcoder.casino.games.CardGames.blackjack.BlackJackGameEngine;
 import io.zipcoder.casino.games.CardGames.gofish.GoFishGameEngine;
 import io.zipcoder.casino.games.DiceGames.craps.CrapsGameEngine;

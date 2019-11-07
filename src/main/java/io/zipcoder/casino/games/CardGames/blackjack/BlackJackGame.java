@@ -1,52 +1,5 @@
 package io.zipcoder.casino.games.CardGames.blackjack;
 
-
-//public class BlackJackGame {
-//    private Stack<Card> deck;
-//    private Card card;
-//
-//
-//    public BlackJackGame(Stack<Card> deck) {this.deck = deck;
-//    }
-//    public Card DealHands(){
-//        if(deck.size() == 0){
-//            System.out.println("Deck Empty!");
-//        }
-//        return deck.pop();
-//    }
-//
-//    public static void showGameRules() {
-//    }
-//
-//    public Stack<Card> getDeck() {
-//        return deck;
-//    }
-//
-//    public void shuffle() {
-//
-//    }
-//
-//    public String playerMove() {
-//        return null;
-//    }
-//
-//    public String dealerMove() {
-//        return null;
-//    }
-//
-//    public Boolean getWinner() {
-//        return null;
-//    }
-//
-//    public Boolean getLoser() {
-//        return null;
-//    }
-//
-//
-//
-//    //pulling methods from gambling game and game interface
-
-
 import io.zipcoder.casino.games.CardGames.Hand;
 import io.zipcoder.casino.sweetasscasinotools.Deck;
 import io.zipcoder.casino.userandplayer.User;
@@ -64,36 +17,11 @@ public class BlackJackGame {
         this.blackJackDealer = new BlackJackDealer();
         this.player = new BlackJackPlayer(user.getName(), user.getWallet());
         this.deck = new Deck();
-        displayBlackJackMenu();
     }
     public BlackJackGame(BlackJackPlayer player) {
         this.blackJackDealer = new BlackJackDealer();
-//        this.blackJackPlayer = player;
-        this.player = new BlackJackPlayer(player.getName(), player.getWallet());
-        displayBlackJackMenu();
+        this.player = player;
     }
-    //BlackJack Menu & Choices//5
-//    public void displayBlackJackMenu() {
-//        menuChoice(Console.getIntegerInput( " ___________________________\r\n|\tWelcome to BlackJack!\t|\r\n|\t\t\t\t\t\t\t|\r\n|\t\t1. Deal Hand\t\t|\r\n|\t\t2. View Rules\t\t|\r\n|\t\t3. Leave Table\t\t|\r\n|___________________________|"));
-//     //string escape
-//    }
-//Console.println(" ___________________________\r\n|\tWelcome to BlackJack!\t|\r\n|\t\t\t\t\t\t\t|\r\n|\t\t[DEAL] Hand\t\t|\r\n|\t\t[VIEW] Rules\t\t|\r\n|\t\t[LEAVE] Table\t\t|\r\n|___________________________");
-//    private void menuChoice(Integer choice) {
-//        switch(choice){
-//            case 1:
-//                runGame();
-//                break;
-//            case 2:
-//                BlackJackGame.showGameRules();
-//                displayBlackJackMenu();
-//            case 3:
-//                leaveTable();
-//                break;
-//            default:
-//                Console.println("Invalid input, try again!");
-//        }
-//    }
-    //BlackJack Menu &Choices
 
     public void displayBlackJackMenu() {
         menuChoice(Console.getStringInput(" ___________________________\r\n|\tWelcome to BlackJack!\t|\r\n|\t\t\t\t\t\t\t|\r\n|\t\t[DEAL] Hand\t\t\t|\r\n|\t\t[VIEW] Rules\t\t|\r\n|\t\t[LEAVE] Table\t\t|\r\n|___________________________|"));
@@ -203,7 +131,21 @@ public class BlackJackGame {
     }
 
     private static void showGameRules() {
-
+        Console.println("\n\n\nBlackJack Rules!\n");
+        Console.println("Each player starts with two cards.");
+        Console.println("Each card holds a value 1 - 10.");
+        Console.println("J, Q, K cards hold a value of 10.");
+        Console.println("Each card value is added together to set your overall total");
+        Console.println("To [HIT]] is to ask for another card to increase your overall total.");
+        Console.println("To [STAND] is to hold your total and end your turn.");
+        Console.println("If you go over 21 you BUST, and the dealer wins");
+        Console.println("If you and the dealer have matching overall totals, dealer wins.");
+        Console.println("To win, you must have a higher overall score than the dealer.\n");
+        try {
+            Thread.sleep(8000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     public Integer chooseGameOption(String option) {
         Integer choice = UserDisplay.displayOptions(option, "Leave table");

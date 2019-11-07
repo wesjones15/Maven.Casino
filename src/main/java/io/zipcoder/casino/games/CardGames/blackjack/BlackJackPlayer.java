@@ -4,39 +4,6 @@ package io.zipcoder.casino.games.CardGames.blackjack;
 import io.zipcoder.casino.games.CardGames.Hand;
 import io.zipcoder.casino.sweetasscasinotools.Card;
 
-//
-//import io.zipcoder.casino.games.CardGames.CardPlayer;
-//import io.zipcoder.casino.userandplayer.User;
-//
-//public class BlackJackPlayer extends CardPlayer {
-//    private boolean isFinished;
-//    private Double bet;
-//
-//    public BlackJackPlayer(User profile) {
-//        super(profile);
-//    }
-//
-//    public void loseBet() {
-//        Double currentBalance = super.user.getWallet();
-//        super.user.setWallet(currentBalance - bet);
-//    }
-//
-//    public void winBet() {
-//        Double currentBalance = super.user.getWallet();
-//        super.user.setWallet(currentBalance + bet);
-//    }
-//
-//    public Double getBet() {
-//        return bet;
-//    }
-//
-//    public void setBet(Double bet) {
-//        this.bet = bet;
-//    }
-//
-//    public Double getBalance() {
-//        return user.getWallet();
-//    }
 public class BlackJackPlayer{
     private String name;
     private Double wallet;
@@ -74,6 +41,7 @@ public class BlackJackPlayer{
     public void incrementWallet(Double amount) {
         this.wallet += amount;
     }
+
     public void decrementWallet(Double amount) {
         this.wallet -= amount;
     }
@@ -81,6 +49,7 @@ public class BlackJackPlayer{
     public String getName() {
         return this.name;
     }
+
     public void setName(String name) {
         this.name = name;
     }

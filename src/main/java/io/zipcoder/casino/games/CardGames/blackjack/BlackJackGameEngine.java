@@ -109,6 +109,7 @@ public class BlackJackGameEngine {
     private BlackJackDealer blackJackDealer;
     private BlackJackPlayer blackJackPlayer;
 
+
     public BlackJackGameEngine(User user) {
         this.blackJackDealer = new BlackJackDealer();
         this.blackJackPlayer = new BlackJackPlayer(user.getName(), user.getWallet());
@@ -117,7 +118,9 @@ public class BlackJackGameEngine {
 
     public void runGame() {
         BlackJackGame game = new BlackJackGame(blackJackPlayer);
+        game.displayBlackJackMenu();
         game.run();
     }
+
 }
 
