@@ -133,10 +133,10 @@ public class BlackJackGame {
     private static void showGameRules() {
         Console.println("\n\n\nBlackJack Rules!\n");
         Console.println("Each player starts with two cards.");
-        Console.println("Each card holds a value 1 - 10.");
+        Console.println("Each card holds a value between 1 - 10.");
         Console.println("J, Q, K cards hold a value of 10.");
         Console.println("Each card value is added together to set your overall total");
-        Console.println("To [HIT]] is to ask for another card to increase your overall total.");
+        Console.println("To [HIT] is to ask for another card to increase your overall total.");
         Console.println("To [STAND] is to hold your total and end your turn.");
         Console.println("If you go over 21 you BUST, and the dealer wins");
         Console.println("If you and the dealer have matching overall totals, dealer wins.");
