@@ -13,12 +13,14 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card[" +
-                "suite = " + suite  +
-                ", face = " + face  + "]  " + value;
+        return "--> " + face +" "+ suite;
     }
 
     public Integer getValue() {
         return value;
+    }
+
+    public String getFace(){
+        return face;
     }
 }

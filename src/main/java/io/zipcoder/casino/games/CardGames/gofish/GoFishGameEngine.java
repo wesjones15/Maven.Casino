@@ -1,5 +1,7 @@
 package io.zipcoder.casino.games.CardGames.gofish;
 
+
+
 import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.sweetasscasinotools.DeckOfCards;
 import io.zipcoder.casino.userandplayer.User;
@@ -57,6 +59,7 @@ public class GoFishGameEngine {
         dealHands();
         while(!checkWinner(goFishPlayer, goFishDealer)) {
             userTurn(goFishPlayer);
+
         }
         GoFishGameEngine gofish = new GoFishGameEngine(this.user);
         gofish.displayGoFishMenu();
@@ -99,7 +102,7 @@ public class GoFishGameEngine {
         try{
             passOrDraw(Console.getIntegerInput(user.showHand()));
         }catch(IndexOutOfBoundsException e){
-            Console.println("Please Choose again:\n");
+            Console.println("Please Choose again:\n" );
             userTurn(user);
         }
 
@@ -117,20 +120,34 @@ public class GoFishGameEngine {
             if (goFishGame.checkHand(goFishDealer.getHand(), askingCard)) {
                 goFishPlayer.receiveCards(goFishDealer.passCard(askingCard));
                 userTurn(goFishPlayer);
+
             } else {
                 goFishPlayer.draw(goFishGame.getDeck());
+                Console.println("\n\nYou draw " + goFishPlayer.getHand().get(goFishPlayer.getHand().size() - 1) + "\n\n");
                 ///Starts dealers turn
                 dealerTurn();
             }
         }
     }
 
-
+//    public void passItOrDrawIt(GoFishPlayer passing, GoFishPlayer receiving){
+//        Card card = askedCard();
+//
+//        if(goFishGame.getDeckSize() == 0){
+//            if(checkWinner(this.goFishPlayer, this.goFishDealer)){
+//                GoFishGameEngine goFish = new GoFishGameEngine(this.user);
+//                goFish.displayGoFishMenu();
+//            }
+//        }
+//        else{
+//            if(goFishGame.checkHand())
+//        }
+//    }
     //////DEALERS TURN
     private void dealerTurn(){
         Card card = askedCard();
 
-        if(goFishGame.getDeckSize() == 1) {
+        if(goFishGame.getDeckSize() == 0) {
             if (checkWinner(goFishPlayer, goFishDealer)) {
                 GoFishGameEngine gfge = new GoFishGameEngine(this.user);
                 gfge.displayGoFishMenu();
@@ -138,9 +155,13 @@ public class GoFishGameEngine {
         }else{
             if(goFishGame.checkHand(goFishPlayer.getHand(), card)){
                 goFishDealer.receiveCards(goFishPlayer.passCard(card));
+                Console.println("\nOpponent asked for " +  card + "\nYou pass all " + card.getFace() + "\n\n");
                 dealerTurn();
-            }else
+            }else{
                 goFishDealer.draw(goFishGame.getDeck());
+                Console.println("\nOpponent asked for " +  card + "\nOpponent draws\n\n");
+            }
+
         }
     }
 

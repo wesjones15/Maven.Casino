@@ -2,6 +2,7 @@ package io.zipcoder.casino.games.CardGames.gofish;
 
 import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.userandplayer.User;
+import io.zipcoder.casino.utilities.Console;
 
 
 import java.util.ArrayList;
@@ -126,6 +127,7 @@ public class GoFishPlayer {
             displayHand +=  counter + " : "+ each + "\n";
             counter++;
         }
+        Console.delay(500);
         displayHand += "\nChoose a card to request:";
         return displayHand;
     }

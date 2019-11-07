@@ -58,6 +58,7 @@ public final class Console {
         }
     }
 
+
     public static Long getLongInput(String prompt, Object... args) {
         String stringInput = getStringInput(prompt, args);
         try {
@@ -67,6 +68,7 @@ public final class Console {
             println("[ %s ] is an invalid user input!", stringInput);
             println("Try inputting an integer value!");
             return getLongInput(prompt, args);
+
         }
     }
 
@@ -80,5 +82,14 @@ public final class Console {
     public static void clear() {
         print("\n\n\n\n\n");
     }
+
+    public static void delay(int millis){
+        try{
+            Thread.sleep(millis);
+        }catch(InterruptedException e){
+
+        }
+    }
+
 }
 
