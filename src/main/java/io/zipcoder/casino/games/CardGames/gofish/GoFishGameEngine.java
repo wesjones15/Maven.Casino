@@ -71,7 +71,7 @@ public class GoFishGameEngine {
     ////RUN GAME METHODS///
     ///////////////////////
 
-    private void dealHands(){
+    public void dealHands(){
         for(int i = 0; i < 7; i++){
             //dealing cards to player and dealer
             goFishPlayer.pickUpHand(goFishGame.DealHands());
@@ -168,4 +168,11 @@ public class GoFishGameEngine {
         new Casino(user.getName(), user.getWallet());
     }
 
+    //Testing methods
+    public User getUser(){
+        return user;
+    }
+    public GoFishPlayer getGoFishPlayer(){
+        return goFishPlayer;
+    }
 }
