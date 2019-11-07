@@ -14,7 +14,9 @@ public class KlondikeGameEngine {
     private KlondikePlayer klondikePlayer;
     private KlondikeDealer klondikeDealer;
 
+public KlondikeGameEngine(){
 
+}
     public KlondikeGameEngine(User user) {
         this.klondikePlayer = new KlondikePlayer(user.getName(), user.getWallet());
         this.klondikeDealer = new KlondikeDealer();
@@ -39,8 +41,7 @@ public class KlondikeGameEngine {
                 if (klondikePlayer.getWallet() > 0) {
                     playKlondike();
                     optionChosen = "Start Klondike Game";
-                }
-                else {
+                } else {
                     Console.print("You do not have enough money for the minimum bet of $0.01!\n");
                     leaveTable(klondikePlayer);
                 }
@@ -71,11 +72,8 @@ public class KlondikeGameEngine {
     public void playKlondike() {
         Integer[] playerCounts;
         Integer[] dealerCounts;
-//        Double betAmount = 0.0;
 
-//        if (chooseGameOption("Set bet") == 1) {
         Double betAmount = promptForBetAmount();
-//        }
 
         Console.getStringInput("Press enter to roll");
 
@@ -83,21 +81,22 @@ public class KlondikeGameEngine {
         Integer[] dealerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
         Console.println("Dealer Roll:");
         Console.println(KlondikeGame.printFaceValues(dealerFaceValues) + '\n');
-        dealerCounts = KlondikeGame.faceValueCount(dealerFaceValues);
+        //dealerCounts = KlondikeGame.faceValueCount(dealerFaceValues);
 
         // Player Roll
         Integer[] playerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
         Console.println("Player Roll:");
         Console.println(KlondikeGame.printFaceValues(playerFaceValues) + '\n');
-        playerCounts = KlondikeGame.faceValueCount(playerFaceValues);
+       // playerCounts = KlondikeGame.faceValueCount(playerFaceValues);
 
         // Display winner
-        String winPerson = getWinner(dealerCounts, playerCounts);
+        //String winPerson = getWinner(dealerCounts, playerCounts);
+        String winPerson = getWinner(KlondikeGame.faceValueCount(dealerFaceValues),KlondikeGame.faceValueCount(playerFaceValues));
         Console.println(winPerson);
 
         //compare rolls and getWinner
         if (winPerson.contains("Player")) {
-            Double payout = betAmount*2;
+            Double payout = betAmount * 2;
             klondikePlayer.incrementWallet(payout);
             Console.println("You won $%.2f", payout);
         }
@@ -112,7 +111,8 @@ public class KlondikeGameEngine {
             winner = "Player Wins!\n";
         return winner;
     }
-    public Integer chooseGameOption(String option) {
+
+/*    public Integer chooseGameOption(String option) {
         Integer choice = UserDisplay.displayOptions(option, "Leave table");
         switch (choice) {
             case 1:
@@ -126,14 +126,13 @@ public class KlondikeGameEngine {
                 Console.println("Invalid Option");
         }
         return choice;
-    }
+    }*/
 
     public Double promptForBetAmount() {
         Console.println("Receive 2X your wager if you win!");
         Double betAmount = 0.0;
         do {
             betAmount = Console.getDoubleInput("Enter your bet: ");
-//            klondikePlayer.setBetAmount(betAmount);
         } while (!klondikePlayer.verifyValidBetAmount(betAmount));
         klondikePlayer.placeBet(betAmount);
         Console.println("You are wagering $%.2f", betAmount);
@@ -145,12 +144,12 @@ public class KlondikeGameEngine {
         Console.println("Do you want to leave the table?");
         Integer option = UserDisplay.displayOptions("No, play again", "Yes, leave table");
         String output;
-        switch(option) {
+        switch (option) {
             case 1:
                 output = "play again";
                 //if(player.getWallet() != 0) {
-                    KlondikeGameEngine kge = new KlondikeGameEngine(player);
-                    kge.run();
+                KlondikeGameEngine kge = new KlondikeGameEngine(player);
+                kge.run();
                /* } else {
                 }*/
                 break;
