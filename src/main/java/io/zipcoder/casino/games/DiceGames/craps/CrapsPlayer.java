@@ -4,17 +4,11 @@ public class CrapsPlayer {
     private String name;
     private Double wallet;
     private Double betAmount;
-    private Integer rollValue;
-
 
     public CrapsPlayer(String name, Double wallet) {
         this.name = name;
         this.wallet = wallet;
     }
-
-//    public Integer rollDice() {
-//        return null;
-//    }
 
     public Boolean placeBet(Double betAmount) {
         Boolean success = false;
@@ -54,13 +48,5 @@ public class CrapsPlayer {
 
     public Double getWallet() {
         return this.wallet;
-    }
-
-    public Integer getRollValue() {
-        return this.rollValue;
-    }
-
-    public void setRollValue(Integer rollValue) {
-        this.rollValue = rollValue;
     }
 }

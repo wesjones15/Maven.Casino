@@ -32,23 +32,28 @@ public class CrapsGameEngine {
     }
 
     public void run() {
-        Boolean continueCraps;
         Double betAmount = 0.00;
         Integer rollValue;
 
         displayCrapsMenu();
 
-        Integer choice = UserDisplay.displayOptions("Start Game", "Leave Table", "Show Rules");
-        continueCraps = executeMenuChoice(choice);
+        Integer choice = UserDisplay.displayOptions("Start Game", "Leave Table", "Show Rules"); // user input
+        Boolean continueCraps = executeMenuChoice(choice);
 
-        if (continueCraps) betAmount = promptUserForBetAmount();
+        if (continueCraps) {
+            betAmount = promptUserForBetAmount(); // user input
+            displayBetInfo(betAmount, crapsPlayer.getWallet());
+        }
 
         while(continueCraps) {
             continueCraps = false;
 
             displayRollsAndBetAmount(winRolls, loseRolls, betAmount);
 
-            choice = chooseGameOption("Roll dice");
+//            chooseGameOption("Roll dice");
+//            rollValue = dice.rollAndSum();
+
+            choice = chooseGameOption("Roll dice"); // user input
             rollValue = executeDiceRoll(choice);
             displayDiceRoll(rollValue);
 
@@ -63,7 +68,7 @@ public class CrapsGameEngine {
                 if (outcome == 1) payOutRewardToPlayer(crapsPlayer.getBetAmount());
             }
         }
-        leaveTable(crapsPlayer);
+        leaveTable(crapsPlayer); // user input
     }
 
 
@@ -85,7 +90,7 @@ public class CrapsGameEngine {
                 break;
             case 3:     // show rules
                 CrapsGame.showGameRules();
-                continueCraps = true;
+//                continueCraps = true;
                 run();
                 break;
         }
@@ -113,15 +118,6 @@ public class CrapsGameEngine {
         return output.toString();
     }
 
-//    public void playerWin(Integer outcome) {
-//        payOutRewardToPlayer(crapsPlayer.getBetAmount());
-//        generalGameEnd(outcome, crapsPlayer.getWallet());
-//    }
-//
-//    public void playerLose(Integer outcome) {
-//        generalGameEnd(outcome, crapsPlayer.getWallet());
-//    }
-
     public Double payOutRewardToPlayer(Double betAmount) {
         Double reward = betAmount * 2;
         Console.println("You received $%.2f", reward);
@@ -135,7 +131,6 @@ public class CrapsGameEngine {
         for (int i = 0; i < rollValues.length; i++) {
             message.append("\t"+rollValues[i]);
         }
-//        Console.println(message.toString());
         return message.toString();
     }
 
@@ -155,15 +150,20 @@ public class CrapsGameEngine {
 
     public Double promptUserForBetAmount() {
         Console.println("Receive 2X your wager if you win!");
-        Double betAmount = 0.0;
+        Double betAmount;
         do {
             betAmount = Console.getDoubleInput("Enter your bet: ");
-            crapsPlayer.setBetAmount(betAmount);
         } while (!crapsPlayer.verifyValidBetAmount(betAmount));
         crapsPlayer.placeBet(betAmount);
-        Console.println("You are wagering $%.2f", betAmount);
-        Console.println("Your remaining balance is $%.2f\n", crapsPlayer.getWallet());
         return betAmount;
+    }
+
+    public String displayBetInfo(Double betAmount, Double wallet) {
+        StringBuilder message = new StringBuilder();
+        message.append(String.format("You are wagering $%.2f\n", betAmount));
+        message.append(String.format("Your remaining balance is $%.2f\n", wallet));
+        Console.println(message.toString());
+        return message.toString();
     }
 
     public Integer executeDiceRoll(Integer choice) {
@@ -180,7 +180,7 @@ public class CrapsGameEngine {
         return message;
     }
 
-    public String leaveTable(CrapsPlayer player) {
+    public String leaveTable(CrapsPlayer player) { //   not testable unless rewritten due to input and dispatch
         Console.println("Do you want to leave the table?");
         Integer option = UserDisplay.displayOptions("No, play again", "Yes, leave table");
         String output;
@@ -188,7 +188,6 @@ public class CrapsGameEngine {
             case 1:
                 output = "play again";
                 CrapsGameEngine cge = new CrapsGameEngine(player);
-//                cge.displayCrapsMenu();
                 cge.run();
                 break;
             default:

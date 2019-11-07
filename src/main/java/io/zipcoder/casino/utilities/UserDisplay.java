@@ -60,8 +60,6 @@ public class UserDisplay {
         User user = createCasinoUser();
         int action = displayOptions("create new user", "login", "exit");
         executeAction(action);
-
-
     }
 
     public static User createCasinoUser() {
