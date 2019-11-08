@@ -166,5 +166,14 @@ public class GoFishPlayerTest {
 
         Assert.assertEquals(expected, goFishPlayer.sizeOfHand());
     }
+    @Test
+    public void showHand_Test(){
+        GoFishPlayer goFishPlayer = new GoFishPlayer();
+        goFishPlayer.draw(new DeckOfCards().createDeckOfCards());
+
+        String handString = goFishPlayer.showHand();
+
+        Assert.assertEquals(handString, goFishPlayer.showHand());
+    }
 
 }
