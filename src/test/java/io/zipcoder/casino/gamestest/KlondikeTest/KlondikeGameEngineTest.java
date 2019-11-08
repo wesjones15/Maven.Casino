@@ -5,6 +5,7 @@ import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGameEngine;
 import io.zipcoder.casino.sweetasscasinotools.Dice;
 import io.zipcoder.casino.sweetasscasinotools.Die;
 import io.zipcoder.casino.userandplayer.User;
+import io.zipcoder.casino.utilities.Art;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -28,11 +29,10 @@ public class KlondikeGameEngineTest {
 
     @Test
     public void displayKlondikeMenu() {
-        String expected = "Welcome to\n";// + Art.klondikeSign;
+        String expected = "Welcome to\n" + Art.klondikeSign;
         KlondikeGameEngine kge = new KlondikeGameEngine(new User("KH", 1, 24, 200.0));
         String actual = kge.displayKlondikeMenu();
         Assert.assertEquals(expected, actual);
-
     }
 
     @Test
