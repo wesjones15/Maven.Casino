@@ -228,4 +228,12 @@ public class KlondikeGameTest {
         Assert.assertTrue(actual2);
         Assert.assertFalse(actual3);
     }
+
+    @Test
+    public void printFaceValues() {
+        Integer [] dieFaceValues = {1,2,3,4,5,};
+        String expected = "  1  2  3  4  5";
+        String actual = KlondikeGame.printFaceValues(dieFaceValues);
+        Assert.assertEquals(expected,actual);
+    }
 }
