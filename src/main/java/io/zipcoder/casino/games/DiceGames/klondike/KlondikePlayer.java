@@ -33,9 +33,9 @@ public class KlondikePlayer {
     public String getName() {
         return this.name;
     }
-    public void setName(String name) {
+    /*public void setName(String name) {
         this.name = name;
-    }
+    }*/
 
     public Double getWallet() {
         return this.wallet;
