@@ -1,4 +1,4 @@
-package io.zipcoder.casino.gamestest.GoFishTest;
+package io.zipcoder.casino.games.GoFishTest;
 
 import io.zipcoder.casino.games.CardGames.gofish.GoFishGame;
 import io.zipcoder.casino.sweetasscasinotools.Card;

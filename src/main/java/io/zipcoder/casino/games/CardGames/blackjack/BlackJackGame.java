@@ -11,15 +11,21 @@ public class BlackJackGame {
     private Deck deck;
 
 
-    public BlackJackGame(User user){
-        this.blackJackDealer = new BlackJackDealer();
-        this.player = new BlackJackPlayer(user.getName(), user.getWallet());
-        this.deck = new Deck();
+    public BlackJackGame(BlackJackDealer blackJackDealer, BlackJackPlayer player, Deck deck) {
+        this.blackJackDealer = blackJackDealer;
+        this.player = player;
+        this.deck = deck;
     }
-    public BlackJackGame(BlackJackPlayer player) {
+
+    public BlackJackGame(User user) {
+        this(new BlackJackDealer(), new BlackJackPlayer(user), new Deck());
+    }
+
+    public BlackJackGame(String name, Double wallet) {
+        this.player = new BlackJackPlayer(name, wallet);
         this.blackJackDealer = new BlackJackDealer();
-        this.player = new BlackJackPlayer(player.getName(), player.getWallet());
         this.deck = new Deck();
+//        this(new BlackJackDealer(), player, new Deck());
     }
 
     public void displayBlackJackMenu() {
@@ -30,27 +36,21 @@ public class BlackJackGame {
         menuChoice(choice);
         //string escape
     }
-    public String menuChoice(String choice) {
-        String output;
+    public void menuChoice(String choice) {
         switch (choice.toUpperCase()) {
             case "DEAL":
-                output = "deal cards to begin game";
                 run();
                 break;
             case "VIEW":
-                output = "display rules";
                 BlackJackGame.showGameRules();
                 displayBlackJackMenu();
             case "LEAVE":
-                output = "leave table";
-//                leaveTable(blackJackPlayer);
                 leaveTable(player);
                 break;
             default:
-                output = "invalid response";
                 Console.println("Invalid input, try again!");
+                break;
         }
-        return output;
     }
     public void run() {
         Boolean dealerDone;
@@ -71,11 +71,7 @@ public class BlackJackGame {
         begin_decisions:
         while (!"leave".equals(menuDecision)) {
             Console.println("You view your new card(s)...\n\n");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Console.delay(2700);
             Console.clear();
             Console.clear();
             Hand hand = player.getHand();
@@ -88,20 +84,20 @@ public class BlackJackGame {
             if ("BUST".equals(playerState)) {
                 Console.println("BUST!");
                 Console.println("You lose your bet.");
-                Console.println("Your new balance is [%s]", player.getWallet());
+                Console.println("Your new balance is [%s]\n", player.getWallet() + ".");
                 leaveTable(player);
 
             } else if ("BLACKJACK".equals(playerState)) {
                 Console.println("BLACKJACK!");
-                Console.println("You WIN bet.");
+                Console.println("You WIN your bet.");
                 player.incrementWallet(betAmount * 2);
-                Console.println("Player's new balance is [%s]", player.getWallet());
+                Console.println("Player's new balance is [%s]\n", player.getWallet() + ".");
                 leaveTable(player);
             }
 
             if (!playerStand) {
-                menuDecision = Console.getStringInput("\n\nWhat would you like to do?\n[HIT] | [STAND] | [DOUBLE] DOWN");
-                Console.println("Player has selected [ %s ]", menuDecision);
+                menuDecision = Console.getStringInput("\n\nWhat would you like to do?\n[HIT] OR [STAND]");
+                Console.println("\nPlayer has selected [ %s ]\n", menuDecision + ".");
                 switch (menuDecision.toUpperCase()) {
                     case "HIT":
                         blackJackDealer.deal(player);
@@ -109,9 +105,11 @@ public class BlackJackGame {
                     case "STAND":
                         playerStand = true;
                         break;
+                    default:
+                        Console.println("Invalid input, try again!");
                 }
             }
-            Console.println("[INFO] DEALER HAND SUM: "+blackJackDealer.getHand().getHandSum());
+            Console.println("\nDealer's current sum is "+blackJackDealer.getHand().getHandSum() + ".");
             dealerDone = checkDealerHand();
 
             if (playerStand && dealerDone) {
@@ -127,7 +125,7 @@ public class BlackJackGame {
         Integer playerSum = player.getHand().getHandSum();
         StringBuilder message = new StringBuilder();
         if (dealerSum >= playerSum && dealerSum <= 21) {
-            message.append("DEALER WON ☹");
+            message.append("Dealer Won /:\n\n");
         } else {
             message.append("YOU WON!\n");
             player.incrementWallet(betAmount*2);
@@ -152,7 +150,7 @@ public class BlackJackGame {
         String option = Console.getStringInput("Yes, leave game.\nNo, start new game.");
         switch(option.toUpperCase()) {
             case "NO":
-                BlackJackGame bjGame = new BlackJackGame(player);
+                BlackJackGame bjGame = new BlackJackGame(player.getName(), player.getWallet());
                 bjGame.displayBlackJackMenu();
                 break;
             default:
@@ -176,7 +174,7 @@ public class BlackJackGame {
                 leaveTable(player);
                 break;
             default:
-                Console.println("Invalid Option");
+                Console.println("Invalid Option - try again");
         }
         return choice;
     }

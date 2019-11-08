@@ -14,7 +14,7 @@ public class BlackJackGameEngine {
     }
 
     public void runGame() {
-        BlackJackGame game = new BlackJackGame(blackJackPlayer);
+        BlackJackGame game = new BlackJackGame(blackJackPlayer.getName(), blackJackPlayer.getWallet());
         game.displayBlackJackMenu();
         game.run();
     }

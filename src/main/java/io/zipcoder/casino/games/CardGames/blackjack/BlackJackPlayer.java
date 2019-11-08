@@ -3,12 +3,19 @@ package io.zipcoder.casino.games.CardGames.blackjack;
 
 import io.zipcoder.casino.games.CardGames.Hand;
 import io.zipcoder.casino.sweetasscasinotools.Card;
+import io.zipcoder.casino.userandplayer.User;
 
 public class BlackJackPlayer{
     private String name;
     private Double wallet;
     private Double betAmount;
     private Hand hand;
+
+    // implementation of adapter pattern
+    // have any questions? Read a fucking book
+    public BlackJackPlayer(User user) {
+        this(user.getName(), user.getWallet());
+    }
 
     public BlackJackPlayer(String name, Double wallet) {
         this.name = name;
@@ -43,10 +50,6 @@ public class BlackJackPlayer{
 
     public String getName() {
         return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Double getWallet() {
