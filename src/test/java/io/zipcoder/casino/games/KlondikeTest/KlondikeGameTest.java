@@ -1,4 +1,4 @@
-package io.zipcoder.casino.gamestest.KlondikeTest;
+package io.zipcoder.casino.games.KlondikeTest;
 
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGame;
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGameEngine;
