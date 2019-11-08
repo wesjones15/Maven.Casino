@@ -18,18 +18,31 @@ public class UserDisplay {
         return Console.getIntegerInput("Select your action: ");
     }
 
+
     public static User createCasinoUser() {
         String name ;
         Integer age;
         Double wallet;
         name = Console.getStringInput("Name: ");
+        age = validateAge();
+        wallet = validateWallet();
+        return  new User(name, 2, age, wallet);
+    }
+    //This doesn't make sense. Well, maybe if you have a birthday while you're stuck in this loop.
+    public static Integer validateAge() {
+        Integer age;
         do {
             age = Console.getIntegerInput("Age(minimum age 18): ");
-        }while(age < 18);
+        } while (age < 18);
+        return age;
+    }
+
+    public static Double validateWallet(){
+        Double wallet;
         do {
             wallet = Console.getDoubleInput("Monies in your wallet: ");
         }while(wallet < 0);
-        return  new User(name, 2, age, wallet);
+        return wallet;
     }
 
     public  static String chooseGame(int action, User user) {

@@ -1,5 +1,6 @@
 package io.zipcoder.casino.gamestest.KlondikeTest;
 
+import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGame;
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikePlayer;
 import org.junit.After;
 import org.junit.Assert;
@@ -83,4 +84,5 @@ public class KlondikePlayerTest {
         Double actual = kp.getWallet();
         Assert.assertEquals(expected, actual);
     }
+
 }
