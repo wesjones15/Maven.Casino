@@ -12,7 +12,6 @@ public class BlackJackPlayer{
     private Hand hand;
 
     // implementation of adapter pattern
-    // have any questions? Read a fucking book
     public BlackJackPlayer(User user) {
         this(user.getName(), user.getWallet());
     }

@@ -18,7 +18,7 @@ public class Rules {
             "|\t\t\tIf your total is over 21, you BUST and the dealer wins.\t\t\t|\n" +
             "|\t\t\t\t\tIf you and the dealer tie, dealer wins.\t\t\t\t\t|\n" +
             "|\t\tTo win, you must have a higher overall score than the dealer.\t\t|\n" +
-            "|---===--==--===--==--===--==--===--==--===--==--===--==-===--==--===--==---|\n\n\n";
+            "|---===--==--===--==--===--==--===--==--===--==--===--==-===--==--===--==---|\n";
 
     public static final String klondike = "In Klondike Dice players need to roll better combination than banker to win.\n" +
             "The banker rolls first and the player rolls and tries to beat banker’s combination.\n" +
