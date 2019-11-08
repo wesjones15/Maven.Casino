@@ -10,6 +10,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -25,49 +27,81 @@ public class KlondikeGameEngineTest {
     }
 
     @Test
-    public void executeActionChosenTest() {
-       /* String expected1 = "Start Klondike Game";
-        String expected2 = "Display Klondike Rules";
-        String expected3 = "Leave Game";
-        String expected4 = "Re-route player to main Klondike menu";
-
-        KlondikeGameEngine kge = new KlondikeGameEngine(new User("", 20, 1, 0.0);
-
-        String actual1 = kge.executeActionChosen(1);
-        String actual2 = kge.executeActionChosen(2);
-        String actual3 = kge.executeActionChosen(3);
-        String actual4 = kge.executeActionChosen(4);
-
-
-
-        Assert.assertEquals(expected1, actual1);
-        Assert.assertEquals(expected2, actual2);
-        Assert.assertEquals(expected3, actual3);
-        Assert.assertEquals(expected4, actual4);
-*/
+    public void displayKlondikeMenu() {
+        String expected = "Welcome to\n";// + Art.klondikeSign;
+        KlondikeGameEngine kge = new KlondikeGameEngine(new User("KH", 1, 24, 200.0));
+        String actual = kge.displayKlondikeMenu();
+        Assert.assertEquals(expected, actual);
 
     }
 
     @Test
-    public void chooseGameOptionTest() {
+    public void promptForBetAmount(){
+        String input = "43.44";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
 
+        KlondikeGameEngine kge = new KlondikeGameEngine(new User("Kievina", 1, 90, 124.22));
+        Double actual = kge.promptForBetAmount();
+        Double expected = Double.valueOf(input);
+        Assert.assertEquals(expected, actual);
     }
 
+
     @Test
-    public void getWinnerTest() {
+    public void getWinnerTest1() {
         // Given
-        Integer[] counts1 = {2, 1, 2, 1, 1};
-        Integer[] counts2 = {1, 2, 2, 1, 1};
-        Integer[] counts3 = {1, 2, 2, 2, 2};
+        Integer[] dealerRoll = {1, 2, 2, 3, 3};
+        Integer[] playerRoll = {1, 3, 4, 2, 2};
+
+        Integer[] dealerRollCounts = {1, 2, 2, 2, 2};
+        Integer[] playerRollCounts = {1, 1, 1, 2, 2};
+        String expected = "Dealer Wins!\n";
 
         // When
-        Boolean actual1 = KlondikeGame.isOnePair(counts1);
-        Boolean actual2 = KlondikeGame.isOnePair(counts2);
-        Boolean actual3 = KlondikeGame.isOnePair(counts3);
+        KlondikeGameEngine kge = new KlondikeGameEngine(new User("KH", 1, 24, 200.0));
+        String actual = kge.getWinner(dealerRollCounts, playerRollCounts);
+
 
         // Then
-        Assert.assertTrue(actual1);
-        Assert.assertTrue(actual2);
-        Assert.assertFalse(actual3);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getWinnerTest2() {
+        Integer[] dealerRoll = {3, 3, 3, 3, 5};
+        Integer[] playerRoll = {2, 2, 2, 2, 1};
+
+        Integer[] dealerRollCounts = {4, 4, 4, 4, 1};
+        Integer[] playerRollCounts = {4, 4, 4, 4, 1};
+        String expected = "Dealer Wins!\n";
+
+        // When
+        KlondikeGameEngine kge = new KlondikeGameEngine(new User("KH", 1, 24, 200.0));
+        String actual = kge.getWinner(dealerRollCounts, playerRollCounts);
+
+        // Then
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void getWinnerTest3() {
+        Integer[] dealerRoll = {3, 3, 1, 2, 5};
+        Integer[] playerRoll = {2, 2, 2, 2, 1};
+
+        Integer[] dealerRollCounts = {2, 2, 1, 1, 1};
+        Integer[] playerRollCounts = {4, 4, 4, 4, 1};
+
+        String expected = "Player Wins!\n";
+
+        // When
+        KlondikeGameEngine kge = new KlondikeGameEngine(new User("KH", 1, 24, 200.0));
+        String actual = kge.getWinner(dealerRollCounts, playerRollCounts);
+
+
+        // Then
+        Assert.assertEquals(expected, actual);
+
     }
 }

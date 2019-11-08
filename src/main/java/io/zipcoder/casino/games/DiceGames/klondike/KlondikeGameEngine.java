@@ -1,5 +1,6 @@
 package io.zipcoder.casino.games.DiceGames.klondike;
 
+import io.zipcoder.casino.utilities.Art;
 import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.userandplayer.User;
@@ -18,19 +19,13 @@ public class KlondikeGameEngine {
         this.klondikePlayer = player;
     }
 
-    public Integer displayKlondikeMenu() {
-        Console.println("Welcome to Klondike!");
-        Integer choice = UserDisplay.displayOptions("Start New Game", "View Klondike Rules", "Leave Game");
-        return choice;
-    }
-
-    public String executeActionChosen(Integer choice) {
-        String optionChosen = "";
+    public void executeActionChosen(Integer choice) {
+//        String optionChosen = "";
         switch (choice) {
             case 1:
                 if (klondikePlayer.getWallet() > 0) {
                     playKlondike();
-                    optionChosen = "Start Klondike Game";
+//                    optionChosen = "Start Klondike Game";
                 } else {
                     Console.print("You do not have enough money for the minimum bet of $0.01!\n");
                     leaveTable(klondikePlayer);
@@ -38,24 +33,32 @@ public class KlondikeGameEngine {
                 break;
             case 2:
                 Console.print(KlondikeGame.displayKlondikeRules());
-                displayKlondikeMenu();
-                optionChosen = "Display Klondike Rules";
+                run();
+//                optionChosen = "Display Klondike Rules";
                 break;
             case 3:
                 leaveTable(klondikePlayer);
-                optionChosen = "Leave Game";
+//                optionChosen = "Leave Game";
                 break;
             default:
                 Console.println("Invalid response!");
-                optionChosen = "Re-route player to main Klondike menu";
+//                optionChosen = "Re-route player to main Klondike menu";
                 break;
         }
-        return optionChosen;
+//        return optionChosen;
     }
 
     public void run() {
-        Integer action = displayKlondikeMenu();
+        displayKlondikeMenu();
+        Integer action = UserDisplay.displayOptions("Start New Game", "View Klondike Rules", "Leave Game");
         executeActionChosen(action);
+    }
+
+    public String displayKlondikeMenu() {
+        String message = "Welcome to\n";// + Art.klondikeSign;
+//        Integer choice = UserDisplay.displayOptions("Start New Game", "View Klondike Rules", "Leave Game");
+        Console.println(message);
+        return message;
     }
 
     public void playKlondike() {
@@ -88,15 +91,6 @@ public class KlondikeGameEngine {
         leaveTable(klondikePlayer);
     }
 
-    public String getWinner(Integer[] dealerRollCounts, Integer[] playerRollCounts) {
-        String winner;
-        if (KlondikeGame.checkRollSequence(dealerRollCounts) >= KlondikeGame.checkRollSequence(playerRollCounts))
-            winner = "Dealer Wins!\n";
-        else
-            winner = "Player Wins!\n";
-        return winner;
-    }
-
     public Double promptForBetAmount() {
         Console.println("Receive 2X your wager if you win!");
         Double betAmount = 0.0;
@@ -107,6 +101,15 @@ public class KlondikeGameEngine {
         Console.println("You are wagering $%.2f", betAmount);
         Console.println("Your remaining balance is $%.2f\n", klondikePlayer.getWallet());
         return betAmount;
+    }
+
+    public String getWinner(Integer[] dealerRollCounts, Integer[] playerRollCounts) {
+        String winner;
+        if (KlondikeGame.checkRollSequence(dealerRollCounts) >= KlondikeGame.checkRollSequence(playerRollCounts))
+            winner = "Dealer Wins!\n";
+        else
+            winner = "Player Wins!\n";
+        return winner;
     }
 
     public String leaveTable(KlondikePlayer player) {
