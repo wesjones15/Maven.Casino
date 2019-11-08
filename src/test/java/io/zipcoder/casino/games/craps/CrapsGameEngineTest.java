@@ -1,4 +1,4 @@
-package io.zipcoder.casino.gamestest.craps;
+package io.zipcoder.casino.games.craps;
 
 import io.zipcoder.casino.games.DiceGames.craps.CrapsGameEngine;
 import io.zipcoder.casino.userandplayer.User;

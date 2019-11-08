@@ -11,15 +11,18 @@ public class BlackJackGame {
     private Deck deck;
 
 
-    public BlackJackGame(User user){
-        this.blackJackDealer = new BlackJackDealer();
-        this.player = new BlackJackPlayer(user.getName(), user.getWallet());
-        this.deck = new Deck();
+    public BlackJackGame(BlackJackDealer blackJackDealer, BlackJackPlayer player, Deck deck) {
+        this.blackJackDealer = blackJackDealer;
+        this.player = player;
+        this.deck = deck;
     }
+
+    public BlackJackGame(User user) {
+        this(new BlackJackDealer(), new BlackJackPlayer(user), new Deck());
+    }
+
     public BlackJackGame(BlackJackPlayer player) {
-        this.blackJackDealer = new BlackJackDealer();
-        this.player = new BlackJackPlayer(player.getName(), player.getWallet());
-        this.deck = new Deck();
+        this(new BlackJackDealer(), player, new Deck());
     }
 
     public void displayBlackJackMenu() {
@@ -30,27 +33,20 @@ public class BlackJackGame {
         menuChoice(choice);
         //string escape
     }
-    public String menuChoice(String choice) {
-        String output;
+    public void menuChoice(String choice) {
         switch (choice.toUpperCase()) {
             case "DEAL":
-                output = "deal cards to begin game";
                 run();
                 break;
             case "VIEW":
-                output = "display rules";
                 BlackJackGame.showGameRules();
                 displayBlackJackMenu();
             case "LEAVE":
-                output = "leave table";
-//                leaveTable(blackJackPlayer);
                 leaveTable(player);
                 break;
             default:
-                output = "invalid response";
                 Console.println("Invalid input, try again!");
         }
-        return output;
     }
     public void run() {
         Boolean dealerDone;

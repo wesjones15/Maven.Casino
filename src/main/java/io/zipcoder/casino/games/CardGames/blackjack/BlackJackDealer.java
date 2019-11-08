@@ -1,25 +1,24 @@
 package io.zipcoder.casino.games.CardGames.blackjack;
 
-import io.zipcoder.casino.games.CardGames.Hand;
 import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.sweetasscasinotools.Deck;
 
 
 public class BlackJackDealer extends BlackJackPlayer {
-    Deck deck;
-    private Hand hand;
+    private Deck deck;
 
     public BlackJackDealer() {
-        super("Dealer", 40000000000.0);
-        this.hand = new Hand();
+        super("Dealer", null);
         this.deck = new Deck();
         deck.shuffle();
     }
 
-    public void deal(BlackJackPlayer player){
-        Card card = deck.removeTopCard();
+
+    public void deal(BlackJackPlayer player, Card card) {
         player.acceptCard(card);
     }
-
+    public void deal(BlackJackPlayer player){
+        deal(player, deck.removeTopCard());
+    }
 }
 

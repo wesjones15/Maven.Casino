@@ -1,18 +1,10 @@
-package io.zipcoder.casino.gamestest.KlondikeTest;
+package io.zipcoder.casino.games.KlondikeTest;
 
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGame;
-import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGameEngine;
-import io.zipcoder.casino.sweetasscasinotools.Dice;
-import io.zipcoder.casino.sweetasscasinotools.Die;
-import io.zipcoder.casino.userandplayer.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 public class KlondikeGameEngineTest {
 
