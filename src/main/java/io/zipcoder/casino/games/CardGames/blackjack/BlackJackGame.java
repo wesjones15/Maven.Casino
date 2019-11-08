@@ -82,13 +82,13 @@ public class BlackJackGame {
 
             String playerState = player.getHand().getState();
             if ("BUST".equals(playerState)) {
-                Console.println("BUST!");
+                Console.println("BUST! o(╥﹏╥)");
                 Console.println("You lose your bet.");
                 Console.println("Your new balance is [%s]\n", player.getWallet() + ".");
                 leaveTable(player);
 
             } else if ("BLACKJACK".equals(playerState)) {
-                Console.println("BLACKJACK!");
+                Console.println("BLACKJACK! ✧ ─=≡Σ((( つ•̀ω•́)つ");
                 Console.println("You WIN your bet.");
                 player.incrementWallet(betAmount * 2);
                 Console.println("Player's new balance is [%s]\n", player.getWallet() + ".");
