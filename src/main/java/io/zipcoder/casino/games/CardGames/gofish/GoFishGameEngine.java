@@ -110,6 +110,12 @@ public class GoFishGameEngine {
         Card askingCard = goFishPlayer.getCard(cardIndex);
         checkingDeck();
 
+            if(goFishPlayer.getHand().size() == 0){
+                goFishPlayer.draw(goFishGame.getDeck());
+                Console.println("\n\nYou draw " + goFishPlayer.getHand().get(goFishPlayer.getHand().size() - 1) + "\n\n");
+                ///Starts dealers turn
+                dealerTurn();
+            }
             if (goFishGame.checkHand(goFishDealer.getHand(), askingCard)) {
                 goFishPlayer.receiveCards(goFishDealer.passCard(askingCard));
                 Console.println("\nYou asked for " +  askingCard + "\nopponent passes all " + askingCard.getFace() + "\n\n");
