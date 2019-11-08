@@ -34,4 +34,12 @@ public class Rules {
             "A die not used in any combination is ignored. If players roll same combination as of banker, then they lose.\n" +
             "They must roll a better combination to win. In case no one rolls a combination including the banker, then banker wins.";
 
+    public static final String goFish = "--> Go Fish Rules <--\n" +
+            "   - Ask opponent for a card from the ones in your hand.\n" +
+            "   - if opponent has cards, He must pass all the cards requested\n" +
+            "   - If not, Draw a Card\n" +
+            "   - Repeat\n" +
+            "   - Game ends when a player reaches four stacks of four of a kind or \n" +
+            "     there are no more cards in the deck\n" +
+            "   - HAVE FUN!!\n\n";
 }

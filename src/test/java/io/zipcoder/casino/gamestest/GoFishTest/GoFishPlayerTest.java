@@ -127,24 +127,6 @@ public class GoFishPlayerTest {
     }
 
     @Test
-    public void getCard_Test(){
-        //Given
-        GoFishPlayer goFishPlayer = new GoFishPlayer();
-        DeckOfCards deckOfCards = new DeckOfCards();
-        Stack<Card> deck = deckOfCards.createDeckOfCards();
-        Card card = deck.pop();
-
-        //When
-        goFishPlayer.pickUpHand(card); //prompt at 1 expected to be True
-        goFishPlayer.pickUpHand(deck.pop()); //prompt at 2
-        goFishPlayer.pickUpHand(deck.pop()); // prompt at 3
-
-        //Then
-        Assert.assertEquals(card , goFishPlayer.getCard(1));
-
-    }
-
-    @Test
     public void sizeOfHandTest(){
         //Given
         GoFishPlayer goFishPlayer = new GoFishPlayer();
