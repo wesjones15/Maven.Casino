@@ -21,8 +21,11 @@ public class BlackJackGame {
         this(new BlackJackDealer(), new BlackJackPlayer(user), new Deck());
     }
 
-    public BlackJackGame(BlackJackPlayer player) {
-        this(new BlackJackDealer(), player, new Deck());
+    public BlackJackGame(String name, Double wallet) {
+        this.player = new BlackJackPlayer(name, wallet);
+        this.blackJackDealer = new BlackJackDealer();
+        this.deck = new Deck();
+//        this(new BlackJackDealer(), player, new Deck());
     }
 
     public void displayBlackJackMenu() {
@@ -147,7 +150,7 @@ public class BlackJackGame {
         String option = Console.getStringInput("Yes, leave game.\nNo, start new game.");
         switch(option.toUpperCase()) {
             case "NO":
-                BlackJackGame bjGame = new BlackJackGame(player);
+                BlackJackGame bjGame = new BlackJackGame(player.getName(), player.getWallet());
                 bjGame.displayBlackJackMenu();
                 break;
             default:
