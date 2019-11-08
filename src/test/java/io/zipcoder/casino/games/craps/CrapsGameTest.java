@@ -1,4 +1,4 @@
-package io.zipcoder.casino.gamestest.craps;
+package io.zipcoder.casino.games.craps;
 
 import io.zipcoder.casino.games.DiceGames.craps.CrapsGame;
 import org.junit.Assert;
@@ -84,5 +84,15 @@ public class CrapsGameTest {
         Integer[] numsToCheck = {7, 11};
         Boolean match = CrapsGame.checkRollMatch(rollValue, numsToCheck);
         Assert.assertFalse(match);
+    }
+
+    @Test
+    public void testShowGameRules() {
+        String actual = CrapsGame.showGameRules();
+        String expected = "---==--===--===--==| CRAPS RULES |==--===--===--==---\nOn the first round, you win if you roll a 7 or 12\nand you lose if you roll a 2, 3, or 12" +
+                "\nIf you roll something else, that number becomes\nyour win target and your losing roll becomes 7" +
+                "\nYou can wager your money on whether you win the round\n" +
+                "---==--===--===--========-=-========--===--===--==---\n";
+        Assert.assertEquals(expected, actual);
     }
 }

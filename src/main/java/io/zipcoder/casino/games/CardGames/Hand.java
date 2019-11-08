@@ -46,4 +46,8 @@ public class Hand {
     public String toString() {
         return "Hand{" + hand + '}';
     }
+
+    public Boolean contains(Card card) {
+        return hand.contains(card);
+    }
 }

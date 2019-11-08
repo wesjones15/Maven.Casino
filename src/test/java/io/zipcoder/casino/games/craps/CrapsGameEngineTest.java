@@ -1,24 +1,16 @@
-package io.zipcoder.casino.gamestest.craps;
+package io.zipcoder.casino.games.craps;
 
+import io.zipcoder.casino.games.DiceGames.craps.CrapsGame;
 import io.zipcoder.casino.games.DiceGames.craps.CrapsGameEngine;
+import io.zipcoder.casino.games.DiceGames.craps.CrapsPlayer;
 import io.zipcoder.casino.userandplayer.User;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CrapsGameEngineTest {
-//    @Test
-//    public void testInitialConstructor() {
-//        //TODO figure out how to test this
-//        CrapsGameEngine cge = new CrapsGameEngine(new User("Wes", 2, 22, 24.44));
-//
-//    }
-//
-//    @Test
-//    public void testPlayAgainConstructor() {
-//        //TODO figure out how to test this
-//
-//    }
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
+public class CrapsGameEngineTest {
     @Test
     public void testDisplayCrapsMenu() {
         CrapsGameEngine cge = new CrapsGameEngine(new User("Wes", 2, 22, 24.44));
@@ -48,7 +40,7 @@ public class CrapsGameEngineTest {
     }
     @Test
     public void testExecuteMenuChoice2() {
-        CrapsGameEngine cge = new CrapsGameEngine(new User("Wes", 2, 22, 24.44));
+        CrapsGameEngine cge = new CrapsGameEngine(new CrapsPlayer("Wes", 24.44));
         Boolean actual = cge.executeMenuChoice(2);
         Assert.assertFalse(actual);
     }
@@ -214,14 +206,29 @@ public class CrapsGameEngineTest {
     }
 
     //TODO write tests for methods requiring user input
-//    @Test
-//    public void testChooseGameOption() {
-//
-//    }
-//    @Test
-//    public void testPromptUserForBetAmount() {
-//
-//    }
+    @Test
+    public void testChooseGameOption() {
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        CrapsGameEngine cge = new CrapsGameEngine(new User("Wes", 1, 22, 48.77));
+        Integer actual = cge.chooseGameOption("Roll Dice");
+        Integer expected = Integer.valueOf(input);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPromptUserForBetAmount() {
+        String input = "45.99";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        CrapsGameEngine cge = new CrapsGameEngine(new User("Wes", 1, 22, 48.77));
+        Double actual = cge.promptUserForBetAmount();
+        Double expected = Double.valueOf(input);
+        Assert.assertEquals(expected, actual, 2);
+    }
+
 //    @Test
 //    public void testPromptUserToRollDice() {
 //

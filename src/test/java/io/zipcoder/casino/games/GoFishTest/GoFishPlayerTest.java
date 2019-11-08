@@ -1,15 +1,13 @@
-package io.zipcoder.casino.gamestest.GoFishTest;
+package io.zipcoder.casino.games.GoFishTest;
 
 import io.zipcoder.casino.games.CardGames.gofish.GoFishPlayer;
 import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.sweetasscasinotools.DeckOfCards;
 import io.zipcoder.casino.utilities.Console;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Stack;
 
 public class GoFishPlayerTest {
@@ -124,24 +122,6 @@ public class GoFishPlayerTest {
 
         //Then
         Assert.assertEquals(expected, goFishPlayer.getFourOfAKind());
-    }
-
-    @Test
-    public void getCard_Test(){
-        //Given
-        GoFishPlayer goFishPlayer = new GoFishPlayer();
-        DeckOfCards deckOfCards = new DeckOfCards();
-        Stack<Card> deck = deckOfCards.createDeckOfCards();
-        Card card = deck.pop();
-
-        //When
-        goFishPlayer.pickUpHand(card); //prompt at 1 expected to be True
-        goFishPlayer.pickUpHand(deck.pop()); //prompt at 2
-        goFishPlayer.pickUpHand(deck.pop()); // prompt at 3
-
-        //Then
-        Assert.assertEquals(card , goFishPlayer.getCard(1));
-
     }
 
     @Test

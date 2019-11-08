@@ -50,10 +50,6 @@ public class CrapsGameEngine {
             continueCraps = false;
 
             displayRollsAndBetAmount(winRolls, loseRolls, betAmount);
-
-//            chooseGameOption("Roll dice");
-//            rollValue = dice.rollAndSum();
-
             choice = chooseGameOption("Roll dice"); // user input
             rollValue = executeDiceRoll(choice);
             displayDiceRoll(rollValue);
@@ -66,7 +62,7 @@ public class CrapsGameEngine {
                 continueCraps = true;
             } else {
                 generalGameEnd(outcome, crapsPlayer.getWallet());
-                if (outcome == 1) payOutRewardToPlayer(crapsPlayer.getBetAmount());
+                if (outcome == 1) payOutRewardToPlayer(betAmount);
             }
         }
         leaveTable(crapsPlayer); // user input
@@ -91,7 +87,6 @@ public class CrapsGameEngine {
                 break;
             case 3:     // show rules
                 CrapsGame.showGameRules();
-//                continueCraps = true;
                 run();
                 break;
         }
@@ -120,7 +115,7 @@ public class CrapsGameEngine {
     }
 
     public Double payOutRewardToPlayer(Double betAmount) {
-        Double reward = betAmount * 2;
+        Double reward = betAmount * 2.0;
         Console.println("You received $%.2f", reward);
         crapsPlayer.incrementWallet(reward);
         return reward;

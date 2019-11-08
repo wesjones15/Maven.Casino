@@ -1,22 +1,9 @@
 package io.zipcoder.casino.games.DiceGames.craps;
 
-
-import io.zipcoder.casino.sweetasscasinotools.Dice;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.Rules;
 
 public class CrapsGame {
-
-    private Dice dice;
-
-//    public CrapsGame() {
-//    }
-
-//    public Boolean checkMatch(int playerRollValue, int numToCheck) {
-//        return null;
-//    }
-    //pulling methods from gambling game and game interface
-
     public static Integer determineRollOutcome(Integer rollValue, Integer[] winRolls, Integer[] loseRolls) {
         Integer outcome;
         if (checkRollMatch(rollValue, winRolls)) {
@@ -41,9 +28,10 @@ public class CrapsGame {
         return match;
     }
 
-    public static void showGameRules() {
+    public static String showGameRules() {
         Console.clear();
         String rules = Rules.craps;
         Console.println(rules);
+        return rules;
     }
 }
