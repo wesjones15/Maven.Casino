@@ -6,7 +6,6 @@ import io.zipcoder.casino.userandplayer.User;
 public class Casino {
     // All Declarations
     private User user = new User();
-//    private UserDisplay userDisplay;
 
     // Constructors
     public Casino(){
@@ -28,7 +27,6 @@ public class Casino {
             e.printStackTrace();
         }
         Console.println("Let's start with a few questions...");
-//        UserDisplay.run();
         User user = UserDisplay.createCasinoUser();
 
         casinoStart(user);

@@ -20,12 +20,10 @@ public class KlondikeGameEngine {
     }
 
     public void executeActionChosen(Integer choice) {
-//        String optionChosen = "";
         switch (choice) {
             case 1:
                 if (klondikePlayer.getWallet() > 0) {
                     playKlondike();
-//                    optionChosen = "Start Klondike Game";
                 } else {
                     Console.print("You do not have enough money for the minimum bet of $0.01!\n");
                     leaveTable(klondikePlayer);
@@ -34,18 +32,14 @@ public class KlondikeGameEngine {
             case 2:
                 Console.print(KlondikeGame.displayKlondikeRules());
                 run();
-//                optionChosen = "Display Klondike Rules";
                 break;
             case 3:
                 leaveTable(klondikePlayer);
-//                optionChosen = "Leave Game";
                 break;
             default:
                 Console.println("Invalid response!");
-//                optionChosen = "Re-route player to main Klondike menu";
                 break;
         }
-//        return optionChosen;
     }
 
     public void run() {
