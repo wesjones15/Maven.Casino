@@ -2,6 +2,7 @@ package io.zipcoder.casino.games.CardGames.blackjack;
 
 import io.zipcoder.casino.games.CardGames.Hand;
 import io.zipcoder.casino.sweetasscasinotools.Card;
+import io.zipcoder.casino.userandplayer.User;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -144,5 +145,40 @@ public class BlackJackPlayerTest {
 
         // then
         Assert.assertNotEquals(preDealHandState, postDealHandState);
+    }
+    @Test
+    public void getNameTest(){
+        String expected = "chung";
+
+        //when
+        BlackJackPlayer bjPlayer = new BlackJackPlayer(expected, 100.0);
+
+        //then
+        Assert.assertEquals(expected, bjPlayer.getName());
+    }
+
+    @Test
+    public void betSetamount(){
+        Double expected = 100.0;
+        BlackJackPlayer bjPlayer = new BlackJackPlayer("chung", expected);
+
+        if(bjPlayer.placeBet(expected))
+            bjPlayer.setBetAmount(expected);
+
+        Assert.assertEquals(expected, bjPlayer.getBetAmount());
+
+    }
+    @Test
+    public void blackJackPLayerTest(){
+        User user = new User();
+        Double wallet = 100.0;
+        user.setWallet(wallet);
+        user.setName("chung");
+
+        BlackJackPlayer bjPlyer = new BlackJackPlayer(user);
+
+        Assert.assertEquals(wallet, bjPlyer.getWallet());
+        Assert.assertEquals("chung", bjPlyer.getName());
+
     }
 }
