@@ -31,14 +31,14 @@ public class BlackJackGame {
     public void displayBlackJackMenu() {
         String choice = Console.getStringInput("\tWelcome to\n" + Art.bjSign + "\n\n" +
                 "\t\tType Your [SELECTION]\n\n" +
-                "\t\t\t[DEAL] Hand\n" + "\t\t\t[VIEW] Rules\n" +
+                "\t\t\t[SET] Bet\n" + "\t\t\t[VIEW] Rules\n" +
                 "\t\t\t[LEAVE] Table\n" + "_________________________________________________");
         menuChoice(choice);
         //string escape
     }
     public void menuChoice(String choice) {
         switch (choice.toUpperCase()) {
-            case "DEAL":
+            case "SET":
                 run();
                 break;
             case "VIEW":
