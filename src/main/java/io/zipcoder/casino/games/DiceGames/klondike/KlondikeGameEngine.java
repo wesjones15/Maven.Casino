@@ -25,7 +25,7 @@ public class KlondikeGameEngine {
                 if (klondikePlayer.getWallet() > 0) {
                     playKlondike();
                 } else {
-                    Console.print("You do not have enough money for the minimum bet of $0.01!\n");
+                    Console.print("Not enough money for the minimum bet of $0.01!\n");
                     leaveTable(klondikePlayer);
                 }
                 break;
@@ -50,29 +50,32 @@ public class KlondikeGameEngine {
 
     public String displayKlondikeMenu() {
         String message = "Welcome to\n" + Art.klondikeSign;
-//        Integer choice = UserDisplay.displayOptions("Start New Game", "View Klondike Rules", "Leave Game");
         Console.println(message);
         return message;
     }
 
     public void playKlondike() {
-
+        Integer[] dealerFaceValueCounts;
+        Integer[] playerFaceValueCounts;
         Double betAmount = promptForBetAmount();
 
         Console.getStringInput("Press enter to roll");
 
         // Dealer Roll
         Integer[] dealerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
-        Console.println("Dealer Roll:");
+        dealerFaceValueCounts = KlondikeGame.faceValueCount(dealerFaceValues);
+        Console.println("Dealer Roll: " + KlondikeGame.printNameOfCombination(KlondikeGame.checkRollSequence(dealerFaceValueCounts)));
         Console.println(KlondikeGame.printFaceValues(dealerFaceValues) + '\n');
 
         // Player Roll
         Integer[] playerFaceValues = KlondikeGame.getFaceValues(KlondikeGame.dieRoll().getDieArray());
-        Console.println("Player Roll:");
+        playerFaceValueCounts = KlondikeGame.faceValueCount(playerFaceValues);
+        Console.println("Player Roll: " + KlondikeGame.printNameOfCombination(KlondikeGame.checkRollSequence(playerFaceValueCounts)));
         Console.println(KlondikeGame.printFaceValues(playerFaceValues) + '\n');
 
+
         // Display winner
-        String winPerson = getWinner(KlondikeGame.faceValueCount(dealerFaceValues),KlondikeGame.faceValueCount(playerFaceValues));
+        String winPerson = getWinner(dealerFaceValueCounts, playerFaceValueCounts);
         Console.println(winPerson);
 
         //compare rolls and getWinner
@@ -102,26 +105,22 @@ public class KlondikeGameEngine {
         if (KlondikeGame.checkRollSequence(dealerRollCounts) >= KlondikeGame.checkRollSequence(playerRollCounts))
             winner = "Dealer Wins!\n";
         else
-            winner = "Player Wins!\n";
+            winner = "You Win!\n";
         return winner;
     }
 
-    public String leaveTable(KlondikePlayer player) {
+    public void leaveTable(KlondikePlayer player) {
         Console.println("Do you want to leave the table?");
         Integer option = UserDisplay.displayOptions("No, play again", "Yes, leave table");
-        String output;
         switch (option) {
             case 1:
-                output = "play again";
                 KlondikeGameEngine kge = new KlondikeGameEngine(player);
                 kge.run();
                 break;
             default:
-                output = "leave table";
                 new Casino(player.getName(), player.getWallet());
                 break;
         }
-        return output;
     }
 }
 

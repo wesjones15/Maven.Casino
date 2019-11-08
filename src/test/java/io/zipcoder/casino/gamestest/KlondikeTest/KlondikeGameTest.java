@@ -43,6 +43,73 @@ public class KlondikeGameTest {
         Assert.assertEquals(expected, actual);
 
     }
+
+    @Test
+    public void printNameOfCombinationTest1() {
+        // Given
+        Integer winPoints = 0;
+        String expected = "ONE PAIR";
+
+        // When
+        String actual = KlondikeGame.printNameOfCombination(winPoints);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void printNameOfCombinationTest2() {
+        // Given
+        Integer winPoints = 1;
+        String expected = "TWO PAIR";
+
+        // When
+        String actual = KlondikeGame.printNameOfCombination(winPoints);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void printNameOfCombinationTest3() {
+        // Given
+        Integer winPoints = 2;
+        String expected = "THREE OF A KIND";
+
+        // When
+        String actual = KlondikeGame.printNameOfCombination(winPoints);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void printNameOfCombinationTest4() {
+        // Given
+        Integer winPoints = 3;
+        String expected = "FULL HOUSE";
+
+        // When
+        String actual = KlondikeGame.printNameOfCombination(winPoints);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void printNameOfCombinationTest5() {
+        // Given
+        Integer winPoints = 4;
+        String expected = "FOUR OF A KIND";
+
+        // When
+        String actual = KlondikeGame.printNameOfCombination(winPoints);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void printNameOfCombinationTest6() {
+        // Given
+        Integer winPoints = 5;
+        String expected = "FIVE OF A KIND";
+
+        // When
+        String actual = KlondikeGame.printNameOfCombination(winPoints);
+        Assert.assertEquals(expected, actual);
+    }
+
     @Test
     public void dieRollTest() {
         Dice dice = KlondikeGame.dieRoll();
