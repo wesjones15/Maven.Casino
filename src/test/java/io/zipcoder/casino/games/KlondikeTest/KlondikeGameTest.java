@@ -1,4 +1,4 @@
-package io.zipcoder.casino.gamestest.KlondikeTest;
+package io.zipcoder.casino.games.KlondikeTest;
 
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGame;
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGameEngine;
@@ -37,7 +37,7 @@ public class KlondikeGameTest {
                 "Three of a kind – 4 dice showing the same number\n" +
                 "Two pairs – 2 dice pairs showing same number\n" +
                 "One pair – 2 dice showing same number\n" +
-                "A die not used in any combination is ignored. If players roll same combination as of banker, then they lose.\n" +
+                "A die not used in any combination is ignored. If players roll same combination as the banker, then they lose.\n" +
                 "They must roll a better combination to win. In case no one rolls a combination including the banker, then banker wins.";
         String actual = KlondikeGame.displayKlondikeRules();
         Assert.assertEquals(expected, actual);
@@ -48,7 +48,7 @@ public class KlondikeGameTest {
     public void printNameOfCombinationTest1() {
         // Given
         Integer winPoints = 0;
-        String expected = "ONE PAIR";
+        String expected = "ONE PAIR!";
 
         // When
         String actual = KlondikeGame.printNameOfCombination(winPoints);
@@ -59,7 +59,7 @@ public class KlondikeGameTest {
     public void printNameOfCombinationTest2() {
         // Given
         Integer winPoints = 1;
-        String expected = "TWO PAIR";
+        String expected = "TWO PAIR!";
 
         // When
         String actual = KlondikeGame.printNameOfCombination(winPoints);
@@ -70,7 +70,7 @@ public class KlondikeGameTest {
     public void printNameOfCombinationTest3() {
         // Given
         Integer winPoints = 2;
-        String expected = "THREE OF A KIND";
+        String expected = "THREE OF A KIND!";
 
         // When
         String actual = KlondikeGame.printNameOfCombination(winPoints);
@@ -81,7 +81,7 @@ public class KlondikeGameTest {
     public void printNameOfCombinationTest4() {
         // Given
         Integer winPoints = 3;
-        String expected = "FULL HOUSE";
+        String expected = "FULL HOUSE!";
 
         // When
         String actual = KlondikeGame.printNameOfCombination(winPoints);
@@ -92,7 +92,7 @@ public class KlondikeGameTest {
     public void printNameOfCombinationTest5() {
         // Given
         Integer winPoints = 4;
-        String expected = "FOUR OF A KIND";
+        String expected = "FOUR OF A KIND!";
 
         // When
         String actual = KlondikeGame.printNameOfCombination(winPoints);
@@ -103,7 +103,7 @@ public class KlondikeGameTest {
     public void printNameOfCombinationTest6() {
         // Given
         Integer winPoints = 5;
-        String expected = "FIVE OF A KIND";
+        String expected = "FIVE OF A KIND!";
 
         // When
         String actual = KlondikeGame.printNameOfCombination(winPoints);
@@ -288,7 +288,7 @@ public class KlondikeGameTest {
     @Test
     public void printFaceValues() {
         Integer [] dieFaceValues = {1,2,3,4,5,};
-        String expected = "  1  2  3  4  5";
+        String expected = " : 1 :  : 2 :  : 3 :  : 4 :  : 5 : ";
         String actual = KlondikeGame.printFaceValues(dieFaceValues);
         Assert.assertEquals(expected,actual);
     }
