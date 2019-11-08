@@ -184,14 +184,14 @@ public class BlackJackGame {
     }
 
     public Double promptUserForBetAmount() {
-        Console.println("Receive 2X your wager if you win! ╰( ･ ᗜ ･ )╯");
+        Console.println("\n\nReceive 2X your wager if you win! ╰( ･ ᗜ ･ )╯");
         Double betAmount = 0.0;
         do {
             betAmount = Console.getDoubleInput("Enter your bet please: ");
             player.setBetAmount(betAmount);
         } while (!player.verifyValidBetAmount(betAmount));
         player.placeBet(betAmount);
-        Console.println("You are wagering $%.2f", betAmount);
+        Console.println("\n\nYou are wagering $%.2f", betAmount);
         Console.println("Your remaining balance is $%.2f\n", player.getWallet());
         return betAmount;
     }
