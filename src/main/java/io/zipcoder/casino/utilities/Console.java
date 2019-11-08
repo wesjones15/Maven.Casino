@@ -9,6 +9,7 @@ import java.util.Scanner;
  * You are advised against modifying this class.
  */
 public final class Console {
+
     public static void print(String val, Object... args) {
 //        output.format(val, args);
         System.out.print(String.format(val, args));

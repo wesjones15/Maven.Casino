@@ -53,6 +53,7 @@ public class UserDisplayTest {
         String actual = user.getName() + " " + user.getAge() + " " + user.getWallet();
 
     }
+    // Test below don't belong here
     @Test
     public void testGetName(){
         String name = "Gambling fellow";
@@ -89,7 +90,6 @@ public class UserDisplayTest {
         Integer actual = user.getAge();
         Assert.assertEquals(expected,actual);
     }
-
 
 
 }

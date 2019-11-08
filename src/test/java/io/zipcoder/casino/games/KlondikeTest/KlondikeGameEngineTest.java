@@ -1,4 +1,4 @@
-package io.zipcoder.casino.gamestest.KlondikeTest;
+package io.zipcoder.casino.games.KlondikeTest;
 
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGame;
 import io.zipcoder.casino.games.DiceGames.klondike.KlondikeGameEngine;
@@ -93,7 +93,7 @@ public class KlondikeGameEngineTest {
         Integer[] dealerRollCounts = {2, 2, 1, 1, 1};
         Integer[] playerRollCounts = {4, 4, 4, 4, 1};
 
-        String expected = "Player Wins!\n";
+        String expected = "You Win!\n";
 
         // When
         KlondikeGameEngine kge = new KlondikeGameEngine(new User("KH", 1, 24, 200.0));

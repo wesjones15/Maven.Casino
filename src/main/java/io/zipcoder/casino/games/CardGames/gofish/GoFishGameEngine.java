@@ -67,17 +67,14 @@ public class GoFishGameEngine {
         GoFishGameEngine gofish = new GoFishGameEngine(this.user);
         gofish.displayGoFishMenu();
 
-
     }
     ////RUN GAME METHODS///
     ///////////////////////
-
     public void dealHands(){
         for(int i = 0; i < 7; i++){
             //dealing cards to player and dealer
             goFishPlayer.pickUpHand(goFishGame.DealHands());
             goFishDealer.pickUpHand(goFishGame.DealHands());
-
         }
     }
     public boolean checkWinner(GoFishPlayer user, GoFishPlayer ai) {
@@ -99,7 +96,6 @@ public class GoFishGameEngine {
         }
         return false;
     }
-
     ///////USERS TURN
     private void userTurn(GoFishPlayer user){
         try{
@@ -108,7 +104,6 @@ public class GoFishGameEngine {
             Console.println("Please Choose again:\n" );
             userTurn(user);
         }
-
     }
 
     private void passOrDraw(Integer cardIndex) {
@@ -153,12 +148,10 @@ public class GoFishGameEngine {
                 goFishDealer.draw(goFishGame.getDeck());
                 Console.println("\nOpponent asked for " +  card + "\nOpponent draws\n\n");
             }
-
         }
     }
 
     public Card askedCard(){
-
         int handSize = goFishDealer.getHand().size();
         int randomCard = (int)(Math.random() * handSize) + 1;
         return goFishDealer.getCard(randomCard);

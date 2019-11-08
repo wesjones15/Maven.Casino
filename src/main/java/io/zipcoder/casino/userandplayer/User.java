@@ -16,9 +16,6 @@ public class User {
 
     }
 
-    public void chooseGame() {
-
-    }
 
     public String getName() {
         return name;

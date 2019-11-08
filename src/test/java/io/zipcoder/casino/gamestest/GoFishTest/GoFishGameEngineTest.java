@@ -4,6 +4,7 @@ import io.zipcoder.casino.games.CardGames.gofish.GoFishGameEngine;
 import io.zipcoder.casino.games.CardGames.gofish.GoFishPlayer;
 import io.zipcoder.casino.sweetasscasinotools.Card;
 import io.zipcoder.casino.userandplayer.User;
+import io.zipcoder.casino.utilities.Casino;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -73,4 +74,5 @@ public class GoFishGameEngineTest {
         //then
         Assert.assertFalse(goFish.checkWinner(goFish.getGoFishPlayer(), goFish.getGoFishPlayer()));
     }
+
 }
