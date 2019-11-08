@@ -7,6 +7,7 @@ import io.zipcoder.casino.sweetasscasinotools.DeckOfCards;
 import io.zipcoder.casino.sweetasscasinotools.SortCards;
 import io.zipcoder.casino.userandplayer.User;
 
+import io.zipcoder.casino.utilities.Art;
 import io.zipcoder.casino.utilities.Casino;
 import io.zipcoder.casino.utilities.Console;
 
@@ -32,7 +33,7 @@ public class GoFishGameEngine {
     //Go Fish Menu // Actions//
     //////////////////////////
     public void displayGoFishMenu(){
-        menuChoice(Console.getIntegerInput("Welcome to GoFish!\n" +
+        menuChoice(Console.getIntegerInput("Welcome to \n" + Art.goFishSign + "\n" +
                 "1 : Go Fish rules\n" +
                 "2 : Deal Hand\n" +
                 "3 : Leave Table"));
@@ -71,7 +72,7 @@ public class GoFishGameEngine {
     ////RUN GAME METHODS///
     ///////////////////////
 
-    private void dealHands(){
+    public void dealHands(){
         for(int i = 0; i < 7; i++){
             //dealing cards to player and dealer
             goFishPlayer.pickUpHand(goFishGame.DealHands());
@@ -79,7 +80,7 @@ public class GoFishGameEngine {
 
         }
     }
-    private boolean checkWinner(GoFishPlayer user, GoFishPlayer ai) {
+    public boolean checkWinner(GoFishPlayer user, GoFishPlayer ai) {
 
         if(goFishGame.getDeckSize() == 0 || user.getFourOfAKind() == 4 || ai.getFourOfAKind() == 4){
             if(user.getFourOfAKind() == ai.getFourOfAKind()){
@@ -88,7 +89,7 @@ public class GoFishGameEngine {
             }
             else if(user.getFourOfAKind() > ai.getFourOfAKind()){
                 Console.println("Congratulations your the winner!\n" +
-                        "Reward : $50.0");
+                        "Reward : $50.0\n\n");
                 this.user.setWallet(this.user.getWallet() + 50.0);
                 return true;
             }else{
@@ -134,19 +135,6 @@ public class GoFishGameEngine {
         }
     }
 
-//    public void passItOrDrawIt(GoFishPlayer passing, GoFishPlayer receiving){
-//        Card card = askedCard();
-//
-//        if(goFishGame.getDeckSize() == 0){
-//            if(checkWinner(this.goFishPlayer, this.goFishDealer)){
-//                GoFishGameEngine goFish = new GoFishGameEngine(this.user);
-//                goFish.displayGoFishMenu();
-//            }
-//        }
-//        else{
-//            if(goFishGame.checkHand())
-//        }
-//    }
     //////DEALERS TURN
     private void dealerTurn(){
         Card card = askedCard();
@@ -169,7 +157,7 @@ public class GoFishGameEngine {
         }
     }
 
-    private Card askedCard(){
+    public Card askedCard(){
 
         int handSize = goFishDealer.getHand().size();
         int randomCard = (int)(Math.random() * handSize) + 1;
@@ -181,4 +169,11 @@ public class GoFishGameEngine {
         new Casino(user.getName(), user.getWallet());
     }
 
+    //Testing methods
+    public User getUser(){
+        return user;
+    }
+    public GoFishPlayer getGoFishPlayer(){
+        return goFishPlayer;
+    }
 }
