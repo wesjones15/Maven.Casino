@@ -30,13 +30,6 @@ public class KlondikePlayer {
         this.wallet -= amount;
     }
 
-    public Double getBetAmount() {
-        return this.betAmount;
-    }
-    public void setBetAmount(Double betAmount) {
-        this.betAmount = betAmount;
-    }
-
     public String getName() {
         return this.name;
     }
