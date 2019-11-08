@@ -41,7 +41,7 @@ public class BlackJackPlayer{
     }
 
     public Boolean verifyValidBetAmount(Double betAmount) {
-        return (betAmount <= this.wallet);
+        return (betAmount <= this.wallet && betAmount >= 0);
     }
 
     public void incrementWallet(Double amount) {

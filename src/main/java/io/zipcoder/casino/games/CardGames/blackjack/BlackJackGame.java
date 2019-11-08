@@ -109,10 +109,11 @@ public class BlackJackGame {
                         Console.println("Invalid input, try again!");
                 }
             }
-            Console.println("\nDealer's current sum is "+blackJackDealer.getHand().getHandSum() + ".");
+
             dealerDone = checkDealerHand();
 
             if (playerStand && dealerDone) {
+                Console.println("\nDealer's current sum is "+blackJackDealer.getHand().getHandSum() + ".");
                 playerStandGameEnd(betAmount);
                 break;
             }
@@ -126,7 +127,7 @@ public class BlackJackGame {
         StringBuilder message = new StringBuilder();
         if ((dealerSum >= playerSum && dealerSum <= 21) || playerSum > 21) {
             message.append("Dealer Won /:\n\n");
-        } else /*if (playerSum > dealerSum && playerSum <= 21)*/{
+        } else {
             message.append("YOU WON!\n");
             player.incrementWallet(betAmount*2);
             message.append(String.format("You won your monies: $%.2f", betAmount*2));
