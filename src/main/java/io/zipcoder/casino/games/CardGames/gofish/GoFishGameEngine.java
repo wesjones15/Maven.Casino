@@ -108,13 +108,8 @@ public class GoFishGameEngine {
 
     private void passOrDraw(Integer cardIndex) {
         Card askingCard = goFishPlayer.getCard(cardIndex);
+        checkingDeck();
 
-        if(goFishGame.getDeckSize() == 0){
-            if(checkWinner(goFishPlayer, goFishDealer)) {
-                GoFishGameEngine gfge = new GoFishGameEngine(this.user);
-                gfge.displayGoFishMenu();
-            }
-        }else{
             if (goFishGame.checkHand(goFishDealer.getHand(), askingCard)) {
                 goFishPlayer.receiveCards(goFishDealer.passCard(askingCard));
                 Console.println("\nYou asked for " +  askingCard + "\nopponent passes all " + askingCard.getFace() + "\n\n");
@@ -127,19 +122,12 @@ public class GoFishGameEngine {
                 ///Starts dealers turn
                 dealerTurn();
             }
-        }
     }
-
     //////DEALERS TURN
     private void dealerTurn(){
         Card card = askedCard();
+        checkingDeck();
 
-        if(goFishGame.getDeckSize() == 0) {
-            if (checkWinner(goFishPlayer, goFishDealer)) {
-                GoFishGameEngine gfge = new GoFishGameEngine(this.user);
-                gfge.displayGoFishMenu();
-            }
-        }else{
             if(goFishGame.checkHand(goFishPlayer.getHand(), card)){
                 goFishDealer.receiveCards(goFishPlayer.passCard(card));
                 Console.println("\nOpponent asked for " +  card + "\nYou pass all " + card.getFace() + "\n\n");
@@ -147,6 +135,14 @@ public class GoFishGameEngine {
             }else{
                 goFishDealer.draw(goFishGame.getDeck());
                 Console.println("\nOpponent asked for " +  card + "\nOpponent draws\n\n");
+            }
+
+    }
+    public void checkingDeck() {
+        if (goFishGame.getDeckSize() == 0) {
+            if (checkWinner(goFishPlayer, goFishDealer)) {
+                GoFishGameEngine gfge = new GoFishGameEngine(this.user);
+                gfge.displayGoFishMenu();
             }
         }
     }
