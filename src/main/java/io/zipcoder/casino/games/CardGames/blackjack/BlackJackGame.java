@@ -124,9 +124,9 @@ public class BlackJackGame {
         Integer dealerSum = blackJackDealer.getHand().getHandSum();
         Integer playerSum = player.getHand().getHandSum();
         StringBuilder message = new StringBuilder();
-        if (dealerSum >= playerSum && dealerSum <= 21) {
+        if ((dealerSum >= playerSum && dealerSum <= 21) || playerSum > 21) {
             message.append("Dealer Won /:\n\n");
-        } else {
+        } else /*if (playerSum > dealerSum && playerSum <= 21)*/{
             message.append("YOU WON!\n");
             player.incrementWallet(betAmount*2);
             message.append(String.format("You won your monies: $%.2f", betAmount*2));
