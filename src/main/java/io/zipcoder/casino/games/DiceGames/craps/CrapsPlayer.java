@@ -28,7 +28,7 @@ public class CrapsPlayer {
     }
 
     public Boolean verifyValidBetAmount(Double betAmount) {
-        return (betAmount <= this.wallet) && (betAmount > 0);
+        return (betAmount <= this.wallet) && (betAmount >= 0);
     }
 
     public void incrementWallet(Double amount) {

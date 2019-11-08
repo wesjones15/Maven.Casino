@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class Deck {
     private Stack<Card> stack;
-    private final String[] suites = {"♧", "♢", "♡", "♤"};
+    private final String[] suites = {"♠" ,"♣", "♥", "♦"};
     private final String[] faces = {"Ace of", "Two of", "Three of", "Four of", "Five of", "Six of", "Seven of", "Eight of", "Nine of", "Ten of", "Jack of", "Queen of", "King of"};
     private final Integer[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10};
 

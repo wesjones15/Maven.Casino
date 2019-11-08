@@ -79,7 +79,7 @@ public class KlondikeGameEngine {
         Console.println(winPerson);
 
         //compare rolls and getWinner
-        if (winPerson.contains("Player")) {
+        if (winPerson.contains("You")) {
             Double payout = betAmount * 2;
             klondikePlayer.incrementWallet(payout);
             Console.println("You won $%.2f", payout);

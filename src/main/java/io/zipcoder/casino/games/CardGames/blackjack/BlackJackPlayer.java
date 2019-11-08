@@ -12,7 +12,6 @@ public class BlackJackPlayer{
     private Hand hand;
 
     // implementation of adapter pattern
-    // have any questions? Read a fucking book
     public BlackJackPlayer(User user) {
         this(user.getName(), user.getWallet());
     }
@@ -41,7 +40,7 @@ public class BlackJackPlayer{
     }
 
     public Boolean verifyValidBetAmount(Double betAmount) {
-        return (betAmount <= this.wallet);
+        return (betAmount <= this.wallet && betAmount >= 0);
     }
 
     public void incrementWallet(Double amount) {

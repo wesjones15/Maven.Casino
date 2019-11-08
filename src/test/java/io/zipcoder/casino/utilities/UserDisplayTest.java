@@ -91,5 +91,27 @@ public class UserDisplayTest {
         Assert.assertEquals(expected,actual);
     }
 
+    @Test
+    public void testValidateAge() {
+        String input = "19";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Integer actual = UserDisplay.validateAge();
+        Integer expected = Integer.valueOf(input);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testValidateWallet() {
+        String input = "14.2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Double actual = UserDisplay.validateWallet();
+        Double expected = Double.valueOf(input);
+        Assert.assertEquals(expected, actual, 2);
+    }
+
+
+
 
 }
