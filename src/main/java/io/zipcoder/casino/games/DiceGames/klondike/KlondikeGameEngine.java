@@ -55,7 +55,7 @@ public class KlondikeGameEngine {
     }
 
     public String displayKlondikeMenu() {
-        String message = "Welcome to\n";// + Art.klondikeSign;
+        String message = "Welcome to\n" + Art.klondikeSign;
 //        Integer choice = UserDisplay.displayOptions("Start New Game", "View Klondike Rules", "Leave Game");
         Console.println(message);
         return message;
