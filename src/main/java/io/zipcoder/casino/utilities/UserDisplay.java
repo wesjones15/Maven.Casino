@@ -42,7 +42,7 @@ public class UserDisplay {
         do {
             wallet = Console.getDoubleInput("Monies in your wallet: ");
         }while(wallet < 0);
-        return wallet;
+        return Math.abs(wallet);
     }
 
     public  static String chooseGame(int action, User user) {
