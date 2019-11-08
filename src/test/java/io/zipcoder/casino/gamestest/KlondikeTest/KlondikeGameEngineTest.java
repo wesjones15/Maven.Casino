@@ -10,6 +10,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -34,13 +36,15 @@ public class KlondikeGameEngineTest {
     }
 
     @Test
-    public void leaveTableTest(){
-
-    }
-
-    @Test
     public void promptForBetAmount(){
+        String input = "43.44";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
 
+        KlondikeGameEngine kge = new KlondikeGameEngine(new User("Kievina", 1, 90, 124.22));
+        Double actual = kge.promptForBetAmount();
+        Double expected = Double.valueOf(input);
+        Assert.assertEquals(expected, actual);
     }
 
 
