@@ -6,15 +6,41 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.junit.Assert.*;
 
 public class UserDisplayTest {
 
     @Test
-    public void displayOptions() {
+    public void displayOptions1() {
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Integer actual = UserDisplay.displayOptions("Start Game", "Leave Table", "Show Rules");
+        Integer expected = Integer.valueOf(input);
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void displayOptions2() {
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Integer actual = UserDisplay.displayOptions("Start Game", "Leave Table", "Show Rules");
+        Integer expected = Integer.valueOf(input);
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void displayOptions3() {
+        String input = "3";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Integer actual = UserDisplay.displayOptions("Start Game", "Leave Table", "Show Rules");
+        Integer expected = Integer.valueOf(input);
+        Assert.assertEquals(expected, actual);
     }
 
-    // the test below is terrible, Reevaluate
     @Test
     public void testCreateCasinoUser() {
             String name = "Gambling fellow";

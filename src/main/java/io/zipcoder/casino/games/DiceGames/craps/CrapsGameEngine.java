@@ -50,10 +50,6 @@ public class CrapsGameEngine {
             continueCraps = false;
 
             displayRollsAndBetAmount(winRolls, loseRolls, betAmount);
-
-//            chooseGameOption("Roll dice");
-//            rollValue = dice.rollAndSum();
-
             choice = chooseGameOption("Roll dice"); // user input
             rollValue = executeDiceRoll(choice);
             displayDiceRoll(rollValue);
@@ -91,7 +87,6 @@ public class CrapsGameEngine {
                 break;
             case 3:     // show rules
                 CrapsGame.showGameRules();
-//                continueCraps = true;
                 run();
                 break;
         }
