@@ -31,7 +31,7 @@ public class Rules {
             "Three of a kind – 4 dice showing the same number\n" +
             "Two pairs – 2 dice pairs showing same number\n" +
             "One pair – 2 dice showing same number\n" +
-            "A die not used in any combination is ignored. If players roll same combination as of banker, then they lose.\n" +
+            "A die not used in any combination is ignored. If players roll same combination as the banker, then they lose.\n" +
             "They must roll a better combination to win. In case no one rolls a combination including the banker, then banker wins.";
 
     public static final String goFish = "--> Go Fish Rules <--\n" +
