@@ -8,10 +8,9 @@ public class PlayerClass {
         this.user = user;
         this.userId = user.getUserId();
     }
-    public User getUser(){
+
+    public User getUser() {
         return user;
     }
 
-    public void leaveTable() {}
-    public void cashOut() {}
 }
