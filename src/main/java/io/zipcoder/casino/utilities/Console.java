@@ -9,24 +9,7 @@ import java.util.Scanner;
  * You are advised against modifying this class.
  */
 public final class Console {
-//    private static Scanner input;
-//    private static PrintStream output;
 
-//    public Console(InputStream in, PrintStream out) {
-//        this.input = new Scanner(in);
-//        this.output = out;
-//    }
-
-//    public static void slowPrint(String val, Object... args) {
-//        String out = String.format(val, args);
-//        for (int i = 0; i < out.length(); i++) {
-//            System.out.print(String.valueOf(out.charAt(i)));
-//            try {
-//                Thread.sleep(100);
-//            } catch(InterruptedException e) { }
-//
-//        }
-//    }
 
     public static void print(String val, Object... args) {
 //        output.format(val, args);

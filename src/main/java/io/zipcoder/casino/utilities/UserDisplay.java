@@ -28,7 +28,7 @@ public class UserDisplay {
         wallet = validateWallet();
         return  new User(name, 2, age, wallet);
     }
-
+    //This doesn't make sense. Well, maybe if you have a birthday while you're stuck in this loop.
     public static Integer validateAge() {
         Integer age;
         do {
