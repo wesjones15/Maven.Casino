@@ -22,25 +22,25 @@ public class Deck {
         return stack.pop();
     }
 
-    public Card peek() {
-        return stack.peek();
-    }
-
-    public void add(Card card) {
-        stack.push(card);
-    }
-
-    public Boolean isEmpty() {
-        return stack.isEmpty();
-    }
+//    public Card peek() {
+//        return stack.peek();
+//    }
+//
+//    public void add(Card card) {
+//        stack.push(card);
+//    }
+//
+//    public Boolean isEmpty() {
+//        return stack.isEmpty();
+//    }
 
     public void shuffle() {
         Collections.shuffle(stack);
     }
 
-    public Integer getDeckSize() {
-        return stack.size();
-    }
+//    public Integer getDeckSize() {
+//        return stack.size();
+//    }
 
     @Override
     public String toString() {

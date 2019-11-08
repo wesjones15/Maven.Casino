@@ -9,9 +9,9 @@ public class Die {
     public Die(Integer numberOfFaces) {
         this.numberOfFaces = numberOfFaces;
     }
-    public Die(){
-        this(6);
-    }
+//    public Die(){
+//        this(6);
+//    }
 
 
     public Integer roll() {
@@ -26,7 +26,7 @@ public class Die {
         return currentFacesValue;
     }
 
-    public Integer getNumberOfFaces() {
-        return numberOfFaces;
-    }
+//    public Integer getNumberOfFaces() {
+//        return numberOfFaces;
+//    }
 }
