@@ -23,20 +23,6 @@ public class Dice {
         return total;
     }
 
-    public Integer getMinRoll() {
-        Integer minimumValueToBeRolled = getNumberOfDice();
-        return minimumValueToBeRolled;
-    }
-
-
-    public Integer getMaxRoll() {
-        return getNumberOfDice() * numberOfFaces;
-    }
-
-    public Integer getNumberOfDice() {
-        return dice.length;
-    }
-
     public Die getDie(Integer index) {
         return this.dice[index];
     }
