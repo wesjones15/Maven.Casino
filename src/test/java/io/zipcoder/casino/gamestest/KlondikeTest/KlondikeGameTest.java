@@ -53,17 +53,6 @@ public class KlondikeGameTest {
     }
 
     @Test
-    public void getFaceValuesTest() {
-            Integer d1 = 0;
-
-            Dice expected = KlondikeGame.dieRoll();
-            Die [] die = expected.getDieArray();
-                d1 = die[0].getCurrentFacesValue();
-
-            Assert.assertTrue(d1 >=1 && d1 <= 6);
-    }
-
-    @Test
     public void getNumberOfOccurrencesTest() {
         // Given
         Integer[] faceValues = {2, 4, 3, 3, 6};
@@ -235,5 +224,15 @@ public class KlondikeGameTest {
         String expected = "  1  2  3  4  5";
         String actual = KlondikeGame.printFaceValues(dieFaceValues);
         Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getFaceValuesTest() {
+        Dice actual = KlondikeGame.dieRoll();
+        Die [] die = actual.getDieArray();
+        Integer[] expected;
+
+        expected = KlondikeGame.getFaceValues(die);
+        Assert.assertTrue(expected[0] >=1 && expected[0] <= 6);
     }
 }

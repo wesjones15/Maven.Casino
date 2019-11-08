@@ -9,10 +9,6 @@ public class Die {
     public Die(Integer numberOfFaces) {
         this.numberOfFaces = numberOfFaces;
     }
-//    public Die(){
-//        this(6);
-//    }
-
 
     public Integer roll() {
         //currentFacesValue becomes a random value between 1 and numberOfFaces
@@ -25,8 +21,4 @@ public class Die {
 
         return currentFacesValue;
     }
-
-//    public Integer getNumberOfFaces() {
-//        return numberOfFaces;
-//    }
 }
