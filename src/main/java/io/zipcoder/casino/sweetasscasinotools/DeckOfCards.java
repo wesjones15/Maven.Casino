@@ -35,18 +35,5 @@ public class DeckOfCards {
         return deck;
     }
 
-//    public Card drawCard(ArrayList<Card> currentDeck) {
-//        Card card = currentDeck.get(0);
-//        currentDeck.remove(0);
-//        return card;
-//    }
-
-//    public Card getCard() {
-//        return null;
-//    }
-//
-//    public Card revealCard() {
-//        return null;
-//    }
 
 }

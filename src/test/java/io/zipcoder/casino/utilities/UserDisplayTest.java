@@ -41,6 +41,8 @@ public class UserDisplayTest {
         Assert.assertEquals(expected, actual);
     }
 
+    // the test below is terrible, Reevaluate
+    //TODO write test for createCasinoUser
     @Test
     public void testCreateCasinoUser() {
             String name = "Gambling fellow";
